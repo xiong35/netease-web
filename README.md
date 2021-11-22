@@ -3,20 +3,19 @@
 
 &#xa0;
 
-  <!-- <a href="https://vitereacttypescriptstarter.netlify.app">Demo</a> -->
 </div>
 
 <h1 align="center">netease-web</h1>
 
 <p align="center">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/xiong35/netease-web-FE?color=64EDAC">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/xiong35/netease-web?color=64EDAC">
 
-  <img alt="License" src="https://img.shields.io/github/license/xiong35/netease-web-FE?color=64EDAC">
+  <img alt="License" src="https://img.shields.io/github/license/xiong35/netease-web?color=64EDAC">
 
-  <img alt="Github issues" src="https://img.shields.io/github/issues/xiong35/netease-web-FE?color=64EDAC" />
+  <img alt="Github issues" src="https://img.shields.io/github/issues/xiong35/netease-web?color=64EDAC" />
 
-  <img alt="Github stars" src="https://img.shields.io/github/stars/xiong35/netease-web-FE?color=64EDAC" />
+  <img alt="Github stars" src="https://img.shields.io/github/stars/xiong35/netease-web?color=64EDAC" />
 </p>
 
 <!-- Status -->
@@ -41,15 +40,13 @@
 
 ## :dart: About
 
-netease-web 是一款可高度自定义的知识学习及分享网站, 部署于: [TODO]
+netease-web 是一款复刻网易云音乐的网站[TODO]
 
 ## :sparkles: Features
 
-- 支持在网页中复习知识库中的题目
-- 支持自定义题库
-- 可分享自己的题库
-- 可收藏他人分享的题库
-- 可对题目进行评论
+- 听歌 🎧
+- 点赞收藏评论登录一应俱全 ♥
+- 不用 vip 也能畅享听歌的特效 🎉
 
 ## :rocket: Technologies
 
@@ -57,7 +54,6 @@ The following tools were used in this project:
 
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [vite](https://vitejs.dev/)
 
 ## :white_check_mark: Requirements
 
@@ -67,16 +63,16 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/xiong35/netease-web-FE
+$ git clone https://github.com/xiong35/netease-web
 
 # Access
-$ cd netease-web-FE
+$ cd netease-web
 
 # Install dependencies
-$ npm i
+$ yarn
 
 # Run the project
-$ npm run dev
+$ yarn dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
@@ -90,9 +86,8 @@ Made with :heart: by
 - [FE](https://github.com/xiong35/netease-web-FE)
   - [xiong35](https://github.com/xiong35)
   - [gucan707](https://github.com/gucan707)
-- [BE](https://github.com/woolen-sheep/netease-web-BE)
-  - [ueqri](https://github.com/ueqri)
-  - [woolen-sheep](https://github.com/woolen-sheep)
+  - [gucan707](https://github.com/gucan707)
+  - [DanmoSAMA](https://github.com/DanmoSAMA)
 
 &#xa0;
 
