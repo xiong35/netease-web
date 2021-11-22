@@ -1,0 +1,19 @@
+.spacer {
+  flex: 1;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.scale-110 {
+  transform: scale(1.1);
+}
+
+.t-p {
+  color: var(--primary);
+}
+
+.t-s {
+  color: var(--secondary);
+}
