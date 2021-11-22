@@ -1,28 +1,28 @@
 <div align="center" id="top"> 
-  <img src="./public/logo.svg" alt="Flicker" />
+  <img src="./public/logo.svg" alt="netease-web" />
 
 &#xa0;
 
   <!-- <a href="https://vitereacttypescriptstarter.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Flicker</h1>
+<h1 align="center">netease-web</h1>
 
 <p align="center">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/xiong35/Flicker-FE?color=64EDAC">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/xiong35/netease-web-FE?color=64EDAC">
 
-  <img alt="License" src="https://img.shields.io/github/license/xiong35/Flicker-FE?color=64EDAC">
+  <img alt="License" src="https://img.shields.io/github/license/xiong35/netease-web-FE?color=64EDAC">
 
-  <img alt="Github issues" src="https://img.shields.io/github/issues/xiong35/Flicker-FE?color=64EDAC" />
+  <img alt="Github issues" src="https://img.shields.io/github/issues/xiong35/netease-web-FE?color=64EDAC" />
 
-  <img alt="Github stars" src="https://img.shields.io/github/stars/xiong35/Flicker-FE?color=64EDAC" />
+  <img alt="Github stars" src="https://img.shields.io/github/stars/xiong35/netease-web-FE?color=64EDAC" />
 </p>
 
 <!-- Status -->
 
 <h4 align="center">
-	🚧  Flicker 🚀 Under construction...  🚧
+	🚧  netease-web 🚀 Under construction...  🚧
 </h4>
 
 <hr>
@@ -41,7 +41,7 @@
 
 ## :dart: About
 
-Flicker 是一款可高度自定义的知识学习及分享网站, 部署于: [TODO]
+netease-web 是一款可高度自定义的知识学习及分享网站, 部署于: [TODO]
 
 ## :sparkles: Features
 
@@ -67,10 +67,10 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/xiong35/Flicker-FE
+$ git clone https://github.com/xiong35/netease-web-FE
 
 # Access
-$ cd Flicker-FE
+$ cd netease-web-FE
 
 # Install dependencies
 $ npm i
@@ -87,10 +87,10 @@ This project is under license from MIT. For more details, see the [LICENSE](LICE
 
 Made with :heart: by
 
-- [FE](https://github.com/xiong35/Flicker-FE)
+- [FE](https://github.com/xiong35/netease-web-FE)
   - [xiong35](https://github.com/xiong35)
   - [gucan707](https://github.com/gucan707)
-- [BE](https://github.com/woolen-sheep/Flicker-BE)
+- [BE](https://github.com/woolen-sheep/netease-web-BE)
   - [ueqri](https://github.com/ueqri)
   - [woolen-sheep](https://github.com/woolen-sheep)
 
