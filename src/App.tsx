@@ -4,6 +4,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import { routes } from "./routes";
 
+var a = "123";
+
 export default function App() {
   return (
     <div className="main">
