@@ -13,3 +13,5 @@ jest.config.js
 # build
 dist
 build
+
+scripts

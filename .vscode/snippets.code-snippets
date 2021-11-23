@@ -1,5 +1,5 @@
 {
-  "Print to console": {
+  "request func": {
     "scope": "javascript,typescript",
     "prefix": "req",
     "body": [
@@ -23,7 +23,7 @@
       "  return;",
       "}",
     ],
-    "description": "Log output to console"
+    "description": "网络请求函数的模板"
   },
   "use history": {
     "scope": "javascriptreact,typescriptreact",
@@ -31,7 +31,7 @@
     "body": [
       "const history = useHistory$0();",
     ],
-    "description": "Log output to console"
+    "description": "use history"
   },
   "hook": {
     "scope": "javascript,typescript",
@@ -43,6 +43,6 @@
       "  $1",
       "}",
     ],
-    "description": "Log output to console"
+    "description": "hooks函数的模板"
   }
 }
