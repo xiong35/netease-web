@@ -1,4 +1,4 @@
-<div align="center" id="top"> 
+<div align="center" id="top">
   <img src="./public/logo.svg" alt="netease-web" />
 
 &#xa0;
@@ -21,13 +21,13 @@
 <!-- Status -->
 
 <h4 align="center">
-	🚧  netease-web 🚀 Under construction...  🚧
+ 🚧  netease-web 🚀 Under construction...  🚧
 </h4>
 
 <hr>
 
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#dart-about">About</a> &#xa0; | &#xa0;
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
@@ -76,6 +76,8 @@ $ yarn dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
+
+> 开发者请阅读[开发者指南](./docs/开发者指南.md)
 
 ## :memo: License
 
