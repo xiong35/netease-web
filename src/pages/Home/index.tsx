@@ -1,10 +1,6 @@
 import "./index.scss";
 
-type HomeProps = {};
-
-function Home(props: HomeProps) {
-  const {} = props;
-
+function Home() {
   return <div className="home">Home</div>;
 }
 

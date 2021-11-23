@@ -7,7 +7,7 @@
  */
 export function dateFormat(
   date: Date | number | string,
-  fmt: string = "YYYY/mm/dd HH:MM",
+  fmt = "YYYY/mm/dd HH:MM",
   onlyUseFormat = false
 ) {
   // 归一化为 Date 对象

@@ -47,36 +47,38 @@ export default function _request<T = {}>(config: AxiosRequestConfig) {
     }
   );
 
-  return new Promise<T | null>(async (resolve) => {
-    try {
-      const res = await instance.request<HttpRes<T>>(config);
-      if (res.status === 200 && res.data && res.data.success) {
-        resolve(res.data.data);
-      } else if (!res.data) {
-        throw DEFAULT_ERR_MSG;
-      } else {
-        console.log(res.data);
-        throw res.data.message || DEFAULT_ERR_MSG;
-      }
-    } catch (err) {
-      console.error("in request: ", { config, err });
-
-      let errMsg = DEFAULT_ERR_MSG;
-      if (typeof err === "string") {
-        errMsg = err;
-      } else if ((err as AxiosError).isAxiosError) {
-        const axiosErr = err as AxiosError<HttpRes<T>>;
-        if (axiosErr.response) {
-          errMsg = axiosErr.response.data.message;
+  return new Promise<T | null>((resolve) => {
+    instance
+      .request<HttpRes<T>>(config)
+      .then((res) => {
+        if (res.status === 200 && res.data && res.data.success) {
+          resolve(res.data.data);
+        } else if (!res.data) {
+          throw DEFAULT_ERR_MSG;
+        } else {
+          console.log(res.data);
+          throw res.data.message || DEFAULT_ERR_MSG;
         }
-      } else if (err instanceof Error) {
-        errMsg = err.message;
-      }
+      })
+      .catch((err) => {
+        console.error("in request: ", { config, err });
 
-      console.log({ errMsg });
-      showToast(errMsg, "error");
+        let errMsg = DEFAULT_ERR_MSG;
+        if (typeof err === "string") {
+          errMsg = err;
+        } else if ((err as AxiosError).isAxiosError) {
+          const axiosErr = err as AxiosError<HttpRes<T>>;
+          if (axiosErr.response) {
+            errMsg = axiosErr.response.data.message;
+          }
+        } else if (err instanceof Error) {
+          errMsg = err.message;
+        }
 
-      resolve(null);
-    }
+        console.log({ errMsg });
+        showToast(errMsg, "error");
+
+        resolve(null);
+      });
   });
 }

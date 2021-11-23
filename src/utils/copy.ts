@@ -1,6 +1,6 @@
 /** 复制一段文字到剪切板 */
 export function copy(content: string, hint = "复制成功！") {
-  let textArea = document.createElement("textarea");
+  const textArea = document.createElement("textarea");
   // textArea.style.visibility = "hidden";
   textArea.style.position = "fixed";
   textArea.style.width = "0";
