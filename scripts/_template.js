@@ -24,15 +24,7 @@ const scssTemplate = `
 }
 `;
 
-const hooksTemplate = `
-export function useSetup() {
-  
-  return {}
-}
-`;
-
 module.exports = {
   tsxTemplate,
   scssTemplate,
-  hooksTemplate,
 };
