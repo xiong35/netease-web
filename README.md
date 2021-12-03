@@ -88,7 +88,6 @@ Made with :heart: by
 - [FE](https://github.com/xiong35/netease-web-FE)
   - [xiong35](https://github.com/xiong35)
   - [gucan707](https://github.com/gucan707)
-  - [gucan707](https://github.com/gucan707)
   - [DanmoSAMA](https://github.com/DanmoSAMA)
 
 &#xa0;
