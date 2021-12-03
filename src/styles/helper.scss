@@ -6,7 +6,20 @@
 .t-p {
   color: var(--primary);
 }
+/* text */
+.t {
+  color: var(--on-bg);
+}
+/* text dark*/
+.t-d {
+  color: var(--on--d);
+}
 
-.t-s {
-  color: var(--secondary);
+/* background */
+.bg {
+  background-color: var(--bg);
+}
+/* background dark */
+.bg-d {
+  background-color: var(--bg-d);
 }
