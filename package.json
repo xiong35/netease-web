@@ -9,7 +9,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "husky install && git switch dev",
-    "lint": "eslint src --max-warnings 0"
+    "lint": "eslint src --max-warnings 0",
+    "commit": "cz",
+    "cz": "cz"
   },
   "dependencies": {
     "@loadable/component": "^5.15.0",
