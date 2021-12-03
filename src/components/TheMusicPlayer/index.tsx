@@ -2,10 +2,11 @@ import "./index.scss";
 
 import { useRef } from "react";
 
-import { useVolume } from "./hooks/useVolume";
-import { useMuted } from "./hooks/useMuted";
-import { useIsPlaying } from "./hooks/useIsPlaying";
-import { useCurrentTime } from "./hooks/useCurrentTime";
+// import { useVolume } from "./hooks/useVolume";
+// import { useMuted } from "./hooks/useMuted";
+// import { useIsPlaying } from "./hooks/useIsPlaying";
+// import { useCurrentTime } from "./hooks/useCurrentTime";
+import AlbumBrief from "../AlbumBrief";
 
 type TheMusicPlayerProps = {
   src?: string;
@@ -18,19 +19,41 @@ function TheMusicPlayer(props: TheMusicPlayerProps) {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const { currentTime, setCurrentTime } = useCurrentTime(audioRef);
-  const { isPlaying, setIsPlaying } = useIsPlaying(audioRef);
-  const { muted, setMuted } = useMuted(audioRef);
-  const { volume, setVolume } = useVolume(audioRef);
+  // const { currentTime, setCurrentTime } = useCurrentTime(audioRef);
+  // const { isPlaying, setIsPlaying } = useIsPlaying(audioRef);
+  // const { muted, setMuted } = useMuted(audioRef);
+  // const { volume, setVolume } = useVolume(audioRef);
 
   return (
     <div className="the_music_player t_m_p">
       <audio ref={audioRef} src={src}></audio>
 
-      <pre>
-        {JSON.stringify({ currentTime, isPlaying, muted, volume }, null, 2)}
-      </pre>
-      <button onClick={() => setIsPlaying((p) => !p)}>setIsPlaying</button>
+      <div className="t_m_p-album">
+        <AlbumBrief></AlbumBrief>
+      </div>
+
+      <div className="t_m_p-play">
+        <div className="t_m_p-play-icons">
+          <div className="t_m_p-play-icons-loop">loop</div>
+          <div className="t_m_p-play-icons-post">post</div>
+          <div className="t_m_p-play-icons-pause">pause</div>
+          <div className="t_m_p-play-icons-next">next</div>
+          <div className="t_m_p-play-icons-ph">ph</div>
+        </div>
+
+        <div className="t_m_p-play-bar">
+          <div className="t_m_p-play-bar-cur_time">cur_time</div>
+          <div className="t_m_p-play-bar-slide">slide</div>
+          <div className="t_m_p-play-bar-duration">duration</div>
+        </div>
+      </div>
+
+      <div className="t_m_p-actions">
+        <div className="t_m_p-actions-volume">volume</div>
+        <div className="t_m_p-actions-play_list">play_list</div>
+      </div>
+
+      {/* <button onClick={() => setIsPlaying((p) => !p)}>setIsPlaying</button>
       <button onClick={() => setMuted((p) => !p)}>setMuted</button>
       <input
         type="range"
@@ -45,7 +68,7 @@ function TheMusicPlayer(props: TheMusicPlayerProps) {
           const percent = parseInt(e.target.value) || 0;
           setCurrentTime(audioRef.current.duration * 0.01 * percent);
         }}
-      />
+      /> */}
     </div>
   );
 }

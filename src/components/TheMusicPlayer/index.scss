@@ -1,4 +1,36 @@
+// the music player
+.t_m_p {
+  position: fixed;
+  height: 60px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-top: var(--bg-d);
+  background-color: var(bg);
 
-.the_music_player {
+  display: flex;
 
+  align-items: center;
+
+  &-album,
+  &-actions {
+    flex: 1 1 0px;
+  }
+
+  &-actions {
+    text-align: right;
+  }
+
+  &-play {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+    &-icons,
+    &-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
