@@ -1,12 +1,11 @@
 const tsxTemplate = `
 import "./index.scss";
 
-type {COMP_NAME}Props = {
-  
-};
+// type {COMP_NAME}Props = {
+// };
 
 function {COMP_NAME}(props: {COMP_NAME}Props) {
-  const {} = props;
+  // const {} = props;
 
   return (
     <div className="{KEBAB_NAME}">
