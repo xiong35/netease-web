@@ -7,12 +7,14 @@ import { routes } from "./routes";
 export default function App() {
   return (
     <div className="main">
-      <Switch>
-        <Redirect to="/home" path="/" exact></Redirect>
-        {routes.map((route, i) => (
-          <Route key={i} {...route} />
-        ))}
-      </Switch>
+      <div className="main-body">
+        <Switch>
+          <Redirect to="/home" path="/" exact></Redirect>
+          {routes.map((route, i) => (
+            <Route key={i} {...route} />
+          ))}
+        </Switch>
+      </div>
     </div>
   );
 }
