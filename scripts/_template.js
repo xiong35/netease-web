@@ -4,7 +4,7 @@ import "./index.scss";
 // type {COMP_NAME}Props = {
 // };
 
-function {COMP_NAME}(props: {COMP_NAME}Props) {
+function {COMP_NAME}(/* props: {COMP_NAME}Props */) {
   // const {} = props;
 
   return (
