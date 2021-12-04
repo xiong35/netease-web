@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 
 // import { useVolume } from "./hooks/useVolume";
@@ -8,7 +8,9 @@ import { observer } from "mobx-react-lite";
 // import { useIsPlaying } from "./hooks/useIsPlaying";
 // import { useCurrentTime } from "./hooks/useCurrentTime";
 import AlbumBrief from "../AlbumBrief";
-import { PlayStore } from "../../mobx/play";
+import { getPlayListReq } from "../../network/playList/getPlayList";
+
+// import { PlayStore } from "../../mobx/play";
 
 type TheMusicPlayerProps = {
   src?: string;
@@ -21,7 +23,9 @@ function _TheMusicPlayer(props: TheMusicPlayerProps) {
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  console.log(PlayStore.curMusic);
+  useEffect(() => {
+    getPlayListReq({ id: 24381616 }).then(console.log);
+  }, []);
 
   // const { currentTime, setCurrentTime } = useCurrentTime(audioRef);
   // const { isPlaying, setIsPlaying } = useIsPlaying(audioRef);
