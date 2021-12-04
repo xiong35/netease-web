@@ -1,6 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
-import { getToken } from "../utils/token";
 import { showToast } from "../utils/showToast";
 
 // import { nanoid } from "@reduxjs/toolkit";
@@ -45,18 +44,6 @@ export default async function _request<T = {}>(
     timeout: 60000,
     // withCredentials: true,
   });
-
-  instance.interceptors.request.use(
-    (config) => {
-      const token = getToken();
-      config.headers = config.headers || {};
-      config.headers.Authorization = "Bearer " + (token?.value ?? "");
-      return config;
-    },
-    (err) => {
-      console.error(err);
-    }
-  );
 
   try {
     const res = await instance.request<HttpRes<T>>(config);
