@@ -1,23 +1,27 @@
 import "./index.scss";
 
 import { useRef } from "react";
+import { observer } from "mobx-react-lite";
 
 // import { useVolume } from "./hooks/useVolume";
 // import { useMuted } from "./hooks/useMuted";
 // import { useIsPlaying } from "./hooks/useIsPlaying";
 // import { useCurrentTime } from "./hooks/useCurrentTime";
 import AlbumBrief from "../AlbumBrief";
+import { PlayStore } from "../../mobx/play";
 
 type TheMusicPlayerProps = {
   src?: string;
 };
 
-function TheMusicPlayer(props: TheMusicPlayerProps) {
+function _TheMusicPlayer(props: TheMusicPlayerProps) {
   const {
     src = "http://192.168.11.175/m7.music.126.net/20211203210431/8d3ed597b681510c1da8c0d7a5eb3ea9/ymusic/b3de/76f4/6e13/659fd75ca5fa5a19c28f1907b6b1066e.mp3",
   } = props;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  console.log(PlayStore.curMusic);
 
   // const { currentTime, setCurrentTime } = useCurrentTime(audioRef);
   // const { isPlaying, setIsPlaying } = useIsPlaying(audioRef);
@@ -72,5 +76,7 @@ function TheMusicPlayer(props: TheMusicPlayerProps) {
     </div>
   );
 }
+
+const TheMusicPlayer = observer(_TheMusicPlayer);
 
 export default TheMusicPlayer;

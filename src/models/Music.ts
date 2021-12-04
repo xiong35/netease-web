@@ -40,21 +40,41 @@ export enum PlayMode {
 }
 
 export const defaultMusic: MusicFull = {
-  al: {
-    id: 0,
-    name: "",
-    picUrl: "",
-  },
+  // al: {
+  //   id: 0,
+  //   name: "",
+  //   picUrl: "",
+  // },
+  // ar: [
+  //   {
+  //     id: 0,
+  //     name: "",
+  //   },
+  // ],
+  // id: 0,
+  // name: "",
+  // publishTime: 0,
+  // size: 0,
+  // type: "",
+  // url: "",
+
+  type: "",
+  id: 33894312,
+  url: "http://m7.music.126.net/20211204155137/9fd6bc1c9b7ba8b400150c5e8c41f9e8/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3",
+  size: 10691439,
+  name: "情非得已 (童声版)",
   ar: [
     {
-      id: 0,
-      name: "",
+      id: 122455,
+      name: "群星",
     },
   ],
-  id: 0,
-  name: "",
-  publishTime: 0,
-  size: 0,
-  type: "",
-  url: "",
+  al: {
+    id: 3263929,
+    name: "热门华语275",
+    picUrl:
+      "https://p1.music.126.net/cpoUinrExafBHL5Nv5iDHQ==/109951166361218466.jpg",
+  },
+
+  publishTime: 1388505600004,
 };
