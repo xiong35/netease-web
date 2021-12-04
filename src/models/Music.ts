@@ -29,21 +29,32 @@ export type MusicDetail = {
 /* ******************** */
 /* 以下为前端要用的类型 */
 
-export type Music = {
-  id: number;
-  /** 音源地址 */
-  url: string;
-  album: {
-    id: number;
-    /** 专辑封面 url */
-    picUrl: string;
-    name: string;
-  };
-  /** 作者 */
-  artist: {
-    id: number;
-    name: string;
-  };
-  /** 歌词信息 */
-  lyric?: string;
+/** 歌曲的简略信息 */
+export type Music = MusicUrl & Partial<MusicDetail>;
+/** 歌曲的完整信息 */
+export type MusicFull = MusicUrl & MusicDetail;
+export enum PlayMode {
+  LOOP,
+  NORMAL,
+  RAND,
+}
+
+export const defaultMusic: MusicFull = {
+  al: {
+    id: 0,
+    name: "",
+    picUrl: "",
+  },
+  ar: [
+    {
+      id: 0,
+      name: "",
+    },
+  ],
+  id: 0,
+  name: "",
+  publishTime: 0,
+  size: 0,
+  type: "",
+  url: "",
 };

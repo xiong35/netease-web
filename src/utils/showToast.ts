@@ -1,8 +1,3 @@
-import { nanoid } from "@reduxjs/toolkit";
-
-import { store } from "../redux/store";
-import { addToast, removeToast } from "../redux/toasts/toastsSlice";
-
 /**
  * 展示一个 toast
  * @param msg 展示的祖字符串
@@ -17,10 +12,6 @@ export const showToast = (
   value: string,
   severity: "success" | "error" | "warning" | "info"
 ) => {
-  const _id = nanoid();
-  store.dispatch(addToast({ severity, value, _id }));
-
-  setTimeout(() => {
-    store.dispatch(removeToast(_id));
-  }, 1800);
+  alert(value);
+  severity;
 };
