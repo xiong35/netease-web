@@ -11,5 +11,9 @@ export function useIsPlaying(
     else curAudioEl.current.pause();
   }, [isPlaying]);
 
-  return { isPlaying, setIsPlaying };
+  function togglePlaying() {
+    setIsPlaying((p) => !p);
+  }
+
+  return { isPlaying, togglePlaying };
 }

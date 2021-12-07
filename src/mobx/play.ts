@@ -121,6 +121,17 @@ class PlayState {
       this.setCurMusic(this.tracks[0]);
     }
   }
+
+  /**
+   * 切换播放模式
+   */
+  switchPlayMode() {
+    if (this.playMode === PlayMode.NORMAL)
+      return (this.playMode = PlayMode.RAND);
+    if (this.playMode === PlayMode.RAND) return (this.playMode = PlayMode.LOOP);
+    if (this.playMode === PlayMode.LOOP)
+      return (this.playMode = PlayMode.NORMAL);
+  }
 }
 
 export const PlayStore = new PlayState();
