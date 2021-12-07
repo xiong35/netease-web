@@ -82,11 +82,14 @@ class PlayState {
         (curIndex + (direction === "next" ? 1 : -1) + this.randTrack.length) %
         this.randTrack.length;
 
-      // TODO
-      nextInd;
+      this.setCurMusic(this.randTrack[nextInd]);
     } else {
       // 如果是其他模式, 则按歌单顺序切
-      // TODO
+      const curIndex = this.tracks.findIndex((t) => t.id === this.curMusic.id);
+      const nextInd =
+        (curIndex + (direction === "next" ? 1 : -1) + this.tracks.length) %
+        this.tracks.length;
+      this.setCurMusic(this.tracks[nextInd]);
     }
   }
 
