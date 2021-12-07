@@ -3,6 +3,7 @@ import "./index.scss";
 import { useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 
+import ImgRand from "./components/ImgComp/ImgRand";
 // import { useVolume } from "./hooks/useVolume";
 // import { useMuted } from "./hooks/useMuted";
 // import { useIsPlaying } from "./hooks/useIsPlaying";
@@ -42,11 +43,41 @@ function _TheMusicPlayer(props: TheMusicPlayerProps) {
 
       <div className="t_m_p-play">
         <div className="t_m_p-play-icons">
-          <div className="t_m_p-play-icons-loop">loop</div>
+          <div className="t_m_p-play-icons-item loop">
+            <ImgRand
+              color="#f00"
+              className="t_m_p-play-icons-item-svg"
+            ></ImgRand>
+          </div>
+          <div className="t_m_p-play-icons-item loop">
+            <ImgRand
+              color="#f00"
+              className="t_m_p-play-icons-item-svg"
+            ></ImgRand>
+          </div>
+          <div className="t_m_p-play-icons-item loop">
+            <ImgRand
+              color="#f00"
+              className="t_m_p-play-icons-item-svg"
+            ></ImgRand>
+          </div>
+          <div className="t_m_p-play-icons-item loop">
+            <ImgRand
+              color="#f00"
+              className="t_m_p-play-icons-item-svg"
+            ></ImgRand>
+          </div>
+          <div className="t_m_p-play-icons-item loop">
+            <ImgRand
+              color="#f00"
+              className="t_m_p-play-icons-item-svg"
+            ></ImgRand>
+          </div>
+          {/* <div className="t_m_p-play-icons-loop">loop</div>
           <div className="t_m_p-play-icons-post">post</div>
           <div className="t_m_p-play-icons-pause">pause</div>
           <div className="t_m_p-play-icons-next">next</div>
-          <div className="t_m_p-play-icons-ph">ph</div>
+          <div className="t_m_p-play-icons-ph">ph</div> */}
         </div>
 
         <div className="t_m_p-play-bar">
