@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useCurrentTime(
   curAudioEl: React.MutableRefObject<HTMLAudioElement | null>
@@ -35,5 +35,28 @@ export function useCurrentTime(
     return () => clearInterval(timer);
   }, []);
 
-  return { currentTime, setCurrentTime };
+  const duration = (curAudioEl.current && curAudioEl.current.duration) || 0.1;
+
+  let percent = (currentTime * 100) / duration;
+  if (percent > 100) percent = 100;
+  else if (percent < 0) percent = 0;
+
+  const slideRef = useRef<HTMLDivElement>(null);
+  const handleMouseEvent = (e: { clientX: number }) => {
+    if (!slideRef.current) return;
+    const rect = slideRef.current.getBoundingClientRect();
+    let percent = (e.clientX - rect.left) / rect.width;
+    if (percent > 1) percent = 1;
+    if (percent < 0) percent = 0;
+
+    setCurrentTime(percent * duration);
+  };
+
+  return {
+    currentTime,
+    percent,
+    duration,
+    handleMouseEvent,
+    slideRef,
+  };
 }

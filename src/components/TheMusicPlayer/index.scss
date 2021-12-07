@@ -67,5 +67,42 @@
         }
       }
     }
+
+    &-bar {
+      &-slide {
+        width: 300px;
+        height: 3px;
+        background-color: var(--bg-d);
+        margin: 0 0.8rem;
+        position: relative;
+        transition: height 0.2s linear;
+        border-radius: 99px;
+
+        &:hover {
+          height: 5px;
+        }
+
+        &-done {
+          background-color: var(--primary);
+          position: absolute;
+          border-radius: 99px;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          &-dot {
+            position: absolute;
+            right: 0;
+            top: -10px;
+            bottom: -10px;
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 999px;
+            background-color: var(--primary);
+            margin: auto;
+            transform: translate(50%, 0);
+          }
+        }
+      }
+    }
   }
 }
