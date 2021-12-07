@@ -17,12 +17,12 @@ export async function populateTracksReq({ ids }: PopulateTracksReqData) {
   for (let i = 0; i * BATCH_SIZE < ids.length; i++) {
     idBatches.push(ids.slice(i * BATCH_SIZE, (i + 1) * BATCH_SIZE));
   }
-  const promises = idBatches.map((ids) =>
+  const promises = idBatches.map((idBatch) =>
     _request<{ songs: MusicDetail[] }>({
       url: "/song/detail",
       method: "GET",
       params: {
-        ids,
+        ids: idBatch.join(","),
       },
     })
   );
