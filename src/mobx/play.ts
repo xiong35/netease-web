@@ -1,8 +1,9 @@
 import { makeAutoObservable } from "mobx";
 
 import { showToast } from "../utils/showToast";
+import { getPlayListReq } from "../network/playList/getPlayList";
 import { getMusicUrlReq } from "../network/music/getMusicUrl";
-import { PlayListID } from "../models/PlayList";
+import { PlayList, PlayListID } from "../models/PlayList";
 import { defaultMusic, MusicDetail, MusicID, MusicNUrl, PlayMode } from "../models/Music";
 
 /**
@@ -89,8 +90,33 @@ class PlayState {
     }
   }
 
-  setPlayList(id: PlayListID) {
-    console.log(id);
+  /**
+   * 设置当前歌单并自动切歌
+   * @param playlist 要设置的播放列表, 可为 id 或完整列表
+   */
+  async setPlayList(playlist: PlayListID | PlayList<true>) {
+    // 将 playlist 填充为完整的 PlayList
+    if (typeof playlist === "number") {
+      // 设置当前播放列表
+      const fullPlaylist = await getPlayListReq({
+        id: playlist,
+      });
+      if (!fullPlaylist) return showToast("加载歌单失败，请重试", "error");
+      playlist = fullPlaylist;
+    }
+
+    // 设置当前 palylist
+    this.tracks = playlist.trackIds;
+
+    // 重置随机播放列表
+    this.resetRandList();
+
+    // 设置当前音乐
+    if (this.playMode === PlayMode.RAND) {
+      this.setCurMusic(this.randTrack[0]);
+    } else {
+      this.setCurMusic(this.tracks[0]);
+    }
   }
 }
 
