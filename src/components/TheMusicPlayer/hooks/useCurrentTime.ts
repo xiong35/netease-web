@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useCurrentTime(
-  curAudioEl: React.MutableRefObject<HTMLAudioElement | null>
+  curAudioEl: React.MutableRefObject<HTMLAudioElement | null>,
+  isPlaying: boolean,
+  url?: string
 ) {
   /** 当前播放进度(秒) */
   const [currentTime, _setCurrentTime] = useState(0);
@@ -15,11 +17,12 @@ export function useCurrentTime(
   // 切歌的时候重置时间
   useEffect(() => {
     setCurrentTime(0);
-  }, [curAudioEl.current && curAudioEl.current.currentSrc]);
+  }, [curAudioEl.current && curAudioEl.current.currentSrc, url]);
 
   // 设置 time 一直自增
   // TODO pause 的时候停止
   useEffect(() => {
+    if (!isPlaying) return;
     const timer = setInterval(
       () =>
         _setCurrentTime((t) => {
@@ -33,7 +36,7 @@ export function useCurrentTime(
     );
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isPlaying]);
 
   const duration = (curAudioEl.current && curAudioEl.current.duration) || 0.1;
 

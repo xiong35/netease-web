@@ -16,8 +16,8 @@ function AlbumBrief(props: AlbumBriefProps) {
         src={music.al.picUrl}
         alt={music.al.name}
       />
-      <div className="album_brief-name t">{music.name}</div>
-      <div className="album_brief-artist t">{music.ar[0].name}</div>
+      <div className="album_brief-name t elipsis">{music.name}</div>
+      <div className="album_brief-artist t elipsis">{music.ar[0].name}</div>
     </div>
   );
 }

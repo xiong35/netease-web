@@ -16,11 +16,7 @@ export function timeFormat(time: number): string {
     .padStart(2, "0");
 
   if (hours === "00") {
-    if (minutes === "00" && seconds === "00") {
-      return `--:--`;
-    } else {
-      return `${minutes}:${seconds}`;
-    }
+    return `${minutes}:${seconds}`;
   } else {
     return `${hours}:${minutes}:${seconds}`;
   }

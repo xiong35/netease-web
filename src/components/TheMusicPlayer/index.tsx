@@ -22,9 +22,7 @@ import { PlayStore } from "../../mobx/play";
 // };
 
 function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
-  // const {
-  //   src = "http://192.168.11.175/m7.music.126.net/20211203210431/8d3ed597b681510c1da8c0d7a5eb3ea9/ymusic/b3de/76f4/6e13/659fd75ca5fa5a19c28f1907b6b1066e.mp3",
-  // } = props;
+  const { url } = PlayStore.curMusic;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -32,9 +30,9 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
     PlayStore.setPlayList(24381616);
   }, []);
 
-  const { currentTime, duration, percent, slideRef, handleMouseEvent } =
-    useCurrentTime(audioRef);
   const { isPlaying, togglePlaying } = useIsPlaying(audioRef);
+  const { currentTime, duration, percent, slideRef, handleMouseEvent } =
+    useCurrentTime(audioRef, isPlaying, url);
   // const { muted, setMuted } = useMuted(audioRef);
   // const { volume, setVolume } = useVolume(audioRef);
 
@@ -42,7 +40,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
 
   return (
     <div className="the_music_player t_m_p">
-      <audio ref={audioRef} src={PlayStore.curMusic.url}></audio>
+      <audio autoPlay ref={audioRef} src={url}></audio>
 
       <div className="t_m_p-album">
         <AlbumBrief music={PlayStore.curMusic}></AlbumBrief>
@@ -109,7 +107,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
         </div>
 
         <div className="t_m_p-play-bar">
-          <div className="t_m_p-play-bar-cur_time">
+          <div className="t_m_p-play-bar-cur_time lh-0">
             {timeFormat(currentTime)}
           </div>
           <div
@@ -136,7 +134,9 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               <div className="t_m_p-play-bar-slide-done-dot"></div>
             </div>
           </div>
-          <div className="t_m_p-play-bar-duration">{timeFormat(duration)}</div>
+          <div className="t_m_p-play-bar-duration lh-0">
+            {timeFormat(duration)}
+          </div>
         </div>
       </div>
 

@@ -23,3 +23,15 @@
 .bg-d {
   background-color: var(--bg-d);
 }
+
+.lh-0 {
+  line-height: 0;
+  padding: 0.5rem 0;
+}
+
+.elipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: pre;
+}
