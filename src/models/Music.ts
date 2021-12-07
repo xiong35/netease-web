@@ -1,9 +1,10 @@
+export type MusicID = number;
 /**
  * 歌曲简略信息, 请求 `/playlist/detail` 的 track 中是这个数据
  */
 export type MusicBrief = {
   name: string;
-  id: number;
+  id: MusicID;
   /** artists */
   ar: {
     id: number;
