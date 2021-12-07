@@ -1,20 +1,22 @@
 // the music player
 .t_m_p {
   position: fixed;
-  height: 60px;
+  height: 80px;
   bottom: 0;
   right: 0;
   left: 0;
   border-top: var(--bg-d);
-  background-color: var(bg);
+  background-color: var(--bg);
 
   display: flex;
-
   align-items: center;
+  padding: 0 0.8rem;
 
   &-album,
   &-actions {
     flex: 1 1 0px;
+    display: flex;
+    align-items: center;
   }
 
   &-actions {

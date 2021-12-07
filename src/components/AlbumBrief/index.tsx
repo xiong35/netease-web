@@ -1,15 +1,23 @@
-
 import "./index.scss";
 
-// type AlbumBriefProps = {
-// };
+import { MusicDetail } from "../../models/Music";
 
-function AlbumBrief(/* props: AlbumBriefProps */) {
-  // const {} = props;
+type AlbumBriefProps = {
+  music: MusicDetail;
+};
+
+function AlbumBrief(props: AlbumBriefProps) {
+  const { music } = props;
 
   return (
     <div className="album_brief">
-      AlbumBrief
+      <img
+        className="album_brief-img"
+        src={music.al.picUrl}
+        alt={music.al.name}
+      />
+      <div className="album_brief-name t">{music.name}</div>
+      <div className="album_brief-artist t">{music.ar[0].name}</div>
     </div>
   );
 }
