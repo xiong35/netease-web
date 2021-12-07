@@ -70,3 +70,9 @@ export const defaultMusic: MusicNUrl = {
 
   publishTime: 1388505600004,
 };
+
+export enum PlayMode {
+  LOOP,
+  NORMAL,
+  RAND,
+}
