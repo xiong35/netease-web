@@ -22,6 +22,8 @@ export async function getMusicUrlReq(
     params,
   });
 
+  console.log("# getMusicUrl", { res });
+
   if (!res || !res.data || !res.data.length) return null;
 
   return res.data[0].url;

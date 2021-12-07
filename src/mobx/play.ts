@@ -48,11 +48,9 @@ class PlayState {
       curMusic = this.tracks.find((m) => m.id === curMusic) as MusicDetail;
 
     const url = await getMusicUrlReq({ id: curMusic.id });
+    console.log("# play", { url });
 
-    if (!url) {
-      showToast("获得歌曲链接失败qwq", "error");
-      return false;
-    }
+    if (!url) return false;
 
     const curMusicFull: MusicNUrl = {
       ...curMusic,
@@ -68,7 +66,9 @@ class PlayState {
    * 切歌
    * @param direction 上一首 or 下一首
    */
-  switchMusic(direction: "next" | "prev") {
+  async switchMusic(direction: "next" | "prev", leap = 1): Promise<void> {
+    let toSet: number | MusicDetail;
+
     if (this.playMode === PlayMode.RAND) {
       // 如果的随机模式则在随机列表中切
       // 随机推荐算法参考 https://www.ifanr.com/1379669
@@ -79,18 +79,28 @@ class PlayState {
         (id) => id === this.curMusic.id
       );
       const nextInd =
-        (curIndex + (direction === "next" ? 1 : -1) + this.randTrack.length) %
+        (curIndex +
+          (direction === "next" ? 1 : -1) * leap +
+          this.randTrack.length) %
         this.randTrack.length;
 
-      this.setCurMusic(this.randTrack[nextInd]);
+      toSet = this.randTrack[nextInd];
     } else {
       // 如果是其他模式, 则按歌单顺序切
       const curIndex = this.tracks.findIndex((t) => t.id === this.curMusic.id);
       const nextInd =
-        (curIndex + (direction === "next" ? 1 : -1) + this.tracks.length) %
+        (curIndex +
+          (direction === "next" ? 1 : -1) * leap +
+          this.tracks.length) %
         this.tracks.length;
-      this.setCurMusic(this.tracks[nextInd]);
+      toSet = this.tracks[nextInd];
     }
+    const success = await this.setCurMusic(toSet);
+
+    if (success) return;
+
+    if (leap === 7) return showToast("获得歌曲链接失败qwq", "error");
+    else return this.switchMusic(direction, leap + 1);
   }
 
   /**

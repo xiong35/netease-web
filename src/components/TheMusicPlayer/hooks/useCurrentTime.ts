@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
+import { PlayMode } from "../../../models/Music";
+import { PlayStore } from "../../../mobx/play";
+
 export function useCurrentTime(
   curAudioEl: React.MutableRefObject<HTMLAudioElement | null>,
   isPlaying: boolean,
@@ -27,7 +30,17 @@ export function useCurrentTime(
       () =>
         _setCurrentTime((t) => {
           if (curAudioEl.current) {
-            return Math.min(curAudioEl.current.duration, t + 1);
+            if (t + 1 > curAudioEl.current.duration) {
+              if (PlayStore.playMode === PlayMode.LOOP) {
+                PlayStore.switchMusic("next");
+                PlayStore.switchMusic("prev");
+              } else {
+                PlayStore.switchMusic("next");
+              }
+              return 0;
+            } else {
+              return t + 1;
+            }
           } else {
             return t + 1;
           }

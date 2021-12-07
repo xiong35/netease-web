@@ -107,7 +107,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
         </div>
 
         <div className="t_m_p-play-bar">
-          <div className="t_m_p-play-bar-cur_time lh-0">
+          <div className="t_m_p-play-bar-cur_time t-l lh-0">
             {timeFormat(currentTime)}
           </div>
           <div
@@ -134,7 +134,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               <div className="t_m_p-play-bar-slide-done-dot"></div>
             </div>
           </div>
-          <div className="t_m_p-play-bar-duration lh-0">
+          <div className="t_m_p-play-bar-duration t-l lh-0">
             {timeFormat(duration)}
           </div>
         </div>
