@@ -1,14 +1,7 @@
-/** 歌曲简略信息 */
-export type MusicUrl = {
-  id: number;
-  /** 音源地址 */
-  url: string;
-  size: number;
-  type: "mp3" | string;
-};
-
-/** 歌曲详细信息 */
-export type MusicDetail = {
+/**
+ * 歌曲简略信息, 请求 `/playlist/detail` 的 track 中是这个数据
+ */
+export type MusicBrief = {
   name: string;
   id: number;
   /** artists */
@@ -16,6 +9,12 @@ export type MusicDetail = {
     id: number;
     name: string;
   }[];
+};
+
+/**
+ * 歌曲详细信息, 请求 `/song/detail` 得到
+ */
+export type MusicDetail = {
   /** album */
   al: {
     id: number;
@@ -23,23 +22,18 @@ export type MusicDetail = {
     picUrl: string;
   };
   publishTime: number;
-};
+} & MusicBrief;
 
-/* 以上为 api 返回的类型 */
-/* ******************** */
-/* 以下为前端要用的类型 */
+/**
+ * music and url\
+ * 歌曲完整信息, 请求 `/song/url` 得到
+ */
 
-/** 歌曲的简略信息 */
-export type Music = MusicUrl & Partial<MusicDetail>;
-/** 歌曲的完整信息 */
-export type MusicFull = MusicUrl & MusicDetail;
-export enum PlayMode {
-  LOOP,
-  NORMAL,
-  RAND,
-}
+export type MusicNUrl = {
+  url?: string;
+} & MusicDetail;
 
-export const defaultMusic: MusicFull = {
+export const defaultMusic: MusicNUrl = {
   // al: {
   //   id: 0,
   //   name: "",
@@ -58,10 +52,8 @@ export const defaultMusic: MusicFull = {
   // type: "",
   // url: "",
 
-  type: "",
   id: 33894312,
   url: "http://m7.music.126.net/20211204155137/9fd6bc1c9b7ba8b400150c5e8c41f9e8/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3",
-  size: 10691439,
   name: "情非得已 (童声版)",
   ar: [
     {

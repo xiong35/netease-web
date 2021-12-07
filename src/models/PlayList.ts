@@ -1,8 +1,11 @@
 import { UserProfile } from "./User";
 import { MusicDetail } from "./Music";
 
-/** 歌单信息 */
-export type PlayList = {
+/**
+ * 歌单信息\
+ * 参数 Full 表示是否是完整信息
+ */
+export type PlayList<Full = false> = {
   id: number;
   name: string;
   coverImgUrl: string;
@@ -21,5 +24,9 @@ export type PlayList = {
 
   creator: UserProfile;
 
-  tracks: MusicDetail[];
+  /**
+   * 一开始有用的是 trackIds, 但是只有id有用\
+   * 需调用 populateTracks 得到 MusicDetail
+   */
+  trackIds: (Full extends true ? MusicDetail[] : { id: number })[];
 };
