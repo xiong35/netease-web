@@ -1,26 +1,29 @@
 import { makeAutoObservable } from "mobx";
 
-import { defaultMusic, MusicDetail, PlayMode } from "../models/Music";
+import { showToast } from "../utils/showToast";
+import { getMusicUrlReq } from "../network/music/getMusicUrl";
+import { PlayListID } from "../models/PlayList";
+import { defaultMusic, MusicDetail, MusicID, MusicNUrl, PlayMode } from "../models/Music";
 
 /**
  * 音乐播放相关全局状态
  */
 class PlayState {
   /** 当前播放的音乐 */
-  curMusic = { ...defaultMusic };
+  curMusic: MusicNUrl = { ...defaultMusic };
   /** 当前播放列表 */
   tracks: MusicDetail[] = [];
-  /** 随机洗过的音乐**id**的表 */
-  _randTrack: number[] = [];
   /** 播放状态 */
   playMode = PlayMode.NORMAL;
+  /** 随机洗过的音乐**id**的表 */
+  private randTrack: number[] = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
   /** 刷新随机列表 */
-  resetRandList() {
+  private resetRandList() {
     const list = this.tracks.map((m) => m.id);
 
     for (let i = list.length; i > 0; i--) {
@@ -31,17 +34,33 @@ class PlayState {
       list[randIndex] = temp;
     }
 
-    this._randTrack = list;
+    this.randTrack = list;
   }
 
-  /** 根据 id 将 tracks 中该歌曲的信息补全 */
-  async populateMusic(id: number) {
-    const targetIndex = this.tracks.findIndex((m) => m.id === id);
+  /**
+   * 设置当前音乐
+   * @param curMusic 可传 id 或 MusicDetail
+   * @returns 是否成功
+   */
+  private async setCurMusic(curMusic: MusicID | MusicDetail): Promise<boolean> {
+    if (typeof curMusic === "number")
+      curMusic = this.tracks.find((m) => m.id === curMusic) as MusicDetail;
 
-    // 有专辑信息则认为有全部信息, 不需要额外获取
-    if (this.tracks[targetIndex].al) return;
+    const url = await getMusicUrlReq({ id: curMusic.id });
 
-    // TODO 获取这首歌的详细信息
+    if (!url) {
+      showToast("获得歌曲链接失败qwq", "error");
+      return false;
+    }
+
+    const curMusicFull: MusicNUrl = {
+      ...curMusic,
+      url,
+    };
+
+    this.curMusic = curMusicFull;
+
+    return true;
   }
 
   /**
@@ -55,12 +74,12 @@ class PlayState {
       // 本应用中随机算法为洗牌算法, 即固定播放洗过的歌单
       // 一方面保证用户切上一首时可以保证可靠性
       // 其次也可使用户短时间内听不到重复的歌
-      const curIndex = this._randTrack.findIndex(
+      const curIndex = this.randTrack.findIndex(
         (id) => id === this.curMusic.id
       );
       const nextInd =
-        (curIndex + (direction === "next" ? 1 : -1) + this._randTrack.length) %
-        this._randTrack.length;
+        (curIndex + (direction === "next" ? 1 : -1) + this.randTrack.length) %
+        this.randTrack.length;
 
       // TODO
       nextInd;
@@ -68,6 +87,10 @@ class PlayState {
       // 如果是其他模式, 则按歌单顺序切
       // TODO
     }
+  }
+
+  setPlayList(id: PlayListID) {
+    console.log(id);
   }
 }
 
