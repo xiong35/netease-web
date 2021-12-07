@@ -1,3 +1,4 @@
+import { populateTracksReq } from "./populateTracks";
 import _request from "../_request";
 import { PlayList } from "../../models/PlayList";
 import { enCookie } from "../../constants/cookie";
@@ -13,7 +14,7 @@ export type GetPlayListReqData = {
  */
 export async function getPlayListReq(
   params: GetPlayListReqData
-): Promise<PlayList | null> {
+): Promise<PlayList<true> | null> {
   const res = await _request<{ playlist: PlayList }>({
     url: "/playlist/detail",
     method: "GET",
@@ -22,5 +23,15 @@ export async function getPlayListReq(
 
   if (!res || !res.playlist) return null;
 
-  return res.playlist;
+  const tracks = await populateTracksReq({
+    ids: res.playlist.trackIds.map((t) => t.id),
+  });
+
+  if (!tracks) return null;
+
+  const playListFull = res.playlist as unknown as PlayList<true>;
+
+  playListFull.trackIds = tracks;
+
+  return playListFull;
 }
