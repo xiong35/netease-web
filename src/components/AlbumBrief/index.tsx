@@ -4,14 +4,16 @@ import { MusicDetail } from "../../models/Music";
 
 type AlbumBriefProps = {
   music: MusicDetail;
+  imgRef: React.RefObject<HTMLImageElement>;
 };
 
 function AlbumBrief(props: AlbumBriefProps) {
-  const { music } = props;
+  const { music, imgRef } = props;
 
   return (
     <div className="album_brief">
       <img
+        ref={imgRef}
         className="album_brief-img"
         src={music.al.picUrl}
         alt={music.al.name}

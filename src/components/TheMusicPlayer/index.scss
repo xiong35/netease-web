@@ -6,11 +6,15 @@
   right: 0;
   left: 0;
   border-top: 1px solid var(--bg-d);
-  background-color: var(--bg);
 
   display: flex;
   align-items: center;
   padding: 0 0.8rem;
+
+  * {
+    background-color: transparent;
+    color: inherit;
+  }
 
   &-album,
   &-actions {
@@ -83,7 +87,7 @@
         }
 
         &-done {
-          background-color: var(--primary);
+          background-color: currentColor;
           position: absolute;
           border-radius: 99px;
           top: 0;
@@ -97,7 +101,7 @@
             width: 0.8rem;
             height: 0.8rem;
             border-radius: 999px;
-            background-color: var(--primary);
+            background-color: currentColor;
             margin: auto;
             transform: translate(50%, 0);
           }

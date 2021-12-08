@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 // import { useMuted } from "./hooks/useMuted";
 import { useIsPlaying } from "./hooks/useIsPlaying";
 import { useCurrentTime } from "./hooks/useCurrentTime";
+import { useColor } from "./hooks/useColor";
 import {
     ImgLoop, ImgNext, ImgNormal, ImgPaused, ImgPlay, ImgPrev, ImgRand
 } from "./components/ImgComp";
@@ -36,14 +37,14 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
   // const { muted, setMuted } = useMuted(audioRef);
   // const { volume, setVolume } = useVolume(audioRef);
 
-  const color = "var(--on-bg)";
+  const { bgc, color, imgEl } = useColor(url);
 
   return (
-    <div className="the_music_player t_m_p">
+    <div className="the_music_player t_m_p" style={{ background: bgc, color }}>
       <audio autoPlay ref={audioRef} src={url}></audio>
 
       <div className="t_m_p-album">
-        <AlbumBrief music={PlayStore.curMusic}></AlbumBrief>
+        <AlbumBrief imgRef={imgEl} music={PlayStore.curMusic}></AlbumBrief>
       </div>
 
       <div className="t_m_p-play">
@@ -129,7 +130,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
           >
             <div
               className="t_m_p-play-bar-slide-done"
-              style={{ width: `${percent}%` }}
+              style={{ width: `${percent}%`, color }}
             >
               <div className="t_m_p-play-bar-slide-done-dot"></div>
             </div>
