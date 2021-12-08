@@ -125,6 +125,10 @@ function colorsStats(node: Node, record: Record<string, number>) {
   }
 }
 
+/**
+ * 利用八叉树提取图片主色
+ * @returns 按出现频率降序的 hex 主色数组(长度为 16)
+ */
 export function getMainColors(data: ImgPixels) {
   const root = new Node();
 

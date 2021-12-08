@@ -22,7 +22,17 @@ function getLuminance(color: string) {
   return 0.2126 * R + 0.7152 * G + 0.0722 * B;
 }
 
-// 获取对比度
+/**
+ * 获取颜色间的对比度
+ * @param back 背景色
+ * @param front 前景色
+ * @returns 对比度
+ *
+ * 对比度等级 |	普通文本 | 大型文本
+ * ---------- | -------- | --------
+ * AA         |	4.5:1	   | 3:1
+ * AAA        |	7:1      | 4.5:1
+ */
 export function getContrast(back: string, front: string) {
   const backLum = getLuminance(back) + 0.05;
   const frontLum = getLuminance(front) + 0.05;
