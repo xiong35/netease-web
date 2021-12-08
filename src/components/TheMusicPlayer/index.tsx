@@ -128,6 +128,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               );
             }}
           >
+            <div className="t_m_p-play-bar-slide-full"></div>
             <div
               className="t_m_p-play-bar-slide-done"
               style={{ width: `${percent}%`, color }}
