@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { getMainColors, ImgPixels } from "../utils/colors";
+import { getColor } from "../utils/colors";
 
 const WIDTH = 300;
 
@@ -30,21 +30,11 @@ export function useColor(albumUrl?: string) {
       ctx.drawImage(imgEl.current, 0, 0, width, height);
       const imgData = ctx.getImageData(0, 0, width, height).data;
 
-      const colors = getMainColors(list2ImgPixels(imgData));
+      const colors = getColor(imgData);
 
       setColors({ bgc: colors[0], color: colors[1] });
     };
   }, [albumUrl, imgEl.current]);
 
   return { ...colors, imgEl };
-}
-
-function list2ImgPixels(data: Uint8ClampedArray): ImgPixels {
-  const pixels: ImgPixels = [];
-
-  for (let i = 0; i < data.length; i += 4) {
-    pixels.push([data[i], data[i + 1], data[i + 2]]);
-  }
-
-  return pixels;
 }
