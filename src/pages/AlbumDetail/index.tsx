@@ -1,17 +1,16 @@
+import TheTopBar from '../../components/TheTopBar/index'
+import './index.scss'
 
-import "./index.scss";
-
-// type AlbumDetailProps = {
-// };
+// type AlbumDetailProps = {}
 
 function AlbumDetail(/* props: AlbumDetailProps */) {
-  // const {} = props;
+	// const {} = props;
 
-  return (
-    <div className="album_detail">
-      AlbumDetail
-    </div>
-  );
+	return (
+		<div className="album_detail">
+			<TheTopBar />
+		</div>
+	)
 }
 
-export default AlbumDetail;
+export default AlbumDetail
