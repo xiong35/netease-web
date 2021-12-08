@@ -1,4 +1,24 @@
-
 .img {
+  position: relative;
+  display: inline-block;
 
+  &-memo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &-loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: var(--bg-d);
+    // background-image: url(./svg/note.svg);
+    // background-repeat: no-repeat;
+    // background-position: calc(50% - 0.3rem);
+    // background-size: 1rem 1rem;
+  }
 }

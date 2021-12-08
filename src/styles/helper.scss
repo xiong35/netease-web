@@ -10,6 +10,11 @@
 .t {
   color: var(--on-bg);
 }
+/* text light */
+.t-l {
+  color: var(--on-bg);
+  opacity: 0.6;
+}
 /* text dark*/
 .t-d {
   color: var(--on--d);
@@ -22,4 +27,16 @@
 /* background dark */
 .bg-d {
   background-color: var(--bg-d);
+}
+
+.lh-0 {
+  line-height: 0;
+  padding: 0.5rem 0;
+}
+
+.elipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: pre;
 }

@@ -1,6 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
-import { getToken } from "../utils/token";
 import { showToast } from "../utils/showToast";
 
 // import { nanoid } from "@reduxjs/toolkit";
@@ -17,13 +16,12 @@ const sendingRequest = new Set<string>();
 /**
  * 失败会返回200以外的http状态码
  */
-type HttpRes<T> = {
+type BaseHttpInfo = {
   /**
    * 错误提示信息, 出现错误时直接使用即可
    */
-  msg: string;
-  code?: number;
-  data: T;
+  msg?: string;
+  code: number;
 };
 
 const DEFAULT_ERR_MSG = "出错了！";
@@ -46,22 +44,10 @@ export default async function _request<T = {}>(
     // withCredentials: true,
   });
 
-  instance.interceptors.request.use(
-    (config) => {
-      const token = getToken();
-      config.headers = config.headers || {};
-      config.headers.Authorization = "Bearer " + (token?.value ?? "");
-      return config;
-    },
-    (err) => {
-      console.error(err);
-    }
-  );
-
   try {
-    const res = await instance.request<HttpRes<T>>(config);
+    const res = await instance.request<T & BaseHttpInfo>(config);
     if (res.status === 200 && res.data && res.data.code === 200) {
-      return res.data.data;
+      return res.data;
     } else if (!res.data) {
       throw DEFAULT_ERR_MSG;
     } else {
@@ -75,9 +61,9 @@ export default async function _request<T = {}>(
     if (typeof err === "string") {
       errMsg = err;
     } else if ((err as AxiosError).isAxiosError) {
-      const axiosErr = err as AxiosError<HttpRes<T>>;
+      const axiosErr = err as AxiosError<BaseHttpInfo>;
       if (axiosErr.response) {
-        errMsg = axiosErr.response.data.msg;
+        errMsg = axiosErr.response.data.msg || DEFAULT_ERR_MSG;
       }
     } else if (err instanceof Error) {
       errMsg = err.message;
