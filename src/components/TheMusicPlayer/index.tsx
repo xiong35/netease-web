@@ -4,12 +4,13 @@ import { useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 
 // import { useVolume } from "./hooks/useVolume";
-// import { useMuted } from "./hooks/useMuted";
+import { useMuted } from "./hooks/useMuted";
 import { useIsPlaying } from "./hooks/useIsPlaying";
 import { useCurrentTime } from "./hooks/useCurrentTime";
 import { useColor } from "./hooks/useColor";
 import {
-    ImgLoop, ImgNext, ImgNormal, ImgPaused, ImgPlay, ImgPrev, ImgRand
+    ImgLoop, ImgNext, ImgNormal, ImgPaused, ImgPlay, ImgPlayList, ImgPrev, ImgRand, ImgVolume,
+    ImgVolumeMute
 } from "./components/ImgComp";
 import AlbumBrief from "../AlbumBrief";
 import { timeFormat } from "../../utils/timeFormat";
@@ -34,7 +35,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
   const { isPlaying, togglePlaying } = useIsPlaying(audioRef, url);
   const { currentTime, duration, percent, slideRef, handleMouseEvent } =
     useCurrentTime(audioRef, isPlaying, url);
-  // const { muted, setMuted } = useMuted(audioRef);
+  const { muted, toggleMuted } = useMuted(audioRef);
   // const { volume, setVolume } = useVolume(audioRef);
 
   const { bgc, color, imgEl } = useColor(url);
@@ -51,65 +52,45 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
         <div className="t_m_p-play-icons">
           {/* 最左边的播放模式按钮 */}
           <div
-            className="t_m_p-play-icons-item mode"
+            className="t_m_p-icon mode"
             onClick={() => PlayStore.switchPlayMode()}
           >
             {PlayStore.playMode === PlayMode.LOOP ? (
-              <ImgLoop
-                color={color}
-                className="t_m_p-play-icons-item-svg"
-              ></ImgLoop>
+              <ImgLoop color={color} className="t_m_p-icon-svg"></ImgLoop>
             ) : PlayStore.playMode === PlayMode.NORMAL ? (
-              <ImgNormal
-                color={color}
-                className="t_m_p-play-icons-item-svg"
-              ></ImgNormal>
+              <ImgNormal color={color} className="t_m_p-icon-svg"></ImgNormal>
             ) : (
-              <ImgRand
-                color={color}
-                className="t_m_p-play-icons-item-svg"
-              ></ImgRand>
+              <ImgRand color={color} className="t_m_p-icon-svg"></ImgRand>
             )}
           </div>
           {/* 切到前一首歌 */}
           <div
-            className="t_m_p-play-icons-item prev"
+            className="t_m_p-icon prev"
             onClick={() => PlayStore.switchMusic("prev")}
           >
-            <ImgPrev
-              color={color}
-              className="t_m_p-play-icons-item-svg"
-            ></ImgPrev>
+            <ImgPrev color={color} className="t_m_p-icon-svg"></ImgPrev>
           </div>
           {/* 播放 / 暂停 */}
           <div
-            className="t_m_p-play-icons-item t_m_p-play-icons-item-mid playstate"
+            className="t_m_p-icon playstate"
+            style={{ transform: "scale(1.2)" }}
             onClick={togglePlaying}
           >
             {isPlaying ? (
-              <ImgPaused
-                color={color}
-                className="t_m_p-play-icons-item-svg"
-              ></ImgPaused>
+              <ImgPaused color={color} className="t_m_p-icon-svg"></ImgPaused>
             ) : (
-              <ImgPlay
-                color={color}
-                className="t_m_p-play-icons-item-svg"
-              ></ImgPlay>
+              <ImgPlay color={color} className="t_m_p-icon-svg"></ImgPlay>
             )}
           </div>
           {/* 切到下一首歌 */}
           <div
-            className="t_m_p-play-icons-item next"
+            className="t_m_p-icon next"
             onClick={() => PlayStore.switchMusic("next")}
           >
-            <ImgNext
-              color={color}
-              className="t_m_p-play-icons-item-svg"
-            ></ImgNext>
+            <ImgNext color={color} className="t_m_p-icon-svg"></ImgNext>
           </div>
           {/* 最右边的占位符 */}
-          <div className="t_m_p-play-icons-item none"></div>
+          <div className="t_m_p-icon none"></div>
         </div>
 
         <div className="t_m_p-play-bar">
@@ -148,8 +129,19 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
       </div>
 
       <div className="t_m_p-actions">
-        <div className="t_m_p-actions-volume">volume</div>
-        <div className="t_m_p-actions-play_list">play_list</div>
+        <div className="t_m_p-actions-volume t_m_p-icon" onClick={toggleMuted}>
+          {muted ? (
+            <ImgVolumeMute
+              className="t_m_p-icon-svg"
+              color={color}
+            ></ImgVolumeMute>
+          ) : (
+            <ImgVolume className="t_m_p-icon-svg" color={color}></ImgVolume>
+          )}
+        </div>
+        <div className="t_m_p-actions-play_list t_m_p-icon">
+          <ImgPlayList className="t_m_p-icon-svg" color={color}></ImgPlayList>
+        </div>
       </div>
 
       {/* <button onClick={() => setIsPlaying((p) => !p)}>setIsPlaying</button>

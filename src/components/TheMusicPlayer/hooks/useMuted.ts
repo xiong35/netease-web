@@ -11,5 +11,9 @@ export function useMuted(
     curAudioEl.current.muted = muted;
   }, [muted, curAudioEl.current]);
 
-  return { muted, setMuted };
+  function toggleMuted() {
+    setMuted((m) => !m);
+  }
+
+  return { muted, toggleMuted };
 }
