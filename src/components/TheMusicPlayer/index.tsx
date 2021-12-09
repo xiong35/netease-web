@@ -31,7 +31,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
     PlayStore.setPlayList(24381616);
   }, []);
 
-  const { isPlaying, togglePlaying } = useIsPlaying(audioRef);
+  const { isPlaying, togglePlaying } = useIsPlaying(audioRef, url);
   const { currentTime, duration, percent, slideRef, handleMouseEvent } =
     useCurrentTime(audioRef, isPlaying, url);
   // const { muted, setMuted } = useMuted(audioRef);

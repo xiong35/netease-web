@@ -30,12 +30,10 @@ export function useCurrentTime(
         _setCurrentTime((t) => {
           if (curAudioEl.current) {
             if (t + 1 > curAudioEl.current.duration) {
-              if (PlayStore.playMode === PlayMode.LOOP) {
-                PlayStore.switchMusic("next");
-                PlayStore.switchMusic("prev");
-              } else {
+              if (PlayStore.playMode !== PlayMode.LOOP) {
                 PlayStore.switchMusic("next");
               }
+
               return 0;
             } else {
               return t + 1;
