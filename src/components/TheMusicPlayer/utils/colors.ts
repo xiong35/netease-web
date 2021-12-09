@@ -64,13 +64,15 @@ export function chooseReadableColor(colors: string[]) {
 }
 
 /**
- * 对外暴露的得到主色函数
+ * 对外暴露的得到主色函数, 若得不到合理的数据返回 null
  * @param data {Uint8ClampedArray} 图片像素数据
- * @returns `[bgColor, frontColor]`
+ * @returns `[bgColor, frontColor]` | null
  */
 export function getColor(data: Uint8ClampedArray) {
   const pixels = list2ImgPixels(data);
   const colors = getMainColors(pixels);
+
+  if (colors.length < 2) return null;
 
   return chooseReadableColor(colors);
 }

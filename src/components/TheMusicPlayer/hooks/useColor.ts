@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { getColor } from "../utils/colors";
 
-const WIDTH = 300;
+const WIDTH = 200;
 
 /**
  * 根据图片提取其主色(背景色和字体色)
@@ -39,6 +39,7 @@ export function useColor(albumUrl?: string) {
       const imgData = ctx.getImageData(0, 0, width, height).data;
 
       const colors = getColor(imgData);
+      if (!colors) return;
 
       setColors({ bgc: colors[0], color: colors[1] });
     };

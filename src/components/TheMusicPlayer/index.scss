@@ -11,9 +11,12 @@
   align-items: center;
   padding: 0 0.8rem;
 
+  transition: background-color 0.2s;
+
   * {
     background-color: transparent;
     color: inherit;
+    transition: color 0.2s, background-color 0.2s;
   }
 
   &-album,
