@@ -3,7 +3,7 @@ import "./index.scss";
 import { useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 
-// import { useVolume } from "./hooks/useVolume";
+import { useVolume } from "./hooks/useVolume";
 import { useMuted } from "./hooks/useMuted";
 import { useIsPlaying } from "./hooks/useIsPlaying";
 import { useCurrentTime } from "./hooks/useCurrentTime";
@@ -36,7 +36,8 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
   const { currentTime, duration, percent, slideRef, handleMouseEvent } =
     useCurrentTime(audioRef, isPlaying, url);
   const { muted, toggleMuted } = useMuted(audioRef);
-  // const { volume, setVolume } = useVolume(audioRef);
+  const { volume, handleVolumeMouseEvent, volumeSlideRef } =
+    useVolume(audioRef);
 
   const { bgc, color, imgEl } = useColor(url);
 
@@ -138,6 +139,42 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
           ) : (
             <ImgVolume className="t_m_p-icon-svg" color={color}></ImgVolume>
           )}
+          <div
+            className="t_m_p-actions-volume-control"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              className="t_m_p-actions-volume-control-slide"
+              ref={volumeSlideRef}
+              onClick={(e) => {
+                if (muted) toggleMuted();
+                handleVolumeMouseEvent(e);
+              }}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                document.addEventListener("mousemove", handleVolumeMouseEvent);
+                document.addEventListener(
+                  "mouseup",
+                  () => {
+                    document.removeEventListener(
+                      "mousemove",
+                      handleVolumeMouseEvent
+                    );
+                  },
+                  { once: true }
+                );
+              }}
+            >
+              <div className="t_m_p-actions-volume-control-slide-full"></div>
+              <div
+                className="t_m_p-actions-volume-control-slide-done"
+                style={{ height: `${muted ? "0" : volume}%` }}
+              >
+                <div className="t_m_p-actions-volume-control-slide-done-dot"></div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="t_m_p-actions-play_list t_m_p-icon">
           <ImgPlayList className="t_m_p-icon-svg" color={color}></ImgPlayList>
