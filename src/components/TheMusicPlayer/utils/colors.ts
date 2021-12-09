@@ -21,21 +21,46 @@ function list2ImgPixels(data: Uint8ClampedArray): ImgPixels {
   return pixels;
 }
 
+/** 若没有满足的就要对所有主色加权算出最合适的 */
+type ContrastData = {
+  /** 这是第几多的颜色 */
+  index: number;
+  /** 颜色 hex 串 */
+  front: string;
+  /** 对应的对比度 */
+  contrast: number;
+};
+
+/** 计算一种前景色的得分, 分越高越优先 */
+function getScore(d: ContrastData) {
+  return d.contrast * d.contrast - d.index * d.index;
+}
+
 /**
  * 从主色中选取对比度较高的一组颜色
  * @returns `[bgColor, frontColor]`
  */
 export function chooseReadableColor(colors: string[]) {
   // 得到背景色和待选的前景色
-  const [bgc, ...rest] = colors;
+  const [bgc, ...rest] = colors.slice(0, 8);
 
-  for (const front of rest) {
-    // 前景背景的对比度需大于 5
-    if (getContrast(bgc, front) > 5) return [bgc, front];
+  const contrastData: ContrastData[] = [];
+
+  for (let index = 0; index < rest.length; index++) {
+    const front = rest[index];
+    const contrast = getContrast(bgc, front);
+    contrastData.push({
+      contrast,
+      front,
+      index,
+    });
   }
 
-  // 找不到就用最前面的俩凑合了
-  return colors.slice(0, 2);
+  // 选择对比度与数量的综合得分最高的前景色
+  contrastData.sort((a, b) => getScore(b) - getScore(a));
+  const frontData = contrastData[0];
+
+  return [bgc, frontData.front];
 }
 
 /**
