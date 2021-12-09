@@ -46,15 +46,6 @@
         margin: 0 0.8rem;
         cursor: pointer;
 
-        &-svg {
-          width: 100%;
-          height: 100%;
-        }
-
-        &-mid {
-          transform: scale(1.2);
-        }
-
         &:hover {
           position: relative;
           &::after {
@@ -68,6 +59,22 @@
             background-color: var(--on-bg);
             opacity: 0.08;
           }
+        }
+
+        &.none {
+          cursor: default;
+          &::after {
+            content: none;
+          }
+        }
+
+        &-svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        &-mid {
+          transform: scale(1.2);
         }
       }
     }

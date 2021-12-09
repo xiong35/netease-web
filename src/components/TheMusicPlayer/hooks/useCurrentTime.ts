@@ -23,7 +23,6 @@ export function useCurrentTime(
   }, [curAudioEl.current && curAudioEl.current.currentSrc, url]);
 
   // 设置 time 一直自增
-  // TODO pause 的时候停止
   useEffect(() => {
     if (!isPlaying) return;
     const timer = setInterval(

@@ -49,6 +49,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
 
       <div className="t_m_p-play">
         <div className="t_m_p-play-icons">
+          {/* 最左边的播放模式按钮 */}
           <div
             className="t_m_p-play-icons-item mode"
             onClick={() => PlayStore.switchPlayMode()}
@@ -70,6 +71,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               ></ImgRand>
             )}
           </div>
+          {/* 切到前一首歌 */}
           <div
             className="t_m_p-play-icons-item prev"
             onClick={() => PlayStore.switchMusic("prev")}
@@ -79,6 +81,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               className="t_m_p-play-icons-item-svg"
             ></ImgPrev>
           </div>
+          {/* 播放 / 暂停 */}
           <div
             className="t_m_p-play-icons-item t_m_p-play-icons-item-mid playstate"
             onClick={togglePlaying}
@@ -95,6 +98,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               ></ImgPlay>
             )}
           </div>
+          {/* 切到下一首歌 */}
           <div
             className="t_m_p-play-icons-item next"
             onClick={() => PlayStore.switchMusic("next")}
@@ -104,6 +108,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               className="t_m_p-play-icons-item-svg"
             ></ImgNext>
           </div>
+          {/* 最右边的占位符 */}
           <div className="t_m_p-play-icons-item none"></div>
         </div>
 
