@@ -23,7 +23,6 @@ export function useCurrentTime(
   }, [curAudioEl.current && curAudioEl.current.currentSrc, url]);
 
   // 设置 time 一直自增
-  // TODO pause 的时候停止
   useEffect(() => {
     if (!isPlaying) return;
     const timer = setInterval(
@@ -31,12 +30,10 @@ export function useCurrentTime(
         _setCurrentTime((t) => {
           if (curAudioEl.current) {
             if (t + 1 > curAudioEl.current.duration) {
-              if (PlayStore.playMode === PlayMode.LOOP) {
-                PlayStore.switchMusic("next");
-                PlayStore.switchMusic("prev");
-              } else {
+              if (PlayStore.playMode !== PlayMode.LOOP) {
                 PlayStore.switchMusic("next");
               }
+
               return 0;
             } else {
               return t + 1;
