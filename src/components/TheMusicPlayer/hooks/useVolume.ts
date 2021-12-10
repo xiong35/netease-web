@@ -8,7 +8,6 @@ export function useVolume(
   useEffect(() => {
     if (!curAudioEl.current) return;
 
-    console.log("# useVolume", { volume });
     curAudioEl.current.volume = volume / 100;
   }, [volume, curAudioEl.current]);
 
@@ -17,7 +16,6 @@ export function useVolume(
     if (!volumeSlideRef.current) return;
     const rect = volumeSlideRef.current.getBoundingClientRect();
     let percent = (rect.bottom - e.clientY) / rect.height;
-    console.log("# useVolume", { percent });
     if (percent > 1) percent = 1;
     if (percent < 0) percent = 0;
 

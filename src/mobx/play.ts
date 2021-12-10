@@ -48,7 +48,6 @@ class PlayState {
       curMusic = this.tracks.find((m) => m.id === curMusic) as MusicDetail;
 
     const url = await getMusicUrlReq({ id: curMusic.id });
-    console.log("# play", { url });
 
     if (!url) return false;
 

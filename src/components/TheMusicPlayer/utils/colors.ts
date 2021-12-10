@@ -58,7 +58,6 @@ export function chooseReadableColor(colors: string[]) {
 
   // 选择对比度与数量的综合得分最高的前景色
   contrastData.sort((a, b) => getScore(b) - getScore(a));
-  console.log("# colors", { contrastData });
   const frontData = contrastData[0];
 
   return [bgc, frontData.front];
