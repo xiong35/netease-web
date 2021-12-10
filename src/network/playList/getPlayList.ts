@@ -9,8 +9,8 @@ export type GetPlayListReqData = {
 };
 
 /**
- * 获取歌单详细信息
- * @returns 歌单
+ * 获取歌单详细信息(已进行填充)
+ * @returns 有歌曲详情的歌单
  */
 export async function getPlayListReq(
   params: GetPlayListReqData

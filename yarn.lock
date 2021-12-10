@@ -6645,12 +6645,10 @@ ignore@^5.1.4, ignore@^5.1.8:
   resolved "https://registry.npmmirror.com/ignore/download/ignore-5.1.9.tgz?cache=0&sync_timestamp=1635926632542&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fignore%2Fdownload%2Fignore-5.1.9.tgz#9ec1a5cbe8e1446ec60d4420060d43aa6e7382fb"
   integrity sha1-nsGly+jhRG7GDUQgBg1Dqm5zgvs=
 
-image-color-extraction@^1.0.12, image-color-extraction@^1.0.5:
-  version "1.0.12"
-  resolved "https://registry.npmmirror.com/image-color-extraction/download/image-color-extraction-1.0.12.tgz#e95159d86d1c0a81a9f09a2d7c063c936c94b0ee"
-  integrity sha512-zE2OZB1uHN/dAFdcXTwmQXkQwvQbWz4RePzyLE7zbAsJIuuviv4t6vm4oJVG6Y9MWgPDdNsFu3VAgCQWNAky7Q==
-  dependencies:
-    image-color-extraction "^1.0.5"
+image-color-extraction@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmmirror.com/image-color-extraction/download/image-color-extraction-1.1.1.tgz#21514e16a8cd962e9476e789ea4362da649b1fa8"
+  integrity sha512-kMzaP/y1ZSmDj11/FXd+LeJm3OQjtD+3LYSEqz4kH07K7ShTf1acpycmtEHgxXtkGrnB+cq8ugsu1b81Biky/w==
 
 immer@8.0.1:
   version "8.0.1"
