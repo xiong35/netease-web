@@ -1,4 +1,3 @@
-import TheTopBar from '../../components/TheTopBar/index'
 import './index.scss'
 
 // type AlbumDetailProps = {}
@@ -8,7 +7,7 @@ function AlbumDetail(/* props: AlbumDetailProps */) {
 
 	return (
 		<div className="album_detail">
-			<TheTopBar />
+			AlbumDetail
 		</div>
 	)
 }
