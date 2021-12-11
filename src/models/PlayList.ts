@@ -5,7 +5,8 @@ export type PlayListID = number;
 
 /**
  * 歌单信息\
- * 参数 Full 表示是否是完整信息
+ * 参数 Full 表示是否是完整信息\
+ * 通过 `populateTracksReq` 方法将得到的 id 数组填充成除url外的完整信息
  */
 export type PlayList<Full = false> = {
   id: PlayListID;

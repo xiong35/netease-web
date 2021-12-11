@@ -22,6 +22,8 @@ export type MusicDetail = {
     name: string;
     picUrl: string;
   };
+  /** 歌曲时长, ms */
+  dt: number;
   publishTime: number;
 } & MusicBrief;
 
@@ -62,6 +64,7 @@ export const defaultMusic: MusicNUrl = {
       name: "群星",
     },
   ],
+  dt: 1000 * 60 * 3,
   al: {
     id: 3263929,
     name: "热门华语275",

@@ -30,11 +30,13 @@ export default async function _request<T = {}>(
   config: AxiosRequestConfig,
   shouldShowHint = true
 ) {
+  /** 将请求哈希并存储, 以避免短时间内连续发出完全相同的请求 */
   const hashedReq = JSON.stringify({
     u: config.url,
     d: config.data,
     p: config.params,
   });
+  /** 有一样的请求就返回 */
   if (sendingRequest.has(hashedReq)) return;
   sendingRequest.add(hashedReq);
 
@@ -45,13 +47,22 @@ export default async function _request<T = {}>(
   });
 
   try {
+    /** 执行请求 */
     const res = await instance.request<T & BaseHttpInfo>(config);
     if (res.status === 200 && res.data && res.data.code === 200) {
+      /**
+       * 请求成功网易云会在 body 里返回 `code: 200`
+       */
       return res.data;
     } else if (!res.data) {
+      /**
+       * 请求没有消息体(可能是请求都没达到后端)
+       */
       throw DEFAULT_ERR_MSG;
     } else {
-      console.log(res.data);
+      /**
+       * 其他情况(后端正常的报错)
+       */
       throw res.data.msg || DEFAULT_ERR_MSG;
     }
   } catch (err) {
@@ -59,21 +70,26 @@ export default async function _request<T = {}>(
 
     let errMsg = DEFAULT_ERR_MSG;
     if (typeof err === "string") {
+      /** 我自己 throw 的 error */
       errMsg = err;
     } else if ((err as AxiosError).isAxiosError) {
+      /** http 状态码不为 200 */
       const axiosErr = err as AxiosError<BaseHttpInfo>;
       if (axiosErr.response) {
         errMsg = axiosErr.response.data.msg || DEFAULT_ERR_MSG;
       }
     } else if (err instanceof Error) {
+      /** 其他错误 */
       errMsg = err.message;
     }
 
-    console.log({ errMsg });
+    /** 可能有个别请求不需要弹出提示 */
     shouldShowHint && showToast(errMsg, "error");
 
+    /** 错误一律返回 null */
     return null;
   } finally {
+    /** 最后设置这个请求已经结束, 在一帧之后移除之 */
     setTimeout(() => {
       sendingRequest.delete(hashedReq);
     }, 70);
