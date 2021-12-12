@@ -7,13 +7,10 @@ import { HotList } from '../../models/HotList'
  */
 
 export async function getHotList(): Promise<HotList[] | null> {
-	let data: HotList[] | null = null
-  const res = await _request<{hotList: HotList[]}>({
+  const res = await _request<{data: HotList[]}>({
     url: '/search/hot/detail',
     method: 'GET',
   })
-  // Some bugs to fix
-  console.log(res)
-	data = null
-	return data
+  if (!res) return null
+	return res.data
 }

@@ -1,16 +1,14 @@
 import './index.scss'
+
 import Logo from './components/Logo/Logo'
 import PageChanger from './components/PageChanger/PageChanger'
 import SearchBar from './components/SearchBar/SearchBar'
 import Login from './components/Login/Login'
 import ThemeBtn from './components/ThemeBtn/ThemeBtn'
 
-// type TheTopBarProps = {
+import { observer } from "mobx-react-lite"
 
-// }
-
-function TheTopBar(/* props: TheTopBarProps */) {
-	// const {} = props;
+function _TheTopBar() {
 	return (
 		<div className="c-the_top_bar">
       <Logo />
@@ -25,5 +23,7 @@ function TheTopBar(/* props: TheTopBarProps */) {
 		</div>
 	)
 }
+
+const TheTopBar = observer(_TheTopBar)
 
 export default TheTopBar

@@ -1,22 +1,7 @@
 import { useState, useEffect } from 'react'
 import HotListItem from './HotListItem'
-// import axios from 'axios'
+import { HotList as HotListData} from '../../../../models/HotList'
 import { getHotList } from '../../../../network/hotList/getHotList'
-
-type HotListData = {
-	content: string
-	score: number
-	searchWord: string
-  iconType: number
-  iconUrl: string
-}
-
-// async function getHotList(): Promise<HotListData[] | null> {
-// 	let data: HotListData[] | null = null
-// 	const res = await axios.get('http://api.xiong35.cn/netease/search/hot/detail')
-// 	data = res.data.data
-// 	return data
-// }
 
 function HotList() {
 	const [data, setData] = useState<HotListData[] | null>(null)
@@ -24,15 +9,8 @@ function HotList() {
 	useEffect(() => {
 		getHotList()
 			.then(res => {
-				if (res) {
-					setData(res)
-				} else {
-					throw '获取热门列表失败!'
-				}
-			})
-			.catch(err => {
-        console.error(err)
-				throw '获取热门列表失败!'
+				if (res) setData(res)
+				else throw '获取热门列表失败!'
 			})
 	}, [])
 
