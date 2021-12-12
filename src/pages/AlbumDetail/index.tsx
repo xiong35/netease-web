@@ -1,13 +1,10 @@
 import './index.scss'
+import Title from './Header/Title/index'
 
-// type AlbumDetailProps = {}
-
-function AlbumDetail(/* props: AlbumDetailProps */) {
-	// const {} = props;
-
+function AlbumDetail() {
 	return (
 		<div className="album_detail">
-			AlbumDetail
+			<Title />
 		</div>
 	)
 }
