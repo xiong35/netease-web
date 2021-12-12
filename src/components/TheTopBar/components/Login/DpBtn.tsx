@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { TheTopbarStore } from '../../../../mobx/thetopbar'
 
+/** 修改toggle的类名，以让正常地显示和消失 */
 function setClassName() {
 	if (!TheTopbarStore.lgTermsAgreed) {
 		TheTopbarStore.setLDTClassName(
