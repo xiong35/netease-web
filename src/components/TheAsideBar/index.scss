@@ -1,4 +1,40 @@
+.aside_bar {
+  width: 10rem;
+  padding: 1rem 0.3rem;
+  border-right: 1px solid var(--bg-d);
+  overflow-y: scroll;
 
-.the_aside_bar {
+  &-tab,
+  &-my_music {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.1rem;
+    cursor: pointer;
 
+    &:hover {
+      background-color: var(--bg-dim);
+    }
+
+    &.selected {
+      font-weight: bold;
+      background-color: var(--bg-dim);
+    }
+  }
+
+  &-my_music {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+
+    &-icon {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &-title {
+    opacity: 0.5;
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+  }
 }
