@@ -1,5 +1,11 @@
 @import "./styles/css-constants.scss";
 
+/** 处理icon图标*/
+.icon {
+	width: 1em;
+	height: 1em;
+}
+
 .main {
   min-height: 100vh;
   background-color: var(--bg);

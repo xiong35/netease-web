@@ -1,16 +1,13 @@
-import './index.scss'
-import Title from './Title/index'
-
-// type HeaderProps = {}
+import CoverImg from './CoverImg'
+import Main from './Main'
 
 function Header() {
-	// const {} = props;
-
 	return (
-    <div>
-      <Title />
-    </div>
-  )
+		<div className="album_detail-header">
+      <CoverImg />
+      <Main />
+		</div>
+	)
 }
 
 export default Header

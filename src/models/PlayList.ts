@@ -32,4 +32,8 @@ export type PlayList<Full = false> = {
    * 需调用 populateTracks 得到 MusicDetail
    */
   trackIds: (Full extends true ? MusicDetail : { id: number })[];
+
+  /** 新增 */
+  privacy: number
+  subscribers: UserProfile[]
 };

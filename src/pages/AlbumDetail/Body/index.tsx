@@ -1,15 +1,15 @@
-import './index.scss'
-
-// type TitleProps = {}
+import PageSelector from './PageSelector'
+import SearchBar from './SearchBar'
+import List from './List'
 
 function Body() {
-	// const {} = props;
-
 	return (
-    <div>
-      Body
-    </div>
-  )
+		<div className="album_detail-body">
+      <PageSelector />
+      <SearchBar />
+      <List />
+		</div>
+	)
 }
 
 export default Body

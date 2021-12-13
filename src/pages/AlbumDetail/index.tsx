@@ -1,12 +1,25 @@
 import './index.scss'
-import Title from './Header/Title/index'
 
-function AlbumDetail() {
+import Header from './Header'
+import Body from './Body'
+
+import { observer } from 'mobx-react-lite'
+import { SongListStore } from '../../mobx/songlist'
+import { useEffect } from 'react'
+
+function _AlbumDetail() {
+	useEffect(() => {
+		SongListStore.setSongList(SongListStore.id)
+	}, [])
+
 	return (
 		<div className="album_detail">
-			<Title />
+      <Header />
+      <Body />
 		</div>
 	)
 }
+
+const AlbumDetail = observer(_AlbumDetail)
 
 export default AlbumDetail
