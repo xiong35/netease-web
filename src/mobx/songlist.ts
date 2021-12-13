@@ -1,12 +1,10 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable } from "mobx";
 
-import { showToast } from '../utils/showToast'
-import { getPlayListReq } from '../network/playList/getPlayList'
-import {
-	PlayListID as SongListID,
-} from '../models/PlayList'
-import { MusicDetail } from '../models/Music'
-import { UserProfile as User } from '../models/User'
+import { showToast } from "../utils/showToast";
+import { getPlayListReq } from "../network/playList/getPlayList";
+import { UserProfile } from "../models/User";
+import { PlayList, PlayListID as SongListID } from "../models/PlayList";
+import { MusicDetail } from "../models/Music";
 
 /**
  * 歌单详情页相关状态
@@ -18,64 +16,71 @@ import { UserProfile as User } from '../models/User'
  * @returns 是否成功
  */
 
-class SongListState {
+type PlayListWithNoCreator = {
+  [K in keyof Omit<
+    PlayList,
+    "userId" | "updateTime" | "cloudTrackCount"
+  >]: K extends "creator" ? null | UserProfile : PlayList[K];
+};
+
+class SongListState implements PlayListWithNoCreator {
   // id
-  id = 24381615
-	// 歌单名
-	name = ''
-	// 封面图片url
-	coverImgUrl = ''
-	// 歌单创建时间
-	createTime = 0
-	// 歌单是否可见
-	privacy = 0
-	// 收藏数
-	subscribedCount = 0
-	// 分享数
-	shareCount = 0
-	// 歌曲数
-	trackCount = 0
-	// 播放数
-	playCount = 0
-	// 歌单描述文字
-	description = ''
-	// 标签
-	tags: string[] = []
-	// 评论数
-	commentCount = 0
-	// 订阅者
-	subscribers: User[] = []
-	// 创建者
-	creator: User | null = null
-	// 歌曲列表
-	trackIds: MusicDetail[] = []
+  id = 24381615;
+  // 歌单名
+  name = "";
+  // 封面图片url
+  coverImgUrl = "";
+  // 歌单创建时间
+  createTime = 0;
+  // 歌单是否可见
+  privacy = 0;
+  // 收藏数
+  subscribedCount = 0;
+  // 分享数
+  shareCount = 0;
+  // 歌曲数
+  trackCount = 0;
+  // 播放数
+  playCount = 0;
+  // 歌单描述文字
+  description = "";
+  // 标签
+  tags: string[] = [];
+  // 评论数
+  commentCount = 0;
+  // 订阅者
+  subscribers: UserProfile[] = [];
+  // 创建者
+  creator: UserProfile | null = null;
+  // 歌曲列表
+  trackIds: MusicDetail[] = [];
 
-	constructor() {
-		makeAutoObservable(this)
-	}
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-	async setSongList(songListID: SongListID) {
+  async setSongList(songListID: SongListID) {
     const songListData = await getPlayListReq({
       id: songListID,
-    })
-    if (!songListData) return showToast('加载歌单失败，请重试', 'error')
-    console.log(songListData)
+    });
+    if (!songListData) return showToast("加载歌单失败，请重试", "error");
+    console.log(songListData);
 
-    this.name = songListData.name
-    this.coverImgUrl = songListData.coverImgUrl
-    this.createTime = songListData.createTime
-    this.privacy = songListData.privacy
-    this.subscribedCount = songListData.subscribedCount
-    this.shareCount = songListData.shareCount
-    this.trackCount = songListData.trackCount
-    this.playCount = songListData.playCount
-    this.description = songListData.description
-    this.tags = songListData.tags
-    this.commentCount = songListData.commentCount
-    this.subscribers = songListData.subscribers
-    this.creator = songListData.creator
-    this.trackIds = songListData.trackIds
-	}
+    this.name = songListData.name;
+    this.coverImgUrl = songListData.coverImgUrl;
+    this.createTime = songListData.createTime;
+    this.privacy = songListData.privacy;
+    this.subscribedCount = songListData.subscribedCount;
+    this.shareCount = songListData.shareCount;
+    this.trackCount = songListData.trackCount;
+    this.playCount = songListData.playCount;
+    this.description = songListData.description;
+    this.tags = songListData.tags;
+    this.commentCount = songListData.commentCount;
+    this.subscribers = songListData.subscribers;
+    this.creator = songListData.creator;
+    this.trackIds = songListData.trackIds;
+  }
 }
 
-export const SongListStore = new SongListState()
+export const SongListStore = new SongListState();
