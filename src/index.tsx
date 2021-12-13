@@ -1,4 +1,5 @@
 import "./styles/index.scss";
+import "./mobx";
 
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom";

@@ -13,5 +13,6 @@ module.exports = {
         extendDefaults: true,
       },
     ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
   },
 };
