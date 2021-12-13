@@ -37,7 +37,11 @@ export default async function _request<T = {}>(
     p: config.params,
   });
   /** 有一样的请求就返回 */
-  if (sendingRequest.has(hashedReq)) return;
+  if (sendingRequest.has(hashedReq)) {
+    console.warn("a same request is on its way\nat: ", config);
+
+    return null;
+  }
   sendingRequest.add(hashedReq);
 
   const instance = axios.create({
