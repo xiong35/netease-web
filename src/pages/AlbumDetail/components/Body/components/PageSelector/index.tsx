@@ -1,4 +1,6 @@
-import { SongListStore } from '../../../../mobx/songlist'
+import './index.scss'
+
+import { SongListStore } from '../../../../../../mobx/songlist'
 import { observer } from 'mobx-react-lite'
 
 function _PageSelector() {

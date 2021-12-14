@@ -1,5 +1,7 @@
+import './index.scss'
+
 import { observer } from 'mobx-react-lite'
-import { SongListStore } from '../../../../mobx/songlist'
+import { SongListStore } from '../../../../../../mobx/songlist'
 
 function _CoverImg() {
 	return (

@@ -1,6 +1,8 @@
-import PageSelector from './PageSelector'
-import SearchBar from './SearchBar'
-import List from './List'
+import './index.scss'
+
+import PageSelector from './components/PageSelector'
+import SearchBar from './components/SearchBar'
+import List from './components/List'
 
 function Body() {
 	return (

@@ -1,7 +1,8 @@
-import heart from "../../../images/heart.svg";
-import download from "../../../images/download.svg";
-import { timeFormat } from "../../../../../utils/timeFormat";
-import { MusicDetail } from "../../../../../models/Music";
+import './index.scss'
+
+import heart from "../../../../../../images/heart.svg";
+import { timeFormat } from "../../../../../../../../utils/timeFormat";
+import { MusicDetail } from "../../../../../../../../models/Music";
 
 type itemProps = {
   song: MusicDetail;
@@ -24,10 +25,6 @@ function Item(props: itemProps) {
         <img
           src={heart}
           className="album_detail-body-list-item-operation-like icon"
-        />
-        <img
-          src={download}
-          className="album_detail-body-list-item-operation-download icon"
         />
       </div>
       <div className="album_detail-body-list-item-title">

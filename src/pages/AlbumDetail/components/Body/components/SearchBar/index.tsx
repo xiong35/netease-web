@@ -1,4 +1,6 @@
-import search from '../../images/search.svg'
+import './index.scss'
+
+import search from '../../../../images/search.svg'
 
 // import { SongListStore } from '../../../../mobx/songlist'
 import { observer } from 'mobx-react-lite'

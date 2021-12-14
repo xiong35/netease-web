@@ -1,0 +1,11 @@
+@import '../../../../styles/css-constants.scss';
+
+.album_detail-body {
+  position: relative;
+
+  .selected {
+    font-size: 17px;
+    font-weight: bold;
+    border-bottom: 3px solid red;
+  }
+}

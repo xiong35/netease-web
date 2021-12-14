@@ -1,0 +1,21 @@
+.album_detail-body-page_selector {
+	display: flex;
+	justify-content: space-between;
+	width: 200px;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 40px;
+
+	&-song_list,
+	&-comments,
+	&-subscribers {
+		cursor: pointer;
+	}
+
+	&-song_list:hover,
+	&-comments:hover,
+	&-subscribers:hover {
+		color: #000;
+	}
+}

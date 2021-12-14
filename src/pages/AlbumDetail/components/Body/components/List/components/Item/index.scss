@@ -1,0 +1,62 @@
+.album_detail-body-list-item {
+  display: flex;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  padding-left: 25px;
+
+  &-count {
+    width: 26px;
+    color: #bbb;
+  }
+
+  &-operation {
+    width: 60px;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      filter: invert(70%);
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &-title {
+    display: flex;
+    width: 450px;
+    padding-left: 5px;
+
+    &-name {
+      color: #000;
+      margin-right: 5px;
+    }
+
+    &-info {
+      color: #999;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &-arthor {
+    width: 200px;
+    padding-left: 5px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-album {
+    width: 300px;
+    padding-left: 5px;
+  }
+
+  &-time {
+    width: 100px;
+    padding-left: 5px;
+    color: #999;
+  }
+}

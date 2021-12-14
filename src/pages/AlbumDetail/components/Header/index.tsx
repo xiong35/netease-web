@@ -1,5 +1,7 @@
-import CoverImg from './CoverImg'
-import Main from './Main'
+import './index.scss'
+
+import CoverImg from './components/CoverImg'
+import Main from './components/Main'
 
 function Header() {
 	return (

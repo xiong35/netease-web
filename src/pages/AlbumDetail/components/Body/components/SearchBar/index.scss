@@ -1,0 +1,27 @@
+@import '../../../../../../styles/css-constants.scss';
+
+.album_detail-body-search_bar {
+  position: absolute;
+  right: 30px;
+  top: 0;
+
+  &-input {
+    outline: none;
+    border: none;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 12px;
+    width: 150px;
+    padding: 0 30px 0 10px;
+    background-color: $selected-grey-bgcolor;
+    font-size: 12px;
+  }
+
+  .icon {
+    position: absolute;
+    right: 8px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+  }
+}

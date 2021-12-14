@@ -1,7 +1,9 @@
+import './index.scss'
+
 import { observer } from "mobx-react-lite";
 
-import Item from "./Item";
-import { SongListStore } from "../../../../mobx/songlist";
+import Item from "./components/Item";
+import { SongListStore } from "../../../../../../mobx/songlist";
 
 function _List() {
   return (

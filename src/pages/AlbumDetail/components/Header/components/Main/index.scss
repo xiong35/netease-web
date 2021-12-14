@@ -1,0 +1,112 @@
+@import '../../../../../../styles/css-constants.scss';
+
+.header-btn {
+	height: 30px;
+	line-height: 30px;
+	border-radius: 15px;
+	outline: none;
+	border: 1px solid #ccc;
+	min-width: 95px;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin-right: 8px;
+}
+
+.album_detail-header-main {
+	&-title {
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+
+		&-tag {
+			border: 1px solid red;
+			font-size: 12px;
+			color: red;
+			width: 30px;
+			height: 15px;
+			line-height: 15px;
+			text-align: center;
+			margin-right: 10px;
+		}
+
+		&-content {
+			// margin: 0;
+			font-size: 19px;
+		}
+	}
+
+	&-creator {
+		display: flex;
+		height: 20px;
+		line-height: 20px;
+		font-size: 12px;
+		margin-bottom: 10px;
+
+		&-avatar {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			border: 1px solid #ddd;
+			margin-right: 6px;
+		}
+
+		&-name {
+			color: #507daf;
+			margin-right: 6px;
+		}
+	}
+
+	&-operations {
+		display: flex;
+		margin-bottom: 10px;
+
+		.icon {
+			width: 18px;
+			height: 18px;
+			margin: 0 3px 1px 0;
+		}
+
+		&-play_all,
+		&-subscribe,
+		&-share,
+		&-download {
+			@extend .header-btn;
+			color: #444;
+		}
+
+		&-play_all {
+			background-color: red;
+			color: #fff;
+			width: 120px;
+
+			.icon {
+				filter: invert(100%) contrast(200%);
+				width: 15px;
+				height: 15px;
+				margin: 0 5px 3px 5px;
+			}
+		}
+
+		&-play_all:hover {
+			background-color: #d73535;
+		}
+
+		&-subscribe:hover,
+		&-share:hover,
+		&-download:hover {
+			background-color: $selected-grey-bgcolor;
+		}
+	}
+
+	&-info {
+		display: flex;
+		font-size: 12px;
+
+		&-track_count {
+			margin-right: 10px;
+		}
+	}
+}
