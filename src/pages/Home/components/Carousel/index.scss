@@ -62,24 +62,48 @@ $offset: 200px;
     }
   }
 
+  &:hover {
+    .carousel-toggle {
+      opacity: 0.5;
+    }
+  }
+
   &-toggle {
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
 
-    background-color: var(--bg-d);
+    background-color: #00000030;
     border: 99px;
 
     padding: 10px;
 
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
     z-index: 3;
 
+    opacity: 0.1;
+
+    cursor: pointer;
+
+    &:hover {
+      &.carousel-toggle {
+        opacity: 0.8;
+      }
+    }
+
+    &-img {
+      width: 100%;
+      margin-left: 9%;
+    }
+
     &.prev {
-      left: 0;
+      left: 1%;
     }
     &.next {
-      right: 0;
+      right: 1%;
     }
   }
 }

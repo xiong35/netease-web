@@ -1,5 +1,6 @@
 import "./index.scss";
 
+import imgLeftArrow from "./img/left.svg";
 import { useBanners } from "./hooks/useBanners";
 
 // type CarouselProps = {
@@ -16,7 +17,7 @@ function Carousel(/* props: CarouselProps */) {
         className="carousel-toggle prev"
         onClick={() => switchBanners("prev")}
       >
-        &lt;
+        <img src={imgLeftArrow} className="carousel-toggle-img" />
       </div>
 
       {banners.map((b) => {
@@ -36,8 +37,9 @@ function Carousel(/* props: CarouselProps */) {
       <div
         className="carousel-toggle next"
         onClick={() => switchBanners("next")}
+        style={{ transform: "rotate(180deg)" }}
       >
-        &gt;
+        <img src={imgLeftArrow} className="carousel-toggle-img" />
       </div>
     </div>
   );
