@@ -1,4 +1,4 @@
-$offset: -200px;
+$offset: 200px;
 
 .carousel {
   position: relative;
@@ -11,14 +11,17 @@ $offset: -200px;
     margin: auto;
     top: 0;
     bottom: 0;
-    right: $offset;
-    left: $offset;
+    right: -$offset;
+    left: -$offset;
 
     max-width: 80%;
     width: 400px;
     height: 100%;
     border-radius: 10px;
     overflow: hidden;
+    z-index: 2;
+
+    transition: all 0.3s;
 
     &-img {
       width: 100%;
@@ -42,18 +45,20 @@ $offset: -200px;
     }
 
     &.left {
-      right: calc(100% + #{$offset});
+      right: calc(100% - #{$offset});
       transform: translate(50%, 0) scale(0.8);
     }
     &.right {
-      left: calc(100% + #{$offset});
+      left: calc(100% - #{$offset});
       transform: translate(-50%, 0) scale(0.8);
     }
     &.front {
       z-index: 3;
+      transform: translate(0, 0) scale(1);
     }
     &.back {
       z-index: 0;
+      transform: translate(0, 0) scale(0.7);
     }
   }
 

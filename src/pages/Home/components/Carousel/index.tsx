@@ -8,26 +8,37 @@ import { useBanners } from "./hooks/useBanners";
 function Carousel(/* props: CarouselProps */) {
   // const {} = props;
 
-  const { banners } = useBanners();
+  const { banners, switchBanners } = useBanners();
 
   return (
     <div className="carousel">
-      <div className="carousel-toggle prev">&lt;</div>
+      <div
+        className="carousel-toggle prev"
+        onClick={() => switchBanners("prev")}
+      >
+        &lt;
+      </div>
 
-      {banners.map((b, index) => {
-        const className = ["left", "front", "right", "back"][index];
-
+      {banners.map((b) => {
         return (
-          <div className={"carousel-item " + className}>
-            <img className="carousel-item-img" src={b.imageUrl} />
-            {b.typeTitle && (
-              <div className="carousel-item-badage">{b.typeTitle}</div>
+          <div
+            className={"carousel-item " + b.position}
+            key={b.banner.imageUrl}
+          >
+            <img className="carousel-item-img" src={b.banner.imageUrl} />
+            {b.banner.typeTitle && (
+              <div className="carousel-item-badage">{b.banner.typeTitle}</div>
             )}
           </div>
         );
       })}
 
-      <div className="carousel-toggle next">&gt;</div>
+      <div
+        className="carousel-toggle next"
+        onClick={() => switchBanners("next")}
+      >
+        &gt;
+      </div>
     </div>
   );
 }
