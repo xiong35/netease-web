@@ -1,3 +1,7 @@
+/**
+ * 热门列表信息
+ */
+
 export type HotList = {
 	content: string
 	score: number

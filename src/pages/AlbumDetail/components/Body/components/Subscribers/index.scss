@@ -1,0 +1,17 @@
+.album_detail-body-subscribers {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  gap: 5%;
+  margin-top: 30px;
+  padding: 0 2.5%;
+}
+
+.album_detail-body-no_subscribers {
+  font-size: 15px;
+  color: #aaa;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

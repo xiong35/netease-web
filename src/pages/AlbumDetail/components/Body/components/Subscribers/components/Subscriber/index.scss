@@ -1,0 +1,38 @@
+.album_detail-body-subscribers-item {
+	display: flex;
+
+	&-avatar {
+		width: 120px;
+		border-radius: 50%;
+	}
+
+	&-user_info {
+		width: 100%;
+		box-sizing: border-box;
+		display: flex;
+    justify-content: space-evenly;
+		padding-left: 10px;
+    flex-direction: column;
+
+    &-upper {
+      display: flex;
+      align-items: center;
+      height: 40px;
+
+      &-gender {
+        border-radius: 50%;
+        background-color: #c0f3ff;
+        margin-left: 4px;
+      }
+  
+      &-gender.female {
+        background-color: #ffcde8;
+      }
+    }
+
+    &-signature {
+      height: 40px;
+      font-size: 13px;
+    }
+	}
+}

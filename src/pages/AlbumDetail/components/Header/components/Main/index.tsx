@@ -7,8 +7,12 @@ import share from '../../../../images/share.svg'
 import play from '../../../../images/play.svg'
 import download from '../../../../images/download.svg'
 import add from '../../../../images/add.svg'
+import upTri from '../../../../images/upTri.svg'
+import downTri from '../../../../images/downTri.svg'
+
 import { dateFormat } from '../../../../../../utils/dateFormat'
 import { SongListStore } from '../../../../../../mobx/songlist'
+import { numFormat } from '../../../../../../utils/numFormat'
 
 function _Main() {
 	return (
@@ -39,11 +43,11 @@ function _Main() {
 				</button>
 				<button className="album_detail-header-main-operations-subscribe">
 					<img src={subscribe} className="icon" />
-					收藏({SongListStore.subscribedCount})
+					收藏({numFormat(SongListStore.subscribedCount)})
 				</button>
 				<button className="album_detail-header-main-operations-share">
 					<img src={share} className="icon" />
-					分享({SongListStore.shareCount})
+					分享({numFormat(SongListStore.shareCount)})
 				</button>
 				<button className="album_detail-header-main-operations-download">
 					<img src={download} className="icon" />
@@ -51,12 +55,52 @@ function _Main() {
 				</button>
 			</div>
 			<div className="album_detail-header-main-info">
-				<span className="album_detail-header-main-info-track_count">
-					歌曲：{SongListStore.trackCount}
-				</span>
-				<span className="album_detail-header-main-info-play_count">
-					播放：{SongListStore.playCount}
-				</span>
+				{SongListStore.tags.length ? (
+					<div className="album_detail-header-main-info-tags">
+						<span className="album_detail-header-main-info-tags-name">
+							标签：
+						</span>
+						<div>
+							{SongListStore.tags.map(item => (
+								<a href="#" className="album_detail-header-main-info-tags-item">
+									{item}&nbsp;
+								</a>
+							))}
+						</div>
+					</div>
+				) : (
+					''
+				)}
+				<div className="album_detail-header-main-info-count">
+					<span className="album_detail-header-main-info-count-track_count">
+						歌曲：{numFormat(SongListStore.trackCount)}
+					</span>
+					<span className="album_detail-header-main-info-count-play_count">
+						播放：{numFormat(SongListStore.playCount)}
+					</span>
+				</div>
+				{SongListStore.description ? (
+					<div
+						className={
+							SongListStore.showDes
+								? 'album_detail-header-main-info-description full'
+								: 'album_detail-header-main-info-description'
+						}
+					>
+						<img
+							src={SongListStore.showDes ? upTri : downTri}
+							className="icon"
+							onClick={() => {
+								SongListStore.toggleShowDes()
+							}}
+						/>
+						<pre className="album_detail-header-main-info-description-content">
+							简介：{SongListStore.description}
+						</pre>
+					</div>
+				) : (
+					''
+				)}
 			</div>
 		</div>
 	)
