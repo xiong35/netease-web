@@ -1,0 +1,49 @@
+.album_detail-body-comments-item {
+	display: flex;
+	border-bottom: 1px solid #ddd;
+	padding: 15px 10px;
+	min-height: 50px;
+
+	&-avatar {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		border: 1px solid #ddd;
+		cursor: pointer;
+	}
+
+	&-body {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		padding-left: 10px;
+		font-size: 13px;
+		justify-content: space-between;
+
+		&-upper {
+			&-nick_name {
+				display: inline-block;
+				color: #507daf;
+				margin-right: 4px;
+				cursor: pointer;
+			}
+		}
+
+		&-replied {
+			background-color: #f4f4f4;
+			width: 100%;
+			line-height: 25px;
+			margin-top: 10px;
+			padding: 5px;
+
+      &-name {
+        color: #507daf;
+        cursor: pointer;
+      }
+		}
+
+		&-date {
+			color: #999;
+		}
+	}
+}

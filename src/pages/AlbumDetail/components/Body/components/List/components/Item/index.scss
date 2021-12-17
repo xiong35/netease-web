@@ -1,17 +1,24 @@
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .album_detail-body-list-item {
   display: flex;
+  width: 92%;
+  padding: 0 4%;
   height: 30px;
   line-height: 30px;
   font-size: 12px;
-  padding-left: 25px;
 
   &-count {
-    width: 26px;
+    width: 2.7%;
     color: #bbb;
   }
 
   &-operation {
-    width: 60px;
+    width: 4.3%;
     display: flex;
     align-items: center;
 
@@ -19,44 +26,51 @@
       filter: invert(70%);
       width: 16px;
       height: 16px;
+      cursor: pointer;
+    }
+
+    .icon:hover {
+      filter: invert(0%);
     }
   }
 
   &-title {
+    @extend .ellipsis;
     display: flex;
-    width: 450px;
-    padding-left: 5px;
+    width: 32%;
 
     &-name {
+      @extend .ellipsis;
       color: #000;
       margin-right: 5px;
     }
 
     &-info {
+      @extend .ellipsis;
       color: #999;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
   }
 
   &-arthor {
-    width: 200px;
-    padding-left: 5px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @extend .ellipsis;
+    width: 26%;
   }
 
   &-album {
-    width: 300px;
-    padding-left: 5px;
+    @extend .ellipsis;
+    width: 26%;
   }
 
   &-time {
-    width: 100px;
-    padding-left: 5px;
+    width: 9%;
     color: #999;
   }
+}
+
+.album_detail-body-list-item.even {
+  background-color: #F9F9F9;
+}
+
+.album_detail-body-list-item:hover {
+  background-color: #F0F1F2;
 }

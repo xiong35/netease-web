@@ -16,6 +16,7 @@
 }
 
 .album_detail-header-main {
+  width: 100%;
 	&-title {
 		display: flex;
 		align-items: center;
@@ -103,10 +104,51 @@
 
 	&-info {
 		display: flex;
-		font-size: 12px;
+		flex-direction: column;
+		font-size: 13px;
 
-		&-track_count {
-			margin-right: 10px;
+		&-tags {
+      display: flex;
+      margin-bottom: 4px;
+
+      &-item {
+        color: #507daf;
+      }
 		}
+
+		&-count {
+      margin-bottom: 4px;
+
+			&-track_count {
+				margin-right: 10px;
+			}
+		}
+
+    &-description {
+      line-height: 25px;
+      display: flex;
+      height: 25px;
+      position: relative;
+      overflow: hidden;
+      
+      // text-overflow: ellipsis;
+      // white-space: nowrap;
+    
+      .icon {
+        position: absolute;
+        right: 0;
+        top: 6px;
+        filter: invert(50%);
+        cursor: pointer;
+      }
+      
+      &-content {
+        color: #777;
+      }
+    }
+
+    &-description.full {
+      height: auto;
+    }
 	}
 }

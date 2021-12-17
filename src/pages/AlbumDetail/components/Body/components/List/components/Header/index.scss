@@ -1,0 +1,73 @@
+@import '../../../../../../../../styles/css-constants.scss';
+
+.album_detail-body-list-header {
+	width: 92%;
+	height: 30px;
+	line-height: 30px;
+	display: flex;
+	font-size: 12px;
+  padding: 0 4%;
+
+	&-operation {
+		width: 7%;
+		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&-info {
+		position: absolute;
+		right: 25px;
+		top: 0;
+	}
+
+	&-sort_by_title {
+		width: 32%;
+	}
+
+	&-sort_by_arthor {
+		width: 26%;
+	}
+
+	&-sort_by_album {
+		width: 26%;
+	}
+
+	&-sort_by_time {
+		width: 9%;
+	}
+
+	&-sort_by_title,
+	&-sort_by_arthor,
+	&-sort_by_album,
+	&-sort_by_time {
+		position: relative;
+	}
+
+	&-sort_by_title:hover,
+	&-sort_by_arthor:hover,
+	&-sort_by_album:hover,
+	&-sort_by_time:hover {
+		background-color: $selected-grey-bgcolor;
+	}
+
+	.icon {
+		filter: invert(50%);
+		position: absolute;
+		top: 9px;
+		right: 10px;
+		display: none;
+	}
+
+  .icon.shown {
+    display: block;
+  }
+
+	&-sort_by_title:hover .icon,
+	&-sort_by_arthor:hover .icon,
+	&-sort_by_album:hover .icon,
+	&-sort_by_time:hover .icon{
+		display: block;
+	}
+}
