@@ -10,7 +10,6 @@ import { SingleComment } from '../models/Comments'
 import { PlayList, PlayListID as SongListID } from '../models/PlayList'
 import { MusicDetail } from '../models/Music'
 
-
 /**
  * 歌单详情页相关状态
  */
@@ -160,6 +159,21 @@ class SongListState implements PlayListWithNoCreator {
     })
     if (!commentsData) return showToast('加载评论失败，请重试', 'error')
     this.comments = commentsData.comments
+  }
+
+  /**
+   * 设置歌单不同页数的评论
+   * @param index 页数
+   * @returns void
+   */
+  async updateSubscriberPage(index: number) {
+    const subscribersData = await getSubscribers({
+      id: this.id,
+      limit: this.subscriberLimit,
+      offset: (index - 1) * this.subscriberLimit,
+    })
+    if (!subscribersData) return showToast('加载评论失败，请重试', 'error')
+    this.subscribers = subscribersData.subscribers
   }
 
   /**

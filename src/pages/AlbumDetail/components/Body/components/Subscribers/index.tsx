@@ -1,6 +1,8 @@
 import './index.scss'
 
 import Subscriber from './components/Subscriber'
+import PageSelector from './components/PageSelector'
+
 import { SongListStore } from '../../../../../../mobx/songlist'
 import { observer } from 'mobx-react-lite'
 
@@ -16,6 +18,7 @@ function _Subscribers() {
       ) : (
         <div className="album_detail-body-no_subscribers">暂无收藏者</div>
       )}
+      <PageSelector />
     </>
   )
 }

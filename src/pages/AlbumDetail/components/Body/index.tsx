@@ -1,6 +1,6 @@
 import './index.scss'
 
-import PageSelector from './components/PageSelector'
+import PageChanger from './components/PageChanger'
 import SearchBar from './components/SearchBar'
 import List from './components/List'
 import Comments from './components/Comments'
@@ -12,7 +12,7 @@ import { observer } from 'mobx-react-lite'
 function _Body() {
 	return (
 		<div className="album_detail-body">
-			<PageSelector />
+			<PageChanger />
 
 			{SongListStore.showIndex === 0 ? (
 				<>
