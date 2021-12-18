@@ -2,8 +2,9 @@
 	display: flex;
 
 	&-avatar {
-		width: 120px;
+		width: 100px;
 		border-radius: 50%;
+    cursor: pointer;
 	}
 
 	&-user_info {
@@ -18,6 +19,15 @@
       display: flex;
       align-items: center;
       height: 40px;
+
+      &-nick_name {
+        cursor: pointer;
+        color: #333;
+      }
+
+      &-nick_name:hover {
+        color: #000;
+      }
 
       &-gender {
         border-radius: 50%;
