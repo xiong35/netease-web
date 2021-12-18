@@ -4,7 +4,7 @@ import { UserProfile } from './User'
  * 单个评论的信息
  */
 
-export type singleComment = {
+export type SingleComment = {
   commentId: number
   user: UserProfile
   content: string
@@ -18,8 +18,8 @@ export type singleComment = {
  */
 
 export type Comments = {
-  comments: singleComment[]
-  hotComments: singleComment[]
+  comments: SingleComment[]
+  hotComments: SingleComment[]
   total: number
 }
 

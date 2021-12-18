@@ -1,5 +1,6 @@
 import _request from '../_request'
-import { Comments } from '../../models/Comments'
+import { Subscribers } from '../../models/Subscribers'
+
 import { enCookie } from "../../constants/cookie";
 
 /**
@@ -7,20 +8,20 @@ import { enCookie } from "../../constants/cookie";
  * @returns 热门列表数组
  */
 
-export type GetCommentsReqData = {
-	/** 要获取评论的歌单的 id */
+export type GetSubscribersReqData = {
+	/** 要获取收藏者的歌单的 id */
 	id: number
-  /** 获取评论的数量 */
+  /** 获取收藏者的数量 */
   limit? : number
   /** 偏移量，用于分页 */
   offset? : number
 }
 
-export async function getComments(
-	params: GetCommentsReqData
-): Promise<Comments | null> {
-	const res = await _request<Comments>({
-		url: '/comment/playlist',
+export async function getSubscribers(
+	params: GetSubscribersReqData
+): Promise<Subscribers | null> {
+	const res = await _request<Subscribers>({
+		url: '/playlist/subscribers',
 		method: 'GET',
     params: { ...params, cookie: enCookie },
 	})

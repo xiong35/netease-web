@@ -1,10 +1,10 @@
 import './index.scss'
 
-import { singleComment } from '../../../../../../../../models/Comments'
+import { SingleComment } from '../../../../../../../../models/Comments'
 import { dateFormat } from '../../../../../../../../utils/dateFormat'
 
 type commentProps = {
-	data: singleComment
+	data: SingleComment
 }
 
 function Comment(props: commentProps) {
