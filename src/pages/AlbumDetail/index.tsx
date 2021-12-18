@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 
 function _AlbumDetail() {
 	useEffect(() => {
+    // need to fix
 		SongListStore.setSongList(SongListStore.id)
 	}, [])
 

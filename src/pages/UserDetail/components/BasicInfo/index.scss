@@ -1,0 +1,12 @@
+.user_detail-basic_info {
+  display: flex;
+  margin-bottom: 30px;
+
+  &-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #e5dbbd;
+    margin-right: 20px;
+  }
+}

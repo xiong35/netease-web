@@ -112,9 +112,9 @@ class SongListState implements PlayListWithNoCreator {
     })
     if (!subscribersData) return showToast('加载收藏者失败，请重试', 'error')
 
-    console.log(songListData)
-    console.log(commentsData)
-    console.log(subscribersData)
+    // console.log(songListData)
+    // console.log(commentsData)
+    // console.log(subscribersData)
 
     this.name = songListData.name
     this.coverImgUrl = songListData.coverImgUrl

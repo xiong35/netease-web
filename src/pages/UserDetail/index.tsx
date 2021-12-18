@@ -1,17 +1,29 @@
+import './index.scss'
 
-import "./index.scss";
+import BasicInfo from './components/BasicInfo'
+import SongList from './components/SongList'
 
-// type UserDetailProps = {
-// };
+import { observer } from 'mobx-react-lite'
+import { useEffect } from 'react'
+import { userStore } from '../../mobx/user'
 
-function UserDetail(/* props: UserDetailProps */) {
-  // const {} = props;
+// type userDetailProps = {
+//   uid: number
+// }
+
+function _UserDetail(/** props: userDetailProps */) {
+  useEffect(() => {
+    userStore.setUser(6337403223)
+  }, [])
 
   return (
     <div className="user_detail">
-      UserDetail
+      <BasicInfo />
+      <SongList />
     </div>
-  );
+  )
 }
 
-export default UserDetail;
+const UserDetail = observer(_UserDetail)
+
+export default UserDetail
