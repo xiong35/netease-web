@@ -1,17 +1,33 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { getBannersReq } from "../../../../../network/home/getBanners";
 import { Banner } from "../../../../../models/Home";
+import { getBannersReq } from "../../../../../network/home/getBanners";
 
 type Switch = "prev" | "next";
 
 type Position = "left" | "front" | "right" | "back";
+
+const SWITCH_INTERVAL = 3000;
 
 export function useBanners() {
   /** ["left", "front", "right", "back"] */
   const [banners, setBanners] = useState<
     { banner: Banner; position: Position }[]
   >([]);
+
+  const timer = useRef(0);
+
+  useEffect(() => {
+    if (banners.length < 4) return;
+
+    clearInterval(timer.current);
+    timer.current = window.setInterval(
+      () => switchBanners("next", false),
+      SWITCH_INTERVAL
+    );
+
+    return () => clearInterval(timer.current);
+  }, [banners]);
 
   useEffect(() => {
     getBannersReq().then((_banners) => {
@@ -25,8 +41,16 @@ export function useBanners() {
     });
   }, []);
 
-  function switchBanners(direction: Switch) {
+  function switchBanners(direction: Switch, resetTimer = true) {
     if (banners.length === 0) return;
+
+    if (resetTimer) {
+      clearInterval(timer.current);
+      timer.current = window.setInterval(
+        () => switchBanners("next", false),
+        SWITCH_INTERVAL
+      );
+    }
 
     if (direction === "next") {
       const newBanners = banners.map((b, index) => ({
