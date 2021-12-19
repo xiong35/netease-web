@@ -12,9 +12,6 @@ function _PageChanger() {
       <div className={'user_detail-song_list-page_changer-item'}>
         收藏的歌单
       </div>
-      <div className={'user_detail-song_list-page_changer-item'}>
-        创建的音乐专栏
-      </div>
     </div>
   )
 }
