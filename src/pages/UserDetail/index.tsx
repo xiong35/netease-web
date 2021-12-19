@@ -13,7 +13,8 @@ import { userStore } from '../../mobx/user'
 
 function _UserDetail(/** props: userDetailProps */) {
   useEffect(() => {
-    userStore.setUser(6337403223)
+    // userStore.setUser(6337403223)
+    userStore.setUser(32953014)
   }, [])
 
   return (

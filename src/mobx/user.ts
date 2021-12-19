@@ -20,6 +20,8 @@ class userState {
   createdSongList: PlayList[] = []
   // 收藏的歌单
   subscribedSongList: PlayList[] = []
+  // 显示的是创建的歌单/收藏的歌单
+  showIndex: 0 | 1 = 0
 
   constructor() {
     makeAutoObservable(this)
@@ -48,6 +50,15 @@ class userState {
     this.createdSongList = this.songList.filter(item => item.creator.userId === this.userProfile?.userId)
     this.subscribedSongList = this.songList.filter(item => item.creator.userId !== this.userProfile?.userId)
     console.log(userData)
+  }
+
+  /**
+   * 设置当前显示的是创建的歌单/收藏的歌单
+   * @param index 序号
+   * @returns void
+   */
+  setShowIndex(index: 0 | 1) {
+    this.showIndex = index
   }
 }
 
