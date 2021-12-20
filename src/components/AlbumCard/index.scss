@@ -31,6 +31,34 @@ $max-size: 25vw;
       color: #fff;
       font-size: 12px;
     }
+
+    &-play_btn {
+      opacity: 0;
+      transition: opacity 0.2s;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      background-color: var(--bg-d);
+
+      &-icon {
+        width: 40%;
+        fill: var(--primary);
+        margin-right: -5%;
+      }
+    }
+
+    &:hover {
+      .album_card-cover-play_btn {
+        opacity: 1;
+      }
+    }
   }
 
   &-name {
