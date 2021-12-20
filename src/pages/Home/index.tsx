@@ -1,7 +1,10 @@
 import "./index.scss";
 
 import AlbumCard from "../../components/AlbumCard";
+import { useQuery } from "../../hooks/useQuery";
 import Carousel from "./components/Carousel";
+import HomeTabs from "./components/HomeTabs";
+import { HomeTabs as HomeTabsType } from "./components/HomeTabs/hooks/useTabs";
 import HomeTitle from "./components/HomeTitle";
 import NewSongItem from "./components/NewSongItem";
 import PersonalizedCard from "./components/PersonalizedCard";
@@ -14,10 +17,22 @@ function Home() {
   const { personalized } = usePersonalized();
   const { newSongs } = useNewSongs();
 
+  const { get } = useQuery<{ tab: HomeTabsType[number] }>();
+  const curTab = get("tab") || "个性推荐";
+
+  if (curTab !== "个性推荐") {
+    return (
+      <div className="home">
+        <HomeTabs></HomeTabs>
+        <div className="not-implement">没意思，不打算实现</div>
+      </div>
+    );
+  }
   return (
     <div className="home">
-      <Carousel></Carousel>
+      <HomeTabs></HomeTabs>
 
+      <Carousel></Carousel>
       {recommendMusic && (
         <>
           <HomeTitle title="推荐歌单"></HomeTitle>
@@ -28,7 +43,6 @@ function Home() {
           </div>
         </>
       )}
-
       {personalized && (
         <>
           <HomeTitle title="独家放送"></HomeTitle>
@@ -39,7 +53,6 @@ function Home() {
           </div>
         </>
       )}
-
       {newSongs && (
         <>
           <HomeTitle title="最新音乐"></HomeTitle>

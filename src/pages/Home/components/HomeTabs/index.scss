@@ -1,0 +1,42 @@
+.home_tabs {
+  position: sticky;
+  top: 60px;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  padding: 0.9rem;
+  background-color: var(--bg);
+
+  z-index: 1;
+  @media (max-width: 800px) {
+    font-size: 1rem;
+  }
+
+  &-item {
+    margin-right: 1.3rem;
+    word-break: keep-all;
+    cursor: pointer;
+
+    &.active {
+      font-weight: bold;
+      font-size: 1.1em;
+
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        bottom: -6px;
+        right: 7px;
+        left: 7px;
+
+        height: 3px;
+        border-radius: 999px;
+        background-color: var(--primary);
+      }
+    }
+  }
+}
