@@ -163,6 +163,8 @@ $topbar_height: 60px;
 				top: 32px;
 				overflow-y: auto;
         z-index: 1;
+        // for firefox
+        scrollbar-color: rgba(0, 0, 0, 0.1) #fff;
 
 				&-history {
 					&-header {
@@ -263,6 +265,7 @@ $topbar_height: 60px;
 			&-dropdown::-webkit-scrollbar-thumb {
 				background: rgba(0, 0, 0, 0.1);
 			}
+
 		}
 	}
 
