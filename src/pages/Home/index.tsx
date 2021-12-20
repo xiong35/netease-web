@@ -4,12 +4,14 @@ import AlbumCard from "../../components/AlbumCard";
 import Carousel from "./components/Carousel";
 import HomeTitle from "./components/HomeTitle";
 import PersonalizedCard from "./components/PersonalizedCard";
+import { useNewSongs } from "./hooks/useNewSongs";
 import { usePersonalized } from "./hooks/usePersonalized";
 import { useRecommendedMusic } from "./hooks/useRecommendedMusic";
 
 function Home() {
   const { recommendMusic } = useRecommendedMusic();
   const { personalized } = usePersonalized();
+  const { newSongs } = useNewSongs();
 
   return (
     <div className="home">
@@ -25,6 +27,7 @@ function Home() {
           </div>
         </>
       )}
+
       {personalized && (
         <>
           <HomeTitle title="独家放送"></HomeTitle>
@@ -33,6 +36,13 @@ function Home() {
               <PersonalizedCard item={item} key={item.id}></PersonalizedCard>
             ))}
           </div>
+        </>
+      )}
+
+      {newSongs && (
+        <>
+          <HomeTitle title="最新音乐"></HomeTitle>
+          <div className="home-new_songs">{JSON.stringify(newSongs)}</div>
         </>
       )}
     </div>
