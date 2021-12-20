@@ -19,7 +19,9 @@ function AlbumBrief(props: AlbumBriefProps) {
         alt={music.al.name}
       />
       <div className="album_brief-name t elipsis">{music.name}</div>
-      <div className="album_brief-artist t elipsis">{music.ar[0].name}</div>
+      <div className="album_brief-artist t elipsis">
+        {music.ar.map((artist) => artist.name).join("/")}
+      </div>
     </div>
   );
 }
