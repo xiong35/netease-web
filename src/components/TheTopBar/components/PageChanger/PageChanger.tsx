@@ -1,17 +1,17 @@
-import toLeft from '../../images/toLeft.svg'
-import toRight from '../../images/toRight.svg'
+import toRight from "../../images/toRight.svg";
+import toLeft from "../../images/toLeft.svg";
 
 function PageChanger() {
-	return (
-		<div className="c-the_top_bar-middle-page_changer">
-			<a href="javascript:;">
-				<img src={toLeft} className="icon" />
-			</a>
-			<a href="javascript:;">
-				<img src={toRight} className="icon" />
-			</a>
-		</div>
-	)
+  return (
+    <div className="c-the_top_bar-middle-page_changer">
+      <button className="c-the_top_bar-middle-page_changer-btn">
+        <img src={toLeft} className="icon" />
+      </button>
+      <button className="c-the_top_bar-middle-page_changer-btn">
+        <img src={toRight} className="icon" />
+      </button>
+    </div>
+  );
 }
 
-export default PageChanger
+export default PageChanger;

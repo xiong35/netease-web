@@ -1,0 +1,9 @@
+.user_detail-song_list-created_list {
+  padding: 20px 0;
+  // display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 23%);
+  row-gap: 20px;
+  column-gap: 2.67%;
+}

@@ -1,15 +1,31 @@
-
 import "./index.scss";
 
-// type AlbumCardProps = {
-// };
+import { RecommendedMusic } from "../../models/Music";
+import PlayIcon from "../../pages/Home/components/PlayIcon";
+import { numFormat } from "../../utils/numFormat";
 
-function AlbumCard(/* props: AlbumCardProps */) {
-  // const {} = props;
+type AlbumCardProps = {
+  music: RecommendedMusic;
+};
+
+function AlbumCard(props: AlbumCardProps) {
+  const { music } = props;
 
   return (
     <div className="album_card">
-      AlbumCard
+      <div className="album_card-cover">
+        <img
+          src={music.picUrl}
+          alt={music.name}
+          className="album_card-cover-img"
+        />
+        <div className="album_card-cover-play_count">
+          ▶ {numFormat(music.playcount)}
+        </div>
+        <PlayIcon></PlayIcon>
+      </div>
+
+      <div className="album_card-name">{music.name}</div>
     </div>
   );
 }

@@ -1,4 +1,36 @@
-
 .home {
+  width: 1000px;
+  max-width: 95%;
+  margin: auto;
+  padding-bottom: 3rem;
+  position: relative;
 
+  .carousel {
+    margin-top: 2rem;
+  }
+
+  &-r_pl {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &-personalized {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &-new_songs {
+    display: grid;
+    row-gap: 0.5rem;
+    align-items: center;
+    grid-template-columns: repeat(3, 33.3%);
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(2, 50%);
+    }
+  }
 }

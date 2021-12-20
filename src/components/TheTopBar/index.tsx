@@ -17,37 +17,40 @@ function _TheTopBar() {
   const self = SelfStore.self;
 
   return (
-    <div className="c-the_top_bar">
-      <Logo />
-      <div className="c-the_top_bar-middle">
-        <PageChanger />
-        <SearchBar />
-      </div>
-      <div className="c-the_top_bar-right">
-        <div
-          className="c-the_top_bar-right-user"
-          onClick={() => {
-            if (!self) setShowDialogLogin(true);
-          }}
-        >
-          <Img
-            className={
-              self
-                ? "c-the_top_bar-right-user-avatar"
-                : "c-the_top_bar-right-user-avatar placeholder"
-            }
-            src={self ? self.avatarUrl : avatarPlaceholder}
-            alt="avatar"
-            loadingMask={false}
-          />
-          {self ? self.nickname : "未登录"}
+    <>
+      <div className="c-the_top_bar">
+        <Logo />
+        <div className="c-the_top_bar-middle">
+          <PageChanger />
+          <SearchBar />
         </div>
-        <ThemeBtn />
+        <div className="c-the_top_bar-right">
+          <div
+            className="c-the_top_bar-right-user"
+            onClick={() => {
+              if (!self) setShowDialogLogin(true);
+            }}
+          >
+            <Img
+              className={
+                self
+                  ? "c-the_top_bar-right-user-avatar"
+                  : "c-the_top_bar-right-user-avatar placeholder"
+              }
+              src={self ? self.avatarUrl : avatarPlaceholder}
+              alt="avatar"
+              loadingMask={false}
+            />
+            {self ? self.nickname : "未登录"}
+          </div>
+          <ThemeBtn />
+        </div>
+        {showDialogLogin && (
+          <DialogLogin close={() => setShowDialogLogin(false)} />
+        )}
       </div>
-      {showDialogLogin && (
-        <DialogLogin close={() => setShowDialogLogin(false)} />
-      )}
-    </div>
+      <div className="c-the_top_bar-placeholder"></div>
+    </>
   );
 }
 
