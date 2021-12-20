@@ -3,6 +3,7 @@ import "./index.scss";
 import AlbumCard from "../../components/AlbumCard";
 import Carousel from "./components/Carousel";
 import HomeTitle from "./components/HomeTitle";
+import NewSongItem from "./components/NewSongItem";
 import PersonalizedCard from "./components/PersonalizedCard";
 import { useNewSongs } from "./hooks/useNewSongs";
 import { usePersonalized } from "./hooks/usePersonalized";
@@ -42,7 +43,11 @@ function Home() {
       {newSongs && (
         <>
           <HomeTitle title="最新音乐"></HomeTitle>
-          <div className="home-new_songs">{JSON.stringify(newSongs)}</div>
+          <div className="home-new_songs">
+            {newSongs.map((song) => (
+              <NewSongItem key={song.id} song={song}></NewSongItem>
+            ))}
+          </div>
         </>
       )}
     </div>

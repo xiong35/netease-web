@@ -22,4 +22,14 @@
     display: flex;
     justify-content: space-around;
   }
+
+  &-new_songs {
+    display: grid;
+    row-gap: 0.5rem;
+    align-items: center;
+    grid-template-columns: repeat(3, 33.3%);
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(2, 50%);
+    }
+  }
 }

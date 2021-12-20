@@ -18,6 +18,7 @@ export type Personalized = {
  * 最新音乐 https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e6%8e%a8%e8%8d%90%e6%96%b0%e9%9f%b3%e4%b9%90
  */
 export type NewSong = {
+  id: number;
   song: {
     /** aka, 别名, 灰色写在后面 */
     alias: string[];
@@ -25,11 +26,12 @@ export type NewSong = {
       picUrl: string;
       name: string;
       id: number;
-    };
+    }[];
     album: {
       name: string;
       id: number;
       blurPicUrl: string;
     };
+    name: string;
   };
 };
