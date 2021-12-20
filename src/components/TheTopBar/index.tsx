@@ -31,7 +31,11 @@ function _TheTopBar() {
           }}
         >
           <Img
-            className="c-the_top_bar-right-user-avatar"
+            className={
+              self
+                ? "c-the_top_bar-right-user-avatar"
+                : "c-the_top_bar-right-user-avatar placeholder"
+            }
             src={self ? self.avatarUrl : avatarPlaceholder}
             alt="avatar"
             loadingMask={false}

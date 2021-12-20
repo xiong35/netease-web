@@ -548,11 +548,16 @@ $topbar_height: 60px;
 
       &-avatar {
         border-radius: 999px;
-        width: 1.2rem;
-        height: 1.2rem;
+        width: 2rem;
+        height: 2rem;
         background-color: var(--bg-d);
-        padding: 0.3rem;
-        margin-right: 0.2rem;
+        margin-right: 0.4rem;
+
+        &.placeholder {
+          padding: 0.3rem;
+          width: 1.4rem;
+          height: 1.4rem;
+        }
       }
     }
 
