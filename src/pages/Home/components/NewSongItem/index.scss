@@ -1,0 +1,29 @@
+$img-size: 2.4rem;
+.n_s_i {
+  display: flex;
+  align-items: center;
+
+  &-cover {
+    width: $img-size;
+    height: $img-size;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  &-info {
+    padding: 0.3rem 0;
+    font-size: 0.8rem;
+    max-width: calc(100% - #{$img-size} - 1rem);
+    &-name {
+      &-alias {
+        opacity: 0.6;
+        margin-left: 0.2rem;
+      }
+    }
+    &-artist_name {
+      opacity: 0.6;
+    }
+  }
+}

@@ -17,7 +17,7 @@ export type MusicBrief = {
  */
 export type MusicAr = {
   name: string;
-}
+};
 
 /**
  * 歌曲详细信息, 请求 `/song/detail` 得到
@@ -92,3 +92,20 @@ export enum PlayMode {
   NORMAL,
   RAND,
 }
+
+/**
+ * 调用`/recommend/resource`接口获得的音乐数据
+ */
+export type RecommendedMusic = {
+  id: number;
+  type: 1;
+  /** 例子: "这些充满『强烈画面感』的音乐"; */
+  name: string;
+  /** 例子: "根据你喜欢的单曲《通天大道宽又阔》推荐"; */
+  copywriter: string;
+  picUrl: string;
+  playcount: number;
+  /** ms 时间戳 */
+  createTime: number;
+  trackCount: 462;
+};
