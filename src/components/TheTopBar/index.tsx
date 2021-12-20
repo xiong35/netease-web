@@ -22,7 +22,7 @@ function _TheTopBar() {
           <ThemeBtn />
         </div>
       </div>
-      <div className="c-the_top_bar-place-holder"></div>
+      <div className="c-the_top_bar-placeholder"></div>
     </>
   );
 }
