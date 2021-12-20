@@ -4,6 +4,7 @@ $offset: 200px;
   position: relative;
   margin: auto;
   height: 170px;
+  z-index: 0;
   &-item {
     position: absolute;
     margin: auto;
@@ -13,7 +14,7 @@ $offset: 200px;
     left: -$offset;
 
     max-width: 80%;
-    width: 400px;
+    width: 450px;
     height: 100%;
     border-radius: 10px;
     overflow: hidden;

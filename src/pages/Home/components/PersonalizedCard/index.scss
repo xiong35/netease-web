@@ -3,9 +3,10 @@
 
   &-cover {
     position: relative;
+    cursor: pointer;
     &-img {
       width: 100%;
-      aspect-ratio: 2;
+      aspect-ratio: 2.7;
       object-fit: cover;
       border-radius: 4px;
     }
