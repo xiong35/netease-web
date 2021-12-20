@@ -1,16 +1,13 @@
 .home {
-  // &-recommend_playlist
+  width: 700px;
+  max-width: 100vw;
+  margin: auto;
+
   .carousel {
     margin-top: 2rem;
   }
 
   &-r_pl {
-    max-width: 90vw;
-    width: 700px;
-    margin: auto;
-
-    margin-top: 2rem;
-
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(4, 1fr);
