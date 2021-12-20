@@ -1,0 +1,21 @@
+// $selected_grey_color: #f2f2f2;
+@import '../../../../../../styles/css-constants.scss';
+
+.album_detail-body-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-hint {
+    display: flex;
+    font-size: 13px;
+    width: 500px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+
+    &-key_word {
+      color: #767DAF;
+    }
+  }
+}

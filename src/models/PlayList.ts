@@ -37,3 +37,7 @@ export type PlayList<Full = false> = {
   privacy: number
   subscribers: UserProfile[]
 };
+
+export type UserPlayList = {
+  playlist: PlayList[]
+}

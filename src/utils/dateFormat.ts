@@ -34,10 +34,10 @@ export function dateFormat(
 
     if (now.getFullYear() === date.getFullYear()) {
       // 今年
-      if (now.getDate() === date.getDate()) {
+      if (now.toLocaleDateString() === date.toLocaleDateString()) {
         // 今天内
         fmt = `今天 HH:MM`;
-      } else if (yesterday.getDate() === date.getDate()) {
+      } else if (yesterday.toLocaleDateString() === date.toLocaleDateString()) {
         // 昨天
         fmt = `昨天 HH:MM`;
       } else {

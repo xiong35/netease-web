@@ -26,4 +26,11 @@ export type UserProfile = {
   follows: number;
   followMe: boolean;
   playlistCount: number;
+  eventCount: number;
 };
+
+/** 用户信息，请求后得到该类型的数据 */
+export type User = {
+  profile: UserProfile
+  level: number
+}

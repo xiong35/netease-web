@@ -1,7 +1,9 @@
+$height: 80px;
+
 // the music player
 .t_m_p {
   position: fixed;
-  height: 80px;
+  height: $height;
   bottom: 0;
   right: 0;
   left: 0;
@@ -12,6 +14,10 @@
   padding: 0 0.8rem;
 
   transition: background-color 0.2s;
+
+  &-placeholder {
+    height: $height;
+  }
 
   * {
     background-color: transparent;

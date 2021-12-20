@@ -1,0 +1,12 @@
+.album_detail-body-comments-newest,
+.album_detail-body-comments-hotest  {
+	margin-top: 30px;
+	padding: 0 4%;
+
+	&-header {
+		font-weight: bold;
+		height: 30px;
+		line-height: 30px;
+		margin-bottom: 10px;
+	}
+}

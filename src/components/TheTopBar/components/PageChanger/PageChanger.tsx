@@ -4,12 +4,12 @@ import toLeft from "../../images/toLeft.svg";
 function PageChanger() {
   return (
     <div className="c-the_top_bar-middle-page_changer">
-      <a href="#">
+      <button className="c-the_top_bar-middle-page_changer-btn">
         <img src={toLeft} className="icon" />
-      </a>
-      <a href="#">
+      </button>
+      <button className="c-the_top_bar-middle-page_changer-btn">
         <img src={toRight} className="icon" />
-      </a>
+      </button>
     </div>
   );
 }
