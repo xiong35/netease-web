@@ -55,6 +55,11 @@
     margin: 0.5rem;
   }
 
+  &-hint {
+    color: red;
+    font-size: 12px;
+  }
+
   &-button {
     padding: 0.5rem 1rem;
     background-color: var(--primary);
@@ -63,5 +68,11 @@
     font-size: 0.9rem;
     margin-top: 1rem;
     cursor: pointer;
+  }
+}
+
+.dark {
+  .dialog_login {
+    background-color: var(--bg-d);
   }
 }
