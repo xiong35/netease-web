@@ -2,16 +2,19 @@ import "./index.scss";
 
 import { observer } from "mobx-react-lite";
 
+import { SelfStore } from "../../mobx/self";
+import Img from "../Img";
 import DialogLogin from "./components/DialogLogin";
-// import Login from "./components/Login/Login";
 import Logo from "./components/Logo/Logo";
 import PageChanger from "./components/PageChanger/PageChanger";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ThemeBtn from "./components/ThemeBtn/ThemeBtn";
 import { useShowDialogLogin } from "./hooks/useShowDialogLogin";
+import avatarPlaceholder from "./images/user.svg";
 
 function _TheTopBar() {
   const { setShowDialogLogin, showDialogLogin } = useShowDialogLogin();
+  const self = SelfStore.self;
 
   return (
     <div className="c-the_top_bar">
@@ -21,8 +24,20 @@ function _TheTopBar() {
         <SearchBar />
       </div>
       <div className="c-the_top_bar-right">
-        {/* <Login /> */}
-        <div onClick={() => setShowDialogLogin(true)}>未登录</div>
+        <div
+          className="c-the_top_bar-right-user"
+          onClick={() => {
+            if (!self) setShowDialogLogin(true);
+          }}
+        >
+          <Img
+            className="c-the_top_bar-right-user-avatar"
+            src={self ? self.avatarUrl : avatarPlaceholder}
+            alt="avatar"
+            loadingMask={false}
+          />
+          {self ? self.nickname : "未登录"}
+        </div>
         <ThemeBtn />
       </div>
       {showDialogLogin && (
