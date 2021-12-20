@@ -3,12 +3,12 @@ import "./index.scss";
 import AlbumCard from "../../components/AlbumCard";
 import Carousel from "./components/Carousel";
 import HomeTitle from "./components/HomeTitle";
-import { usePersonalize } from "./hooks/usePersonalize";
+import { usePersonalized } from "./hooks/usePersonalized";
 import { useRecommendedMusic } from "./hooks/useRecommendedMusic";
 
 function Home() {
   const { recommendMusic } = useRecommendedMusic();
-  const { personalize } = usePersonalize();
+  const { personalized } = usePersonalized();
 
   return (
     <div className="home">
@@ -24,10 +24,10 @@ function Home() {
           </div>
         </>
       )}
-      {personalize && (
+      {personalized && (
         <>
           <HomeTitle title="独家放送"></HomeTitle>
-          <p>{JSON.stringify(personalize)}</p>
+          <p>{JSON.stringify(personalized)}</p>
         </>
       )}
     </div>
