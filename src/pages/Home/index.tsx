@@ -3,6 +3,7 @@ import "./index.scss";
 import AlbumCard from "../../components/AlbumCard";
 import Carousel from "./components/Carousel";
 import HomeTitle from "./components/HomeTitle";
+import PersonalizedCard from "./components/PersonalizedCard";
 import { usePersonalized } from "./hooks/usePersonalized";
 import { useRecommendedMusic } from "./hooks/useRecommendedMusic";
 
@@ -27,7 +28,11 @@ function Home() {
       {personalized && (
         <>
           <HomeTitle title="独家放送"></HomeTitle>
-          <p>{JSON.stringify(personalized)}</p>
+          <div className="home-personalized">
+            {personalized.map((item) => (
+              <PersonalizedCard item={item} key={item.id}></PersonalizedCard>
+            ))}
+          </div>
         </>
       )}
     </div>

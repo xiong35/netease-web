@@ -1,0 +1,28 @@
+.personalized_card {
+  width: 30%;
+
+  &-cover {
+    position: relative;
+    &-img {
+      width: 100%;
+      aspect-ratio: 2;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .c-play_icon {
+      position: absolute;
+      left: 0.5rem;
+      top: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  &-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    font-size: 0.8rem;
+    white-space: pre;
+  }
+}

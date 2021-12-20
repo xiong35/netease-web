@@ -16,4 +16,9 @@
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
+  &-personalized {
+    display: flex;
+    justify-content: space-around;
+  }
 }
