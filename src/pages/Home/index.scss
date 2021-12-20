@@ -1,4 +1,22 @@
-
 .home {
+  // &-recommend_playlist
+  .carousel {
+    margin-top: 2rem;
+  }
 
+  &-r_pl {
+    max-width: 90vw;
+    width: 700px;
+    margin: auto;
+
+    margin-top: 2rem;
+
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }

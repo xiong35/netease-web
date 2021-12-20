@@ -1,4 +1,47 @@
+$size: 8rem;
+$max-size: 25vw;
 
 .album_card {
+  width: $size;
+  max-width: $max-size;
+  padding: 0.25rem 0.25rem 0.5rem;
 
+  cursor: pointer;
+
+  &-cover {
+    width: $size;
+    height: $size;
+    max-width: $max-size;
+    max-height: $max-size;
+    position: relative;
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    &-play_count {
+      position: absolute;
+
+      right: 4px;
+      top: 4px;
+
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+
+  &-name {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+
+    $line-height: 1.4;
+    color: var(--on-bg);
+    line-height: $line-height;
+
+    max-height: 1em * 2 * $line-height;
+    overflow: hidden;
+  }
 }
