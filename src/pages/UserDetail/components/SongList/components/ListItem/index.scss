@@ -1,0 +1,25 @@
+.user_detail-song_list-created_list-item {
+  // margin: 0 20px 20px 0;
+
+  &-cover_img {
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  &-name {
+    color: #333;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  &-name:hover {
+    color: #000;
+  }
+
+  &-count {
+    font-size: 13px;
+    color: #aaa;
+  }
+}

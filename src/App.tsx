@@ -2,12 +2,14 @@ import "./App.scss";
 
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import { routes } from "./routes";
 import TheMusicPlayer from "./components/TheMusicPlayer";
-
 import TheTopBar from "./components/TheTopBar";
+import { useSelf } from "./hooks/useSelf";
+import { routes } from "./routes";
 
 export default function App() {
+  useSelf();
+
   return (
     <div className="main">
       <div className="main-body">

@@ -1,0 +1,108 @@
+$offset: 200px;
+
+.carousel {
+  position: relative;
+  margin: auto;
+  height: 170px;
+  z-index: 0;
+  &-item {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: -$offset;
+    left: -$offset;
+
+    max-width: 80%;
+    width: 450px;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2;
+
+    transition: all 0.3s;
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &-badage {
+      background-color: var(--primary);
+      color: var(--on-primary);
+
+      padding: 4px 10px;
+
+      position: absolute;
+      right: -2px;
+      bottom: 0;
+
+      font-size: 12px;
+
+      border-top-left-radius: 4px;
+    }
+
+    &.left {
+      right: calc(100% - #{$offset});
+      transform: translate(50%, 0) scale(0.8);
+    }
+    &.right {
+      left: calc(100% - #{$offset});
+      transform: translate(-50%, 0) scale(0.8);
+    }
+    &.front {
+      z-index: 3;
+      transform: translate(0, 0) scale(1);
+    }
+    &.back {
+      z-index: 0;
+      transform: translate(0, 0) scale(0.7);
+    }
+  }
+
+  &:hover {
+    .carousel-toggle {
+      opacity: 0.5;
+    }
+  }
+
+  &-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    background-color: #00000030;
+    border: 99px;
+
+    padding: 10px;
+
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    z-index: 3;
+
+    opacity: 0.1;
+
+    cursor: pointer;
+
+    &:hover {
+      &.carousel-toggle {
+        opacity: 0.8;
+      }
+    }
+
+    &-img {
+      width: 100%;
+      margin-left: 9%;
+    }
+
+    &.prev {
+      left: 1%;
+    }
+    &.next {
+      right: 1%;
+    }
+  }
+}

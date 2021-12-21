@@ -1,7 +1,7 @@
 import './index.scss'
 
-import Header from './Header'
-import Body from './Body'
+import Header from './components/Header/index'
+import Body from './components/Body/index'
 
 import { observer } from 'mobx-react-lite'
 import { SongListStore } from '../../mobx/songlist'
@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 
 function _AlbumDetail() {
 	useEffect(() => {
+    // need to fix
 		SongListStore.setSongList(SongListStore.id)
 	}, [])
 

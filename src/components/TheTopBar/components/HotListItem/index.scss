@@ -1,0 +1,61 @@
+.hotlist-item {
+  display: flex;
+  position: relative;
+  height: 44px;
+  padding-bottom: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+
+  &-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    font-weight: 500;
+    color: #bbb;
+  }
+
+  .top_three {
+    color: red;
+  }
+
+  &-outer_wrapper {
+    width: 234px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &-inner_wrapper {
+      display: flex;
+      line-height: 20px;
+
+      &-title {
+        font-size: 12px;
+        margin: 0;
+      }
+
+      img {
+        max-height: 12px;
+        filter: invert(0%);
+        position: relative;
+        left: 4px;
+        top: 4px;
+      }
+
+      &-score {
+        font-size: 12px;
+        color: #ccc;
+        margin-left: 5px;
+      }
+    }
+
+    &-content {
+      margin: 0;
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}

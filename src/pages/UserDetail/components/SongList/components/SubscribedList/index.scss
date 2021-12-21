@@ -1,0 +1,8 @@
+.user_detail-song_list-subscribed_list {
+  padding: 20px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 23%);
+  row-gap: 20px;
+  column-gap: 2.67%;
+}
