@@ -13,8 +13,7 @@
   }
 
   &-name:hover {
-    // color: #000;
-    color: var(--dark);
+    filter: brightness(calc(1 + var(--dark) * 0.2));
   }
 
   &-count {
