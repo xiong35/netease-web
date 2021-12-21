@@ -1,0 +1,24 @@
+.c-the_top_bar-middle-search_bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  input {
+    outline: none;
+    border: none;
+    width: 130px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    background-color: #0000000a;
+    color: #fff;
+    padding: 0 10px 0 30px;
+    font-size: 13px;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #e55d5d;
+    font-size: 12px;
+  }
+}

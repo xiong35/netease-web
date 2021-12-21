@@ -1,0 +1,17 @@
+.c-the_top_bar-logo {
+  margin: 0 0 0 3%;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%);
+  }
+  h2 {
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+    font-weight: 500;
+    padding-left: 4px;
+  }
+}

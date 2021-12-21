@@ -1,0 +1,24 @@
+.c-the_top_bar-middle-page_changer {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  justify-content: space-between;
+  margin-right: 20px;
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #0000000a;
+
+    img {
+      width: 12px;
+      filter: invert(100%);
+    }
+  }
+}
