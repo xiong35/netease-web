@@ -14,7 +14,7 @@
 
   &-count {
     width: 2.7%;
-    color: #bbb;
+    // color: #bbb;
   }
 
   &-operation {
@@ -41,13 +41,11 @@
 
     &-name {
       @extend .ellipsis;
-      color: #000;
       margin-right: 5px;
     }
 
     &-info {
       @extend .ellipsis;
-      color: #999;
     }
   }
 
@@ -68,9 +66,9 @@
 }
 
 .album_detail-body-list-item.even {
-  background-color: #F9F9F9;
+  background-color: var(--bg-2);
 }
 
 .album_detail-body-list-item:hover {
-  background-color: #F0F1F2;
+  background-color: var(--bg-d);
 }
