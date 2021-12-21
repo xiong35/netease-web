@@ -1,0 +1,15 @@
+.c-the_top_bar-middle-search_bar-dropdown {
+  height: 380px;
+  width: 280px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 32px;
+  overflow-y: auto;
+  z-index: 10;
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}

@@ -1,5 +1,7 @@
-import toRight from "../../images/toRight.svg";
+import "./index.scss";
+
 import toLeft from "../../images/toLeft.svg";
+import toRight from "../../images/toRight.svg";
 
 function PageChanger() {
   return (

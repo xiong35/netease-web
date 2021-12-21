@@ -7,7 +7,7 @@ import Img from "../Img";
 import DialogLogin from "./components/DialogLogin";
 import Logo from "./components/Logo/Logo";
 import PageChanger from "./components/PageChanger/PageChanger";
-import SearchBar from "./components/SearchBar/SearchBar";
+import SearchBar from "./components/SearchBar";
 import ThemeBtn from "./components/ThemeBtn/ThemeBtn";
 import { useShowDialogLogin } from "./hooks/useShowDialogLogin";
 import avatarPlaceholder from "./images/user.svg";
