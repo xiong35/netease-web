@@ -1,0 +1,31 @@
+.c-pager {
+  display: flex;
+  justify-content: center;
+  &-item {
+    display: flex;
+    min-width: 1.2em;
+    padding: 0 0.3em;
+    height: 1.8em;
+    font-size: 0.8em;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    border: 1px solid var(--bg-d);
+    border-radius: 3px;
+
+    margin: 0 0.3em;
+
+    &.disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    &.active {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--primary);
+    }
+  }
+}
