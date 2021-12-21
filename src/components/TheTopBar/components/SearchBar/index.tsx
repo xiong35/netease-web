@@ -1,29 +1,23 @@
-import "./index.scss";
+import './index.scss'
 
-import { useState } from "react";
-
-import search from "../../images/search.svg";
-import Dropdown from "../Dropdown";
+import search from '../../images/search.svg'
+import Dropdown from '../Dropdown'
+import { useShowDropDown } from '../../hooks/useShowDropDown'
 
 function SearchBar() {
-  const [showDp, setShowDp] = useState<boolean>(false);
+  const { showDropDown, setShowDropDown } = useShowDropDown()
   return (
-    <div className="c-the_top_bar-middle-search_bar">
-      <input
-        type="text"
-        placeholder="搜索"
-        onFocus={() => {
-          setShowDp(true);
-        }}
-      />
-      {/* 
-				关于怎么点击别的地方让Dropdown消失，
-				可以看我在写DialogLogin时候写的useShowDialogLogin.ts文件
-			*/}
+    <div
+      className="c-the_top_bar-middle-search_bar"
+      onClick={e => e.stopPropagation()}
+    >
+      <input type="text" placeholder="搜索" onFocus={() => {
+        setShowDropDown(true)
+      }} />
       <img src={search} className="icon" />
-      <Dropdown showDp={showDp} />
+      {showDropDown && <Dropdown />}
     </div>
-  );
+  )
 }
 
-export default SearchBar;
+export default SearchBar
