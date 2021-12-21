@@ -7,8 +7,6 @@ import { getUserPlayListsReq } from "../../../network/user/getUserPlayLists";
 export const useUserPlayLists = () => {
   const [playLists, setPlayLists] = useState<PlayList[]>([]);
 
-  console.log({ playLists });
-
   const self = SelfStore.self;
 
   const createPlayLists: PlayList[] = self
@@ -27,8 +25,6 @@ export const useUserPlayLists = () => {
   };
 
   useEffect(() => {
-    console.log({ self });
-
     getUserPlayLists();
   }, [self]);
 
