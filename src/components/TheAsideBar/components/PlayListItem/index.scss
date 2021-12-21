@@ -10,3 +10,9 @@
     flex: 0 0 1rem;
   }
 }
+
+.dark {
+  .play_list_item-icon {
+    filter: invert(1);
+  }
+}
