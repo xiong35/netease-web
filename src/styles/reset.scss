@@ -40,26 +40,3 @@ code {
     background-color: var(--primary-d);
   }
 }
-
-.MuiInputBase-root {
-  background-color: var(--bg-l);
-  input {
-    background-color: var(--bg-l);
-  }
-}
-.MuiInput-root.MuiInput-underline,
-.MuiTextField-root {
-  input,
-  textarea {
-    color: var(--on-bg);
-  }
-  background-color: transparent;
-}
-
-.MuiTextField-root {
-  color: var(--on-bg);
-
-  label {
-    color: currentColor;
-  }
-}
