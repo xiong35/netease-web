@@ -1,3 +1,4 @@
+import { COOKIE } from "../../../../../constants/localStorageKey";
 import { SelfStore } from "../../../../../mobx/self";
 import { loginReq } from "../../../../../network/user/login";
 import { showToast } from "../../../../../utils/showToast";
@@ -23,7 +24,7 @@ export const useLogin = (props: UseLogin) => {
 
     SelfStore.self = userInfo.profile;
 
-    window.localStorage.setItem("netease-f", userInfo.cookie);
+    window.localStorage.setItem(COOKIE, userInfo.cookie);
     close();
   };
 
