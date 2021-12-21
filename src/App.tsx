@@ -17,6 +17,7 @@ export default function App() {
         <TheTopBar />
         <div className="main-body-content">
           <TheAsideBar />
+
           <Switch>
             <Redirect to="/home" path="/" exact></Redirect>
             {routes.map((route, i) => (
