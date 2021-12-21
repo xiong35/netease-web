@@ -76,12 +76,12 @@
     cursor: pointer;
 
     &:hover {
-      background-color: var(--bg-dim);
+      background-color: var(--bg-2);
     }
 
     &.selected {
       font-weight: bold;
-      background-color: var(--bg-dim);
+      background-color: var(--bg-2);
     }
   }
 
