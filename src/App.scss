@@ -2,8 +2,8 @@
 
 /** 处理icon图标*/
 .icon {
-	width: 1em;
-	height: 1em;
+  width: 1em;
+  height: 1em;
 }
 
 .main {
@@ -13,5 +13,9 @@
   &-body {
     margin: auto;
     max-width: $page-max-width;
+
+    &-content {
+      display: flex;
+    }
   }
 }
