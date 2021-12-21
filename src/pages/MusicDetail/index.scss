@@ -1,4 +1,54 @@
-
 .music_detail {
+  position: relative;
 
+  width: 1000px;
+  max-width: 100%;
+  margin: auto;
+  &-title {
+    position: absolute;
+    top: 0.6rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+
+    &-music_name {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    &-artist_name {
+      opacity: 0.6;
+    }
+  }
+
+  &-song {
+    display: flex;
+    padding-top: 7rem;
+    &-disc,
+    &-recommend {
+      flex: 0 0 30%;
+    }
+
+    &-disc {
+      position: relative;
+      &-prob {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+      }
+    }
+
+    &-lyric {
+      flex: 1 1 0;
+      text-align: center;
+    }
+  }
+
+  &-comments {
+    margin: auto;
+    width: 800px;
+    max-width: 96vw;
+  }
 }
