@@ -16,6 +16,10 @@ function SearchBar() {
           setShowDp(true);
         }}
       />
+      {/* 
+				关于怎么点击别的地方让Dropdown消失，
+				可以看我在写DialogLogin时候写的useShowDialogLogin.ts文件
+			*/}
       <img src={search} className="icon" />
       <Dropdown showDp={showDp} />
     </div>
