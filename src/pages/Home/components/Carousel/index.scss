@@ -1,4 +1,4 @@
-$offset: 200px;
+$offset: 225px;
 
 .carousel {
   position: relative;
@@ -14,7 +14,7 @@ $offset: 200px;
     left: -$offset;
 
     max-width: 80%;
-    width: 450px;
+    width: $offset * 2;
     height: 100%;
     border-radius: 10px;
     overflow: hidden;
