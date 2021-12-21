@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import Img from "../../components/Img";
 import { PlayStore } from "../../mobx/play";
+import MusicComments from "./components/MusicComments";
 
 // type MusicDetailProps = {
 // };
@@ -20,7 +21,6 @@ function _MusicDetail(/* props: MusicDetailProps */) {
           {music.ar.map((ar) => ar.name).join("/")}
         </div>
       </div>
-
       <div className="music_detail-song">
         <div className="music_detail-song-disc">
           <div className="music_detail-song-disc-cover">
@@ -47,23 +47,9 @@ function _MusicDetail(/* props: MusicDetailProps */) {
           mollitia quod quam distinctio impedit, odit rem odio quisquam.
           Dignissimos perferendis laudantium maiores cumque.
         </div>
-
-        <div className="music_detail-song-recommend">
-          <div className="music_detail-song-recommend-item">item</div>
-          <div className="music_detail-song-recommend-item">item</div>
-          <div className="music_detail-song-recommend-item">item</div>
-          <div className="music_detail-song-recommend-item">item</div>
-        </div>
       </div>
 
-      <div className="music_detail-comments">
-        <div className="music_detail-comments-title">全部评论</div>
-        <div className="music_detail-comments-item">item</div>
-        <div className="music_detail-comments-item">item</div>
-        <div className="music_detail-comments-item">item</div>
-        <div className="music_detail-comments-item">item</div>
-        <div className="music_detail-comments-item">item</div>
-      </div>
+      <MusicComments musicID={music.id}></MusicComments>
     </div>
   );
 }

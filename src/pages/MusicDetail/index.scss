@@ -23,12 +23,12 @@
   &-song {
     display: flex;
     padding-top: 7rem;
-    &-disc,
-    &-recommend {
-      flex: 0 0 30%;
-    }
+    width: 0.8 * 1200px;
+    max-width: 95%;
+    margin: auto;
 
     &-disc {
+      flex: 0.5 0.5 10%;
       position: relative;
       display: flex;
       justify-content: center;
@@ -79,7 +79,7 @@
     }
   }
 
-  &-comments {
+  .music_comments {
     margin: auto;
     width: 800px;
     max-width: 96vw;
