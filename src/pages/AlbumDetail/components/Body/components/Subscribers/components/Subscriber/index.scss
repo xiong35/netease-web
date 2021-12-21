@@ -1,18 +1,18 @@
 .album_detail-body-subscribers-item {
-	display: flex;
+  display: flex;
 
-	&-avatar {
-		width: 100px;
-		border-radius: 50%;
+  &-avatar {
+    width: 100px;
+    border-radius: 50%;
     cursor: pointer;
-	}
+  }
 
-	&-user_info {
-		width: 100%;
-		box-sizing: border-box;
-		display: flex;
+  &-user_info {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
     justify-content: space-evenly;
-		padding-left: 10px;
+    padding-left: 10px;
     flex-direction: column;
 
     &-upper {
@@ -34,7 +34,7 @@
         background-color: #c0f3ff;
         margin-left: 4px;
       }
-  
+
       &-gender.female {
         background-color: #ffcde8;
       }
@@ -42,7 +42,14 @@
 
     &-signature {
       height: 40px;
+      line-height: 20px;
       font-size: 13px;
+      // 超出部分省略
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; 
     }
-	}
+  }
 }
