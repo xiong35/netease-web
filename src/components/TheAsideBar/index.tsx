@@ -1,15 +1,22 @@
 import "./index.scss";
 
+import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
 import Img from "../Img";
+import PlayListItem from "./components/PlayListItem";
 import { myMusic } from "./data/myMusic";
 import { tabs } from "./data/tabs";
+import { useUserPlayLists } from "./hooks/useUserPlayLists";
 import leftIcon from "./img/left.svg";
+import playListIcon from "./img/playList.svg";
 
-function TheAsideBar() {
+function _TheAsideBar() {
   const [tabSelected, setTabSelected] = useState(tabs[0]);
   const [asideBarShrink, setAsideBarShrink] = useState(false);
+  const { createPlayLists, starPlayLists } = useUserPlayLists();
+  const [createListHidden, setCreateListHidden] = useState(true);
+  const [starListHidden, setStarListHidden] = useState(true);
 
   return (
     <>
@@ -43,21 +50,60 @@ function TheAsideBar() {
           ))}
           <div className="aside_bar-title">我的音乐</div>
           {myMusic.map((myMusicItem) => (
-            <div className="aside_bar-my_music">
-              <Img
-                className="aside_bar-my_music-icon"
-                src={myMusicItem.icon}
-                alt=""
-                loadingMask={false}
-              />
-              <span>{myMusicItem.content}</span>
-            </div>
+            <PlayListItem
+              content={myMusicItem.content}
+              icon={myMusicItem.icon}
+              key={myMusicItem.content}
+            />
           ))}
-          <div className="aside_bar-title">创建的歌单</div>
+          <div
+            className="aside_bar-title"
+            onClick={() => setCreateListHidden(!createListHidden)}
+          >
+            创建的歌单
+            <span
+              className={
+                "aside_bar-title-triangle" + (createListHidden ? " rotate" : "")
+              }
+            >
+              ▼
+            </span>
+          </div>
+          {createListHidden ||
+            createPlayLists.map((list) => (
+              <PlayListItem
+                content={list.name}
+                icon={playListIcon}
+                key={list.id}
+              />
+            ))}
+          <div
+            className="aside_bar-title"
+            onClick={() => setStarListHidden(!starListHidden)}
+          >
+            收藏的歌单
+            <span
+              className={
+                "aside_bar-title-triangle" + (starListHidden ? " rotate" : "")
+              }
+            >
+              ▼
+            </span>
+          </div>
+          {starListHidden ||
+            starPlayLists.map((list) => (
+              <PlayListItem
+                content={list.name}
+                icon={playListIcon}
+                key={list.id}
+              />
+            ))}
         </div>
       </div>
     </>
   );
 }
+
+const TheAsideBar = observer(_TheAsideBar);
 
 export default TheAsideBar;

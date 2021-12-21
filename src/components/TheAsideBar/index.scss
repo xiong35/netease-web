@@ -1,7 +1,7 @@
 .aside_bar {
   position: fixed;
   left: 0;
-  width: 12rem;
+  width: 13rem;
   z-index: 1;
   height: calc(100vh - 60px - 80px);
   box-sizing: border-box;
@@ -9,7 +9,7 @@
   transition: all 0.5s;
 
   &.shrink {
-    left: -12rem;
+    left: -13rem;
   }
 
   &-arrow {
@@ -70,7 +70,7 @@
   }
 
   &-tab,
-  &-my_music {
+  .play_list_item {
     padding: 0.5rem 1rem;
     margin-bottom: 0.1rem;
     cursor: pointer;
@@ -85,27 +85,26 @@
     }
   }
 
-  &-my_music {
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-
-    &-icon {
-      width: 1rem;
-      height: 1rem;
-      margin-right: 0.5rem;
-    }
-  }
-
   &-title {
     opacity: 0.5;
     font-size: 15px;
     padding: 0.5rem 1rem;
+    cursor: pointer;
+
+    &-triangle {
+      display: inline-block;
+      font-size: 12px;
+      padding-left: 3px;
+
+      &.rotate {
+        transform: rotate(-90deg);
+      }
+    }
   }
 }
 
 .aside_bar-placeholder {
-  min-width: 12rem;
+  min-width: 13rem;
   transition: all 0.5s;
 
   &.shrink {
