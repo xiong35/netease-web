@@ -5,7 +5,13 @@
 }
 
 .album_detail {
+  // 歌单响应式
+  max-width: 100%;
+  min-width: 70%;
+  margin: 0 auto;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 ::-webkit-scrollbar {
