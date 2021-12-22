@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
 
-import { showToast } from "../utils/showToast";
-import { getPlayListReq } from "../network/playList/getPlayList";
-import { getMusicUrlReq } from "../network/music/getMusicUrl";
-import { PlayList, PlayListID } from "../models/PlayList";
 import { defaultMusic, MusicDetail, MusicID, MusicNUrl, PlayMode } from "../models/Music";
+import { PlayList, PlayListID } from "../models/PlayList";
+import { getMusicUrlReq } from "../network/music/getMusicUrl";
+import { getPlayListReq } from "../network/playList/getPlayList";
+import { showToast } from "../utils/showToast";
 
 /**
  * 音乐播放相关全局状态
@@ -18,6 +18,7 @@ class PlayState {
   playMode = PlayMode.NORMAL;
   /** 随机洗过的音乐**id**的表 */
   private randTrack: number[] = [];
+  private playlistID?: PlayListID;
 
   constructor() {
     makeAutoObservable(this);
@@ -103,32 +104,70 @@ class PlayState {
   }
 
   /**
-   * 设置当前歌单并自动切歌
-   * @param playlist 要设置的播放列表, 可为 id 或完整列表
+   * ## Set Playlist and Music
+   * ### 设置当前歌单并自动切歌
+   * > 不支持播放一首**非歌单内**的歌曲(比如添加到下一首播放), 要播放歌曲必须设置歌单
+   * > 如需脱离歌单播放音乐, 请转而调用 setMusicsWithoutPlaylist 方法
+   * @param playlist 要设置的播放列表, 可为 ID 或**完整列表**, 传入 ID 会发请求将其填充成完整列表,
+   *                 传入完整列表会直接复用(节省一次网络请求).
+   *                 若传入 ID 或传入列表 ID 与当前播放列表 ID 相同则不处理(除非设置 force)
+   * @param musicID (可选)歌单中的音乐 ID. 若指定, 将当前播放音乐设为此曲,
+   *                否则根据播放模式自动设置当前播放音乐. 若与当前音乐 ID 相同则不处理(除非设置 force)
+   * @param force 强制更新歌单和歌曲(无论 ID 是否相同)
    */
-  async setPlayList(playlist: PlayListID | PlayList<true>) {
+  async setPlayListNMusic(
+    playlist: PlayListID | PlayList<true>,
+    musicID?: MusicID,
+    force = false
+  ) {
     // 将 playlist 填充为完整的 PlayList
     if (typeof playlist === "number") {
-      // 设置当前播放列表
-      const fullPlaylist = await getPlayListReq({
-        id: playlist,
-      });
-      if (!fullPlaylist) return showToast("加载歌单失败，请重试", "error");
-      playlist = fullPlaylist;
+      if (playlist === this.playlistID && !force) {
+        /* 若与当前播放列表 ID 相同则不处理 */
+      } else {
+        const fullPlaylist = await getPlayListReq({
+          id: playlist,
+        });
+        if (!fullPlaylist) return showToast("加载歌单失败，请重试", "error");
+        this.tracks = fullPlaylist.trackIds;
+        this.playlistID = playlist;
+        // 重置随机播放列表
+        this.resetRandList();
+      }
+    } else {
+      if (playlist.id === this.playlistID && !force) {
+        this.tracks = playlist.trackIds;
+        this.playlistID = playlist.id;
+        // 重置随机播放列表
+        this.resetRandList();
+      }
     }
 
-    // 设置当前 palylist
-    this.tracks = playlist.trackIds;
+    if (musicID) {
+      if (musicID !== this.curMusic.id && !force) {
+        this.setCurMusic(musicID);
+      }
+    } else {
+      if (this.playMode === PlayMode.RAND) {
+        // 设置当前音乐
+        this.setCurMusic(this.randTrack[0]);
+      } else {
+        this.setCurMusic(this.tracks[0]);
+      }
+    }
+  }
 
-    // 重置随机播放列表
+  /**
+   * 设置播放列表为一组音乐, 并设置当前歌曲为其中第一首
+   * @param musics 设置的播放列表(长度为 0 会直接返回)
+   */
+  async setMusicsWithoutPlaylist(musics: MusicDetail[]) {
+    if (musics.length === 0) return;
+    this.tracks = musics;
+    this.playlistID = Date.now();
     this.resetRandList();
 
-    // 设置当前音乐
-    if (this.playMode === PlayMode.RAND) {
-      this.setCurMusic(this.randTrack[0]);
-    } else {
-      this.setCurMusic(this.tracks[0]);
-    }
+    this.setCurMusic(this.tracks[0]);
   }
 
   /**

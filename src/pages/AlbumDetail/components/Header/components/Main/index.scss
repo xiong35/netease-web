@@ -34,7 +34,6 @@
 		}
 
 		&-content {
-			// margin: 0;
 			font-size: 19px;
 		}
 	}
@@ -82,6 +81,7 @@
 			background-color: red;
 			color: #fff;
 			width: 120px;
+      border: none;
 
 			.icon {
 				filter: invert(100%) contrast(200%);
@@ -130,20 +130,13 @@
       height: 25px;
       position: relative;
       overflow: hidden;
-      
-      // text-overflow: ellipsis;
-      // white-space: nowrap;
-    
+
       .icon {
         position: absolute;
         right: 0;
         top: 6px;
         filter: invert(50%);
         cursor: pointer;
-      }
-      
-      &-content {
-        color: #777;
       }
     }
 

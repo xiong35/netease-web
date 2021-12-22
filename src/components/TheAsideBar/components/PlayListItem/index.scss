@@ -1,0 +1,18 @@
+.play_list_item {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+
+  &-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    flex: 0 0 1rem;
+  }
+}
+
+.dark {
+  .play_list_item-icon {
+    filter: invert(1);
+  }
+}

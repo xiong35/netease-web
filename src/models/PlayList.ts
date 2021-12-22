@@ -1,5 +1,5 @@
-import { UserProfile } from "./User";
 import { MusicDetail } from "./Music";
+import { UserProfile } from "./User";
 
 export type PlayListID = number;
 
@@ -21,7 +21,7 @@ export type PlayList<Full = false> = {
   commentCount: number;
   shareCount: number;
   subscribedCount: number;
-  cloudTrackCount: 1;
+  cloudTrackCount: number;
   description: string;
   tags: string[];
 
@@ -34,10 +34,10 @@ export type PlayList<Full = false> = {
   trackIds: (Full extends true ? MusicDetail : { id: number })[];
 
   /** 新增 */
-  privacy: number
-  subscribers: UserProfile[]
+  privacy: number;
+  subscribers: UserProfile[];
 };
 
 export type UserPlayList = {
-  playlist: PlayList[]
-}
+  playlist: PlayList[];
+};

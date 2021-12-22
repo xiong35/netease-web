@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  justify-content: center;
 
   &-upper {
     display: flex;
@@ -17,7 +18,9 @@
 
     &-level {
       font-size: 12px;
-      background-color: #eee;
+      // background-color: #eee;
+      background-color: var(--bg-dim);
+      color: #666;
       width: 30px;
       height: 16px;
       line-height: 16px;
@@ -42,7 +45,6 @@
         justify-content: center;
         align-items: center;
         height: 40px;
-        // width: 40px;
         padding: 0 20px;
         border-right: 1px solid #ddd;
 
@@ -59,10 +61,8 @@
 
     &-other_info {
       font-size: 13px;
-      // margin-top: 10px;
 
       &-item {
-        color: #666;
         margin: 15px 0;
       }
     }

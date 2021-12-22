@@ -37,8 +37,8 @@ function Home() {
         <>
           <HomeTitle title="推荐歌单"></HomeTitle>
           <div className="home-recommend_playlist home-r_pl">
-            {recommendMusic.slice(0, 8).map((music) => (
-              <AlbumCard music={music} key={music.id}></AlbumCard>
+            {recommendMusic.slice(0, 8).map((playlist) => (
+              <AlbumCard playlist={playlist} key={playlist.id}></AlbumCard>
             ))}
           </div>
         </>

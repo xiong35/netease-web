@@ -40,9 +40,9 @@ $topbar_height: 60px;
   opacity: 0 !important;
 }
 
-.hidden {
-  display: none !important;
-}
+// .hidden {
+//   display: none !important;
+// }
 
 /*others*/
 
@@ -56,7 +56,7 @@ $topbar_height: 60px;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 10;
 
   &-placeholder {
     height: $topbar_height;

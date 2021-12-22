@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable } from 'mobx'
 
 /**
  * 头部导航条相关全局状态
@@ -19,8 +19,11 @@ class TheTopbarState {
   /** Login - DpToggle */
   LDTClassName = 'c-the_top_bar-right-login-dropdown-toggle hidden'
 
+  /** 是否切换为暗色主题 */
+  isDark = false
+
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this)
   }
 
   /**
@@ -39,7 +42,7 @@ class TheTopbarState {
    * @returns void
    */
 
-   toggleShowLoginDp() {
+  toggleShowLoginDp() {
     this.loginDpShown = !this.loginDpShown
   }
 
@@ -49,7 +52,7 @@ class TheTopbarState {
    * @returns void
    */
 
-   toggleShowLoginTg() {
+  toggleShowLoginTg() {
     this.loginTgShown = !this.loginTgShown
   }
 
@@ -73,6 +76,9 @@ class TheTopbarState {
     this.LDTClassName = name
   }
 
+  toggleSetTheme() {
+    this.isDark = !this.isDark
+  }
 }
 
 export const TheTopbarStore = new TheTopbarState()

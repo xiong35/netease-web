@@ -1,5 +1,4 @@
 .user_detail-song_list-created_list-item {
-  // margin: 0 20px 20px 0;
 
   &-cover_img {
     width: 100%;
@@ -9,13 +8,12 @@
   }
 
   &-name {
-    color: #333;
     cursor: pointer;
     font-size: 15px;
   }
 
   &-name:hover {
-    color: #000;
+    filter: brightness(calc(1 + var(--dark) * 0.2));
   }
 
   &-count {

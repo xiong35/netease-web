@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { RecommendedMusic } from "../../../models/Music";
+import { RecommendedPlaylist } from "../../../models/Music";
 import { getRecommendedPlayListReq } from "../../../network/home/getRecommendedPlayList";
 
 export function useRecommendedMusic() {
   const [recommendMusic, setRecommendMusic] = useState<
-    RecommendedMusic[] | null
+    RecommendedPlaylist[] | null
   >(null);
 
   useEffect(() => {
