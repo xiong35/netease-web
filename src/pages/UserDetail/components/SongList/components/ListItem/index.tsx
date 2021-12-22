@@ -9,7 +9,9 @@ type ListItemProps = {
 
 function _ListItem(props: ListItemProps) {
   return (
-    <div className="user_detail-song_list-created_list-item">
+    <div className="user_detail-song_list-created_list-item" onClick={() => {
+      window.location.href = `/album-detail?id=${props.songList.id}`
+    }}>
       <img
         src={props.songList.coverImgUrl}
         className="user_detail-song_list-created_list-item-cover_img"
