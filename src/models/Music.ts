@@ -96,7 +96,7 @@ export enum PlayMode {
 /**
  * 调用`/recommend/resource`接口获得的音乐数据
  */
-export type RecommendedMusic = {
+export type RecommendedPlaylist = {
   id: number;
   type: 1;
   /** 例子: "这些充满『强烈画面感』的音乐"; */
