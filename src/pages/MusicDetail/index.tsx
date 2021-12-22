@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import Img from "../../components/Img";
 import { PlayStore } from "../../mobx/play";
+import { PlayingMusicStore } from "../../mobx/playingMusic";
 import MusicComments from "./components/MusicComments";
 
 // type MusicDetailProps = {
@@ -35,18 +36,7 @@ function _MusicDetail(/* props: MusicDetailProps */) {
           </div>
         </div>
 
-        <div className="music_detail-song-lyric">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore vero,
-          inventore consequuntur dolores consequatur ipsum quidem odio error est
-          pariatur magni sunt velit nostrum hic ullam perspiciatis, iusto nihil
-          dolorem. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Inventore eos sed, error perspiciatis natus repudiandae blanditiis
-          nobis doloremque nulla eaque illo pariatur recusandae at, dolorem nam
-          cumque odio excepturi Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Natus numquam saepe, hic culpa cum magni, sint
-          mollitia quod quam distinctio impedit, odit rem odio quisquam.
-          Dignissimos perferendis laudantium maiores cumque.
-        </div>
+        <div className="music_detail-song-lyric">{PlayingMusicStore.lyric}</div>
       </div>
 
       <MusicComments musicID={music.id}></MusicComments>

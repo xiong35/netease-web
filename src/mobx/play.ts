@@ -5,6 +5,7 @@ import { PlayList, PlayListID } from "../models/PlayList";
 import { getMusicUrlReq } from "../network/music/getMusicUrl";
 import { getPlayListReq } from "../network/playList/getPlayList";
 import { showToast } from "../utils/showToast";
+import { PlayingMusicStore } from "./playingMusic";
 
 /**
  * 音乐播放相关全局状态
@@ -58,6 +59,7 @@ class PlayState {
     };
 
     this.curMusic = curMusicFull;
+    PlayingMusicStore.setLyric(curMusicFull.id);
 
     return true;
   }

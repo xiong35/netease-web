@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-import { PlayMode } from "../../../models/Music";
 import { PlayStore } from "../../../mobx/play";
+import { PlayingMusicStore } from "../../../mobx/playingMusic";
+import { PlayMode } from "../../../models/Music";
 
 export function useCurrentTime(
   curAudioEl: React.MutableRefObject<HTMLAudioElement | null>,
@@ -9,7 +10,11 @@ export function useCurrentTime(
   url?: string
 ) {
   /** 当前播放进度(秒) */
-  const [currentTime, _setCurrentTime] = useState(0);
+  const currentTime = PlayingMusicStore.currentTime;
+  function _setCurrentTime(time: number | ((old: number) => number)) {
+    if (typeof time === "number") PlayingMusicStore.currentTime = time;
+    else PlayingMusicStore.currentTime = time(PlayingMusicStore.currentTime);
+  }
 
   function setCurrentTime(time: number) {
     time = Math.floor(time);
