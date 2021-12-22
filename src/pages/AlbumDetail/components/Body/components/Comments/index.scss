@@ -1,12 +1,24 @@
-.album_detail-body-comments-newest,
-.album_detail-body-comments-hotest  {
-	margin-top: 30px;
-	padding: 0 4%;
+.album_detail-body-comments {
 
-	&-header {
-		font-weight: bold;
-		height: 30px;
-		line-height: 30px;
-		margin-bottom: 10px;
-	}
+  &-hotest, &-newest {
+    margin-top: 30px;
+    padding: 0 4%;
+  
+    &-header {
+      font-weight: bold;
+      height: 30px;
+      line-height: 30px;
+      margin-bottom: 10px;
+    }
+  } 
+
+  &-no_comments {
+    font-size: 15px;
+    color: #aaa;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
