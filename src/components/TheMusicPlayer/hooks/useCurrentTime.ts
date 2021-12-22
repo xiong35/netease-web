@@ -11,8 +11,6 @@ export function useCurrentTime(
 ) {
   /** 当前播放进度(秒) */
   const [currentTime, _setCurrentTime] = useState(0);
-  const timeRef = useRef(0);
-  timeRef.current = currentTime;
 
   function setCurrentTime(time: number) {
     time = Math.floor(time);
@@ -29,10 +27,10 @@ export function useCurrentTime(
   useEffect(() => {
     if (!isPlaying) return;
     const timer = setInterval(() => {
-      const nextT = timeRef.current + 1;
-      if (!curAudioEl.current) return setCurrentTime(nextT);
+      if (!curAudioEl.current) return;
+      const time = curAudioEl.current.currentTime;
 
-      if (nextT > curAudioEl.current.duration) {
+      if (time >= curAudioEl.current.duration) {
         if (PlayStore.playMode !== PlayMode.LOOP) {
           PlayStore.switchMusic("next").then(() => {
             setCurrentTime(0);
@@ -46,7 +44,7 @@ export function useCurrentTime(
           setCurrentTime(0);
         }
       } else {
-        setCurrentTime(nextT);
+        _setCurrentTime(time);
       }
     }, 1000);
 

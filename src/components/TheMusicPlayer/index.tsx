@@ -55,7 +55,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
         className="the_music_player t_m_p"
         style={{ background: bgc, color }}
       >
-        <audio autoPlay ref={audioRef} src={url}></audio>
+        <audio autoPlay={isPlaying} ref={audioRef} src={url}></audio>
 
         <div className="t_m_p-album">
           <AlbumBrief imgRef={imgEl} music={PlayStore.curMusic}></AlbumBrief>
