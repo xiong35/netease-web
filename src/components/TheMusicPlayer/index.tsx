@@ -1,21 +1,21 @@
 import "./index.scss";
 
-import { useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
+import { useEffect, useRef } from "react";
 
-import { useVolume } from "./hooks/useVolume";
-import { useMuted } from "./hooks/useMuted";
-import { useIsPlaying } from "./hooks/useIsPlaying";
-import { useCurrentTime } from "./hooks/useCurrentTime";
-import { useColor } from "./hooks/useColor";
+import { PlayStore } from "../../mobx/play";
+import { PlayMode } from "../../models/Music";
+import { timeFormat } from "../../utils/timeFormat";
+import AlbumBrief from "../AlbumBrief";
 import {
     ImgLoop, ImgNext, ImgNormal, ImgPaused, ImgPlay, ImgPlayList, ImgPrev, ImgRand, ImgVolume,
     ImgVolumeMute
 } from "./components/ImgComp";
-import AlbumBrief from "../AlbumBrief";
-import { timeFormat } from "../../utils/timeFormat";
-import { PlayMode } from "../../models/Music";
-import { PlayStore } from "../../mobx/play";
+import { useColor } from "./hooks/useColor";
+import { useCurrentTime } from "./hooks/useCurrentTime";
+import { useIsPlaying } from "./hooks/useIsPlaying";
+import { useMuted } from "./hooks/useMuted";
+import { useVolume } from "./hooks/useVolume";
 
 // import { PlayStore } from "../../mobx/play";
 
@@ -29,7 +29,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    PlayStore.setPlayList(24381616);
+    PlayStore.setPlayListNMusic(24381616);
   }, []);
 
   const { isPlaying, togglePlaying } = useIsPlaying(audioRef, url);
