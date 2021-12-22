@@ -1,5 +1,5 @@
-import _request from "../_request";
 import { MusicID } from "../../models/Music";
+import _request from "../_request";
 
 export type GetMusicUrlReqData = {
   id: MusicID;
@@ -12,6 +12,7 @@ export type GetMusicUrlReqData = {
 export async function getMusicUrlReq(
   params: GetMusicUrlReqData
 ): Promise<string | null> {
+  console.log("# getMusicUrl", params);
   const res = await _request<{
     data: {
       url: string;

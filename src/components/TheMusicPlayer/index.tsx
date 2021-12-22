@@ -32,7 +32,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
     PlayStore.setPlayListNMusic(24381616);
   }, []);
 
-  const { isPlaying, togglePlaying } = useIsPlaying(audioRef, url);
+  const { isPlaying, togglePlaying } = useIsPlaying(audioRef);
   const { currentTime, duration, percent, slideRef, handleMouseEvent } =
     useCurrentTime(audioRef, isPlaying, url);
   const { muted, toggleMuted } = useMuted(audioRef);
@@ -190,23 +190,6 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
             <ImgPlayList className="t_m_p-icon-svg" color={color}></ImgPlayList>
           </div>
         </div>
-
-        {/* <button onClick={() => setIsPlaying((p) => !p)}>setIsPlaying</button>
-      <button onClick={() => setMuted((p) => !p)}>setMuted</button>
-      <input
-        type="range"
-        value={volume}
-        onChange={(e) => setVolume(parseInt(e.target.value))}
-      />
-      <input
-        type="range"
-        onChange={(e) => {
-          if (!audioRef.current) return;
-
-          const percent = parseInt(e.target.value) || 0;
-          setCurrentTime(audioRef.current.duration * 0.01 * percent);
-        }}
-      /> */}
       </div>
       <div className="t_m_p-placeholder"></div>
     </>

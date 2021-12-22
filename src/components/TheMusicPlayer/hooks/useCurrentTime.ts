@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-import { PlayMode } from "../../../models/Music";
 import { PlayStore } from "../../../mobx/play";
+import { PlayMode } from "../../../models/Music";
 
 export function useCurrentTime(
   curAudioEl: React.MutableRefObject<HTMLAudioElement | null>,
@@ -10,6 +10,8 @@ export function useCurrentTime(
 ) {
   /** 当前播放进度(秒) */
   const [currentTime, _setCurrentTime] = useState(0);
+  const timeRef = useRef(0);
+  timeRef.current = currentTime;
 
   function setCurrentTime(time: number) {
     time = Math.floor(time);
@@ -25,25 +27,23 @@ export function useCurrentTime(
   // 设置 time 一直自增
   useEffect(() => {
     if (!isPlaying) return;
-    const timer = setInterval(
-      () =>
-        _setCurrentTime((t) => {
-          if (curAudioEl.current) {
-            if (t + 1 > curAudioEl.current.duration) {
-              if (PlayStore.playMode !== PlayMode.LOOP) {
-                PlayStore.switchMusic("next");
-              }
+    const timer = setInterval(() => {
+      const nextT = timeRef.current + 1;
+      if (!curAudioEl.current) return _setCurrentTime(nextT);
 
-              return 0;
-            } else {
-              return t + 1;
-            }
-          } else {
-            return t + 1;
-          }
-        }),
-      1000
-    );
+      if (nextT > curAudioEl.current.duration) {
+        if (PlayStore.playMode !== PlayMode.LOOP) {
+          PlayStore.switchMusic("next");
+        } else {
+          // 单曲循环下需要重置播放器播放时间
+          curAudioEl.current.currentTime = 0;
+          curAudioEl.current.play();
+        }
+        return _setCurrentTime(0);
+      } else {
+        _setCurrentTime(nextT);
+      }
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [isPlaying]);
