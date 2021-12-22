@@ -11,6 +11,7 @@ import { PlayList } from '../models/PlayList'
  */
 
 class userState {
+  uid = 32953014
   userProfile: UserProfile | null = null
   // 用户等级
   level = 0
@@ -33,6 +34,7 @@ class userState {
    * @returns void
    */
   async setUser(uid: number) {
+    this.uid = uid
     const userData = await getUser({
       uid,
     })
