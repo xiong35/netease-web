@@ -105,7 +105,9 @@ class PlayState {
 
   /**
    * ## Set Playlist and Music
-   * 设置当前歌单并自动切歌
+   * ### 设置当前歌单并自动切歌
+   * > 不支持播放一首**非歌单内**的歌曲(比如添加到下一首播放), 要播放歌曲必须设置歌单
+   * > 如需脱离歌单播放音乐, 请转而调用 setMusicsWithoutPlaylist 方法
    * @param playlist 要设置的播放列表, 可为 ID 或**完整列表**, 传入 ID 会发请求将其填充成完整列表,
    *                 传入完整列表会直接复用(节省一次网络请求).
    *                 若传入 ID 或传入列表 ID 与当前播放列表 ID 相同则不处理(除非设置 force)
@@ -153,6 +155,18 @@ class PlayState {
         this.setCurMusic(this.tracks[0]);
       }
     }
+  }
+
+  /**
+   * 设置播放列表为一组音乐, 并设置当前歌曲为其中第一首
+   * @param musics 设置的播放列表(长度为 0 会直接返回)
+   */
+  async setMusicsWithoutPlaylist(musics: MusicDetail[]) {
+    if (musics.length === 0) return;
+    this.tracks = musics;
+    this.playlistID = Date.now();
+
+    this.setCurMusic(this.tracks[0]);
   }
 
   /**
