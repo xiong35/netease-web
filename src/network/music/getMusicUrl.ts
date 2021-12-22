@@ -12,7 +12,6 @@ export type GetMusicUrlReqData = {
 export async function getMusicUrlReq(
   params: GetMusicUrlReqData
 ): Promise<string | null> {
-  console.log("# getMusicUrl", params);
   const res = await _request<{
     data: {
       url: string;

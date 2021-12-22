@@ -15,5 +15,5 @@ export function useIsPlaying(
     setIsPlaying((p) => !p);
   }
 
-  return { isPlaying, togglePlaying };
+  return { isPlaying, togglePlaying, setIsPlaying };
 }

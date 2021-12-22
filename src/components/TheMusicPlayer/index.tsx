@@ -8,8 +8,16 @@ import { PlayMode } from "../../models/Music";
 import { timeFormat } from "../../utils/timeFormat";
 import AlbumBrief from "../AlbumBrief";
 import {
-    ImgLoop, ImgNext, ImgNormal, ImgPaused, ImgPlay, ImgPlayList, ImgPrev, ImgRand, ImgVolume,
-    ImgVolumeMute
+  ImgLoop,
+  ImgNext,
+  ImgNormal,
+  ImgPaused,
+  ImgPlay,
+  ImgPlayList,
+  ImgPrev,
+  ImgRand,
+  ImgVolume,
+  ImgVolumeMute,
 } from "./components/ImgComp";
 import { useColor } from "./hooks/useColor";
 import { useCurrentTime } from "./hooks/useCurrentTime";
@@ -32,9 +40,9 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
     PlayStore.setPlayListNMusic(24381616);
   }, []);
 
-  const { isPlaying, togglePlaying } = useIsPlaying(audioRef);
+  const { isPlaying, togglePlaying, setIsPlaying } = useIsPlaying(audioRef);
   const { currentTime, duration, percent, slideRef, handleMouseEvent } =
-    useCurrentTime(audioRef, isPlaying, url);
+    useCurrentTime(audioRef, setIsPlaying, isPlaying, url);
   const { muted, toggleMuted } = useMuted(audioRef);
   const { volume, handleVolumeMouseEvent, volumeSlideRef } =
     useVolume(audioRef);
@@ -100,7 +108,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
 
           <div className="t_m_p-play-bar">
             <div className="t_m_p-play-bar-cur_time t-l lh-0">
-              {timeFormat(currentTime)}
+              {duration > 1 ? timeFormat(currentTime) : "00:00"}
             </div>
             <div
               className="t_m_p-play-bar-slide"
@@ -128,7 +136,7 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               </div>
             </div>
             <div className="t_m_p-play-bar-duration t-l lh-0">
-              {timeFormat(duration)}
+              {duration > 1 ? timeFormat(duration) : "00:00"}
             </div>
           </div>
         </div>
