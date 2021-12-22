@@ -18,7 +18,9 @@ function _Subscribers() {
       ) : (
         <div className="album_detail-body-no_subscribers">暂无收藏者</div>
       )}
-      <PageSelector />
+      {SongListStore.subscribedCount > SongListStore.subscriberLimit && (
+        <PageSelector />
+      )}
     </>
   )
 }
