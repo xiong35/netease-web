@@ -10,6 +10,12 @@ function _PageChanger() {
         className="icon"
         onClick={() => {
           TheTopbarStore.toggleSetTheme()
+          const theme = localStorage.getItem('theme')
+          if (!theme || theme == 'light') {
+            localStorage.setItem('theme', 'dark')
+          } else {
+            localStorage.setItem('theme', 'light')
+          }
         }}
       />
       <span>更换主题</span>

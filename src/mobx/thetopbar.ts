@@ -20,7 +20,7 @@ class TheTopbarState {
   LDTClassName = 'c-the_top_bar-right-login-dropdown-toggle hidden'
 
   /** 是否切换为暗色主题 */
-  isDark = false
+  isDark = localStorage.getItem('theme')
 
   constructor() {
     makeAutoObservable(this)
@@ -77,7 +77,11 @@ class TheTopbarState {
   }
 
   toggleSetTheme() {
-    this.isDark = !this.isDark
+    if (!this.isDark || this.isDark === 'light') {
+      this.isDark = 'dark'
+    } else {
+      this.isDark = 'light'
+    }
   }
 }
 
