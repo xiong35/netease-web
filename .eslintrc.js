@@ -14,6 +14,7 @@ module.exports = {
       },
     ],
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     // "no-mixed-spaces-and-tabs": 0,
   },
 };
