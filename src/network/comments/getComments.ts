@@ -3,8 +3,8 @@ import { Comments } from '../../models/Comments'
 import { enCookie } from "../../constants/cookie";
 
 /**
- * 获取热门列表
- * @returns 热门列表数组
+ * 获取评论
+ * @returns 评论
  */
 
 export type GetCommentsReqData = {

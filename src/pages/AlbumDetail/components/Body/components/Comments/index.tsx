@@ -9,6 +9,24 @@ import { SongListStore } from '../../../../../../mobx/songlist'
 function _Comments() {
   return (
     <div className="album_detail-body-comments">
+      <div className="album_detail-body-comments-add_comment">
+        <textarea
+          className="album_detail-body-comments-add_comment-text_area"
+        ></textarea>
+        <button
+          className="album_detail-body-comments-add_comment-btn"
+          onClick={() => {
+            const commentTextArea = document.querySelector(
+              '.album_detail-body-comments-add_comment-text_area'
+            ) as HTMLInputElement
+            const content = commentTextArea.value
+            SongListStore.postComment(content)
+            commentTextArea.value = ''
+          }}
+        >
+          评论
+        </button>
+      </div>
       {SongListStore.hotComments.length ? (
         <div className="album_detail-body-comments-hotest">
           <div className="album_detail-body-comments-hotest-header">
@@ -20,7 +38,9 @@ function _Comments() {
             ))}
           </div>
         </div>
-      ) : ''}
+      ) : (
+        ''
+      )}
       {SongListStore.comments.length ? (
         <div className="album_detail-body-comments-newest">
           <div
@@ -35,12 +55,14 @@ function _Comments() {
             ))}
           </div>
         </div>
-      ) : ''}
-      {
-        !SongListStore.hotComments.length && !SongListStore.comments.length ? (
-          <div className="album_detail-body-comments-no_comments">暂无评论</div>
-        ) : ''
-      }
+      ) : (
+        ''
+      )}
+      {!SongListStore.hotComments.length && !SongListStore.comments.length ? (
+        <div className="album_detail-body-comments-no_comments">暂无评论</div>
+      ) : (
+        ''
+      )}
       {SongListStore.commentCount > SongListStore.commentLimit && (
         <PageSelector />
       )}

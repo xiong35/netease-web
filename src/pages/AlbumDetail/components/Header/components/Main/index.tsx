@@ -3,9 +3,9 @@ import './index.scss'
 import { observer } from 'mobx-react-lite'
 
 import subscribe from '../../../../images/subscribe.svg'
-import share from '../../../../images/share.svg'
+// import share from '../../../../images/share.svg'
 import play from '../../../../images/play.svg'
-import download from '../../../../images/download.svg'
+// import download from '../../../../images/download.svg'
 import add from '../../../../images/add.svg'
 import upTri from '../../../../images/upTri.svg'
 import downTri from '../../../../images/downTri.svg'
@@ -62,14 +62,14 @@ function _Main() {
           <img src={subscribe} className="icon" />
           收藏({numFormat(SongListStore.subscribedCount)})
         </button>
-        <button className="album_detail-header-main-operations-share">
+        {/* <button className="album_detail-header-main-operations-share">
           <img src={share} className="icon" />
           分享({numFormat(SongListStore.shareCount)})
         </button>
         <button className="album_detail-header-main-operations-download">
           <img src={download} className="icon" />
           下载全部
-        </button>
+        </button> */}
       </div>
       <div className="album_detail-header-main-info">
         {SongListStore.tags.length ? (
