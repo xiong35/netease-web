@@ -23,8 +23,8 @@ type PlayListWithNoCreator = {
 
 class SongListState implements PlayListWithNoCreator {
   // id
-  // id = 24381615
-  id = 2137987910
+  id = 24381615
+  // id = 2137987910
 
   // 歌单名
   name = ''
@@ -95,6 +95,7 @@ class SongListState implements PlayListWithNoCreator {
    * @returns void
    */
   async setSongList(songListID: SongListID) {
+    this.id = songListID
     const songListData = await getPlayListReq({
       id: songListID,
     })

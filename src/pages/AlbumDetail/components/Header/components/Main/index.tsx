@@ -10,8 +10,9 @@ import add from '../../../../images/add.svg'
 import upTri from '../../../../images/upTri.svg'
 import downTri from '../../../../images/downTri.svg'
 
-import { dateFormat } from '../../../../../../utils/dateFormat'
 import { SongListStore } from '../../../../../../mobx/songlist'
+import { PlayStore } from '../../../../../../mobx/play'
+import { dateFormat } from '../../../../../../utils/dateFormat'
 import { numFormat } from '../../../../../../utils/numFormat'
 
 function _Main() {
@@ -37,7 +38,9 @@ function _Main() {
 			</div>
 			<div className="album_detail-header-main-operations">
 				<button className="album_detail-header-main-operations-play_all">
-					<img src={play} className="icon" />
+					<img src={play} className="icon" onClick={() => {
+            PlayStore.setPlayListNMusic(SongListStore.id)
+          }}/>
 					播放全部
 					<img src={add} className="icon" />
 				</button>
