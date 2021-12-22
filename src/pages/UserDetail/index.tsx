@@ -12,10 +12,7 @@ function _UserDetail() {
   const { get } = useQuery<{ uid: string }>()
 
   useEffect(() => {
-    // userStore.setUser(parseInt(get('uid')))
-    
-    // 先这么写，待会会注释这一行
-    userStore.setUser(32953014)
+    userStore.setUser(parseInt(get('uid')))
   }, [get('uid')])
 
   return (
