@@ -165,6 +165,7 @@ class PlayState {
     if (musics.length === 0) return;
     this.tracks = musics;
     this.playlistID = Date.now();
+    this.resetRandList();
 
     this.setCurMusic(this.tracks[0]);
   }
