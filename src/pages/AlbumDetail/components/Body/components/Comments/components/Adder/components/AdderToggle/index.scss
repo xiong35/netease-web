@@ -1,0 +1,16 @@
+.album_detail-body-comments-add_comment-toggle {
+  min-width: 100px;
+  min-height: 40px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  position: fixed;
+  background-color: var(--on-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bg);
+}
+
+.album_detail-body-comments-add_comment-toggle.empty {
+  color: var(--primary);
+}

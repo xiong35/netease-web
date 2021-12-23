@@ -192,7 +192,8 @@ class SongListState implements PlayListWithNoCreator {
       id: this.id,
       content,
     })
-    await this.updateCommentPage(1)
+    // 即使刷新评论界面，由于发请求的延迟，也没法立即看到
+    // await this.updateCommentPage(1)
   }
 
   /**
