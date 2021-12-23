@@ -13,19 +13,15 @@ export type GetUserPlayListsReqData = {
  * @returns
  */
 export async function getUserPlayListsReq(params: GetUserPlayListsReqData) {
-  console.log("# getUserPlayLists", "1");
   return scheduler.add(() => _getUserPlayListsReq(params));
 }
 
 async function _getUserPlayListsReq(params: GetUserPlayListsReqData) {
-  console.log("# getUserPlayLists", { params });
   const res = await _request<{ playlist: PlayList[] }>({
     url: `/user/playlist`,
     method: "GET",
     params: { ...params, limit: params.limit || 999 }, // 不是，就他那奇怪的接口还分页？
   });
-
-  console.log("# getUserPlayLists", { res });
 
   return res;
 }

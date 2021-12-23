@@ -31,7 +31,6 @@ export default function DialogLogin(props: DialogLoginProps) {
         onChange={(e) => setForm("phone", e.target.value)}
         onBlur={() => {
           checkForm("phone");
-          console.log("phone");
         }}
         onFocus={() => clearHint("phone")}
       />

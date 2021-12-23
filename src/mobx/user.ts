@@ -56,7 +56,6 @@ class userState {
     this.subscribedSongList = this.songList.filter(
       (item) => item.creator.userId !== this.userProfile?.userId
     );
-    console.log(userData);
   }
 
   /**
