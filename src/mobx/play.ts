@@ -6,6 +6,7 @@ import { getMusicUrlReq } from "../network/music/getMusicUrl";
 import { getPlayListReq } from "../network/playList/getPlayList";
 import { Scheduler } from "../utils/scheduler";
 import { showToast } from "../utils/showToast";
+import { PlayingMusicStore } from "./playingMusic";
 
 const setMusicScheduler = new Scheduler(1);
 
@@ -67,6 +68,7 @@ class PlayState {
     };
 
     this.curMusic = curMusicFull;
+    PlayingMusicStore.setLyric(curMusicFull.id);
 
     return true;
   }

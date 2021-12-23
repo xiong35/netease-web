@@ -1,11 +1,11 @@
-import './index.scss'
+import "./index.scss";
 
-import Comment from './components/Comment'
-import PageSelector from './components/PageSelector'
-import Adder from './components/Adder'
+import { observer } from "mobx-react-lite";
 
-import { observer } from 'mobx-react-lite'
-import { SongListStore } from '../../../../../../mobx/songlist'
+import { SongListStore } from "../../../../../../mobx/songlist";
+import Adder from "./components/Adder";
+import Comment from "./components/Comment";
+import PageSelector from "./components/PageSelector";
 
 function _Comments() {
   return (
@@ -17,13 +17,13 @@ function _Comments() {
             精彩评论
           </div>
           <div className="album_detail-body-comments-hotest-list">
-            {SongListStore.hotComments.map(item => (
+            {SongListStore.hotComments.map((item) => (
               <Comment data={item} key={item.commentId} />
             ))}
           </div>
         </div>
       ) : (
-        ''
+        ""
       )}
       {SongListStore.comments.length ? (
         <div className="album_detail-body-comments-newest">
@@ -34,26 +34,26 @@ function _Comments() {
             最新评论({SongListStore.commentCount})
           </div>
           <div className="album_detail-body-comments-newest-list">
-            {SongListStore.comments.map(item => (
+            {SongListStore.comments.map((item) => (
               <Comment data={item} key={item.commentId} />
             ))}
           </div>
         </div>
       ) : (
-        ''
+        ""
       )}
       {!SongListStore.hotComments.length && !SongListStore.comments.length ? (
         <div className="album_detail-body-comments-no_comments">暂无评论</div>
       ) : (
-        ''
+        ""
       )}
       {SongListStore.commentCount > SongListStore.commentLimit && (
         <PageSelector />
       )}
     </div>
-  )
+  );
 }
 
-const Comments = observer(_Comments)
+const Comments = observer(_Comments);
 
-export default Comments
+export default Comments;

@@ -1,4 +1,78 @@
-
 .music_detail {
+  position: relative;
 
+  width: 1200px;
+  max-width: 100%;
+  margin: auto;
+  &-title {
+    position: absolute;
+    top: 0.6rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+
+    &-music_name {
+      font-size: 2rem;
+    }
+    &-artist_name {
+      opacity: 0.6;
+    }
+  }
+
+  &-song {
+    display: flex;
+    padding-top: 7rem;
+    width: 0.8 * 1200px;
+    max-width: 95%;
+    margin: auto;
+
+    &-disc {
+      flex: 0.5 0.5 10%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: min-content;
+      &-cover {
+        width: 70%;
+        max-width: 240px;
+        aspect-ratio: 1;
+        background: repeating-radial-gradient(#111 0%, #000 5%);
+        border-radius: 999px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: spin 21s linear;
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        &-img {
+          width: 70%;
+          aspect-ratio: 1;
+          overflow: hidden;
+          border-radius: 999px;
+        }
+
+        &-decorate {
+          position: absolute;
+        }
+      }
+    }
+
+    &-lyric {
+    }
+  }
+
+  .music_comments {
+    margin: auto;
+    width: 800px;
+    max-width: 96vw;
+
+    padding-top: 7rem;
+  }
 }
