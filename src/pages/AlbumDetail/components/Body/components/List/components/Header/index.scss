@@ -49,7 +49,7 @@
 	&-sort_by_arthor:hover,
 	&-sort_by_album:hover,
 	&-sort_by_time:hover {
-		background-color: $selected-grey-bgcolor;
+		background-color: var(--bg-d);
 	}
 
 	.icon {

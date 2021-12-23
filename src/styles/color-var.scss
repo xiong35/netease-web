@@ -12,6 +12,9 @@ body {
   --on-primary: #fff;
 
   --dark: -1;
+
+  // 用于thetopbar下拉框的垃圾桶图标，filter: invert() 不支持calc()，故出此下策
+  --icon-dark: 0.1;
 }
 
 .dark {
@@ -23,4 +26,6 @@ body {
   --bg-d: #212124;
 
   --dark: 1;
+
+  --icon-dark: 0.9;
 }
