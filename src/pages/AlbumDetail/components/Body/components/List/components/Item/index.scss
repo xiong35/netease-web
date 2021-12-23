@@ -42,6 +42,7 @@
     &-name {
       @extend .ellipsis;
       margin-right: 5px;
+      min-width: 15px;
     }
 
     &-info {
