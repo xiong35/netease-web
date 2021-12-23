@@ -22,8 +22,9 @@ function Pager(props: PagerProps) {
         {"<"}
       </div>
 
-      {pages.map((c) => (
+      {pages.map((c, i) => (
         <div
+          key={i}
           className={`c-pager-item ${c === page ? "active" : ""}`}
           onClick={() => c !== "..." && setPage(c)}
         >
