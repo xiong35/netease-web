@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import Img from "../../components/Img";
 import { PlayStore } from "../../mobx/play";
 import { PlayingMusicStore } from "../../mobx/playingMusic";
+import Lyric from "./components/Lyrics";
 import MusicComments from "./components/MusicComments";
 
 // type MusicDetailProps = {
@@ -36,7 +37,7 @@ function _MusicDetail(/* props: MusicDetailProps */) {
           </div>
         </div>
 
-        <div className="music_detail-song-lyric">{PlayingMusicStore.lyric}</div>
+        <Lyric lyric={PlayingMusicStore.lyric}></Lyric>
       </div>
 
       <MusicComments musicID={music.id}></MusicComments>
