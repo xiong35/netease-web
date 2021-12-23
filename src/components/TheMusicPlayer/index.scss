@@ -68,6 +68,10 @@ $height: 80px;
     align-items: center;
   }
 
+  &-album {
+    cursor: pointer;
+  }
+
   &-actions {
     justify-content: flex-end;
     &-volume {

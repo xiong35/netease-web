@@ -18,7 +18,7 @@ function Lyric(props: LyricProps) {
     <div className="lyric">
       <div className="lyric-warp" style={{ marginTop }}>
         {lyric.map((l, i) => {
-          console.log("# index", l.startSec, time);
+          if (!l.content) return null;
           const Tag = l.startSec <= time ? "section" : "div";
           return (
             <Tag

@@ -2,6 +2,7 @@ import "./index.scss";
 
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 
 import { PlayStore } from "../../mobx/play";
 import { PlayingMusicStore } from "../../mobx/playingMusic";
@@ -28,6 +29,8 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
   const { url } = PlayStore.curMusic;
   const audioRef = PlayingMusicStore.audioRef;
 
+  const history = useHistory();
+
   useEffect(() => {
     PlayStore.setPlayListNMusic(24381616);
   }, []);
@@ -53,7 +56,10 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
           src={url}
         ></audio>
 
-        <div className="t_m_p-album">
+        <div
+          className="t_m_p-album"
+          onClick={() => history.push("/music-detail")}
+        >
           <AlbumBrief imgRef={imgEl} music={PlayStore.curMusic}></AlbumBrief>
         </div>
 
