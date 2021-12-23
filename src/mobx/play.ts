@@ -4,7 +4,10 @@ import { defaultMusic, MusicDetail, MusicID, MusicNUrl, PlayMode } from "../mode
 import { PlayList, PlayListID } from "../models/PlayList";
 import { getMusicUrlReq } from "../network/music/getMusicUrl";
 import { getPlayListReq } from "../network/playList/getPlayList";
+import { Scheduler } from "../utils/scheduler";
 import { showToast } from "../utils/showToast";
+
+const setMusicScheduler = new Scheduler(1);
 
 /**
  * 音乐播放相关全局状态
@@ -45,6 +48,12 @@ class PlayState {
    * @returns 是否成功
    */
   private async setCurMusic(curMusic: MusicID | MusicDetail): Promise<boolean> {
+    return setMusicScheduler.add(() => this._setCurMusic(curMusic));
+  }
+
+  private async _setCurMusic(
+    curMusic: MusicID | MusicDetail
+  ): Promise<boolean> {
     if (typeof curMusic === "number")
       curMusic = this.tracks.find((m) => m.id === curMusic) as MusicDetail;
 
