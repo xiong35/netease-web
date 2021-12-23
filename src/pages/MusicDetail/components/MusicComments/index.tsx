@@ -5,7 +5,7 @@ import { useRef } from "react";
 import Pager from "../../../../components/Pager";
 import { PER_PAGE } from "../../../../constants/paging";
 import { numFormat } from "../../../../utils/numFormat";
-import CommentItem from "../../../AlbumDetail/components/Body/components/Comments/components/comment";
+import CommentItem from "../../../AlbumDetail/components/Body/components/Comments/components/Comment";
 import { useComments } from "./hooks/useComments";
 
 type MusicCommentsProps = {

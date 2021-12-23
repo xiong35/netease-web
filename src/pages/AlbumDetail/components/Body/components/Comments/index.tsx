@@ -1,10 +1,10 @@
-import './index.scss'
+import "./index.scss";
 
-import Comment from './components/comment'
-import PageSelector from './components/PageSelector'
+import { observer } from "mobx-react-lite";
 
-import { observer } from 'mobx-react-lite'
-import { SongListStore } from '../../../../../../mobx/songlist'
+import { SongListStore } from "../../../../../../mobx/songlist";
+import Comment from "./components/Comment";
+import PageSelector from "./components/PageSelector";
 
 function _Comments() {
   return (
