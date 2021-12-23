@@ -94,8 +94,6 @@ export default async function _request<T = {}>(
     return null;
   } finally {
     /** 最后设置这个请求已经结束, 在一帧之后移除之 */
-    setTimeout(() => {
-      sendingRequest.delete(hashedReq);
-    }, 70);
+    sendingRequest.delete(hashedReq);
   }
 }

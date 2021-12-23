@@ -45,8 +45,10 @@ export class Scheduler {
           .then(resolve)
           .catch(reject)
           .finally(() => {
-            this.onGoing--; // 调整进行任务数
-            this.executeNext(); // 调用下一个任务
+            setTimeout(() => {
+              this.onGoing--; // 调整进行任务数
+              this.executeNext(); // 调用下一个任务
+            }, 1);
           })
       );
     });
