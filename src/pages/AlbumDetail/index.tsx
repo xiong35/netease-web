@@ -6,19 +6,21 @@ import Body from './components/Body/index'
 import { observer } from 'mobx-react-lite'
 import { SongListStore } from '../../mobx/songlist'
 import { useEffect } from 'react'
+import { useQuery } from '../../hooks/useQuery'
 
 function _AlbumDetail() {
-	useEffect(() => {
-    // need to fix
-		SongListStore.setSongList(SongListStore.id)
-	}, [])
+  const { get } = useQuery<{ id: string }>()
 
-	return (
-		<div className="album_detail">
+  useEffect(() => {
+    SongListStore.setSongList(parseInt(get('id')))
+  }, [get('id')])
+
+  return (
+    <div className="album_detail">
       <Header />
       <Body />
-		</div>
-	)
+    </div>
+  )
 }
 
 const AlbumDetail = observer(_AlbumDetail)

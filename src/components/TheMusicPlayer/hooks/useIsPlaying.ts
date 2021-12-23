@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 export function useIsPlaying(
-  curAudioEl: React.MutableRefObject<HTMLAudioElement | null>,
-  url?: string
+  curAudioEl: React.MutableRefObject<HTMLAudioElement | null>
 ) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -10,11 +9,11 @@ export function useIsPlaying(
     if (!curAudioEl.current) return;
     if (isPlaying) curAudioEl.current.play();
     else curAudioEl.current.pause();
-  }, [isPlaying, url]);
+  }, [isPlaying, curAudioEl.current]);
 
   function togglePlaying() {
     setIsPlaying((p) => !p);
   }
 
-  return { isPlaying, togglePlaying };
+  return { isPlaying, togglePlaying, setIsPlaying };
 }

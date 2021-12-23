@@ -1,5 +1,5 @@
-import _request from "../_request";
 import { MusicID } from "../../models/Music";
+import _request from "../_request";
 
 export type GetMusicUrlReqData = {
   id: MusicID;

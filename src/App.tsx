@@ -14,7 +14,7 @@ function _App() {
   useSelf();
 
   return (
-    <div className={TheTopbarStore.isDark ? "main dark" : "main"}>
+    <div className={TheTopbarStore.isDark === 'dark' ? "main dark" : "main"}>
       <div className="main-body">
         <TheTopBar />
         <div className="main-body-content">

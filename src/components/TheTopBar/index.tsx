@@ -29,6 +29,9 @@ function _TheTopBar() {
             className="c-the_top_bar-right-user"
             onClick={() => {
               if (!self) setShowDialogLogin(true);
+              else {
+                window.location.href = `/user-detail?uid=${SelfStore.self?.userId}`
+              }
             }}
           >
             <Img

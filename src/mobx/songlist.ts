@@ -3,6 +3,7 @@ import { makeAutoObservable } from 'mobx'
 import { showToast } from '../utils/showToast'
 import { getPlayListReq } from '../network/playList/getPlayList'
 import { getComments } from '../network/comments/getComments'
+import { postComment } from '../network/comments/postComment'
 import { getSubscribers } from '../network/subscribers/getSubscribers'
 
 import { UserProfile } from '../models/User'
@@ -23,8 +24,8 @@ type PlayListWithNoCreator = {
 
 class SongListState implements PlayListWithNoCreator {
   // id
-  // id = 24381615
-  id = 2137987910
+  id = 24381615
+  // id = 2137987910
 
   // 歌单名
   name = ''
@@ -95,6 +96,7 @@ class SongListState implements PlayListWithNoCreator {
    * @returns void
    */
   async setSongList(songListID: SongListID) {
+    this.id = songListID
     const songListData = await getPlayListReq({
       id: songListID,
     })
@@ -174,6 +176,23 @@ class SongListState implements PlayListWithNoCreator {
     })
     if (!subscribersData) return showToast('加载评论失败，请重试', 'error')
     this.subscribers = subscribersData.subscribers
+  }
+
+  /**
+   * 向歌单发送评论
+   * @param id 用户id
+   * @param content 评论内容
+   *
+   * @returns void
+   */
+  async postComment(content: string) {
+    await postComment({
+      t: 1,
+      type: 2,
+      id: this.id,
+      content,
+    })
+    await this.updateCommentPage(1)
   }
 
   /**

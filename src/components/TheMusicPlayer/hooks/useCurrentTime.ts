@@ -6,6 +6,7 @@ import { PlayMode } from "../../../models/Music";
 
 export function useCurrentTime(
   curAudioEl: React.MutableRefObject<HTMLAudioElement | null>,
+  setIsPlaying: (play: boolean) => void,
   isPlaying: boolean,
   url?: string
 ) {
@@ -30,25 +31,27 @@ export function useCurrentTime(
   // 设置 time 一直自增
   useEffect(() => {
     if (!isPlaying) return;
-    const timer = setInterval(
-      () =>
-        _setCurrentTime((t) => {
-          if (curAudioEl.current) {
-            if (t + 1 > curAudioEl.current.duration) {
-              if (PlayStore.playMode !== PlayMode.LOOP) {
-                PlayStore.switchMusic("next");
-              }
+    const timer = setInterval(() => {
+      if (!curAudioEl.current) return;
+      const time = curAudioEl.current.currentTime;
 
-              return 0;
-            } else {
-              return t + 1;
-            }
-          } else {
-            return t + 1;
-          }
-        }),
-      1000
-    );
+      if (time >= curAudioEl.current.duration) {
+        if (PlayStore.playMode !== PlayMode.LOOP) {
+          PlayStore.switchMusic("next").then(() => {
+            setCurrentTime(0);
+            setIsPlaying(true);
+          });
+          setIsPlaying(false);
+        } else {
+          // 单曲循环下需要重置播放器播放时间
+          curAudioEl.current.currentTime = 0;
+          curAudioEl.current.play();
+          setCurrentTime(0);
+        }
+      } else {
+        _setCurrentTime(time);
+      }
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [isPlaying]);
@@ -58,6 +61,7 @@ export function useCurrentTime(
   let percent = (currentTime * 100) / duration;
   if (percent > 100) percent = 100;
   else if (percent < 0) percent = 0;
+  if (duration < 1) percent = 0;
 
   const slideRef = useRef<HTMLDivElement>(null);
   const handleMouseEvent = (e: { clientX: number }) => {

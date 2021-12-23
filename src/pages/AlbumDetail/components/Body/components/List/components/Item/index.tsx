@@ -3,6 +3,8 @@ import './index.scss'
 import heart from '../../../../../../images/heart.svg'
 import { timeFormat } from '../../../../../../../../utils/timeFormat'
 import { MusicDetail } from '../../../../../../../../models/Music'
+import { PlayStore } from '../../../../../../../../mobx/play'
+import { SongListStore } from '../../../../../../../../mobx/songlist'
 
 type itemProps = {
 	song: MusicDetail
@@ -23,6 +25,9 @@ function Item(props: itemProps) {
 					? 'album_detail-body-list-item'
 					: 'album_detail-body-list-item even'
 			}
+      onDoubleClick={() => {
+        PlayStore.setPlayListNMusic(SongListStore.id, curSong.id)
+      }}
 		>
 			<div className="album_detail-body-list-item-count">
 				{props.index + 1 < 10 ? '0' + (props.index + 1) : props.index + 1}
