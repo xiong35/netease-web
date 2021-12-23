@@ -20,8 +20,14 @@ function _Comments() {
               '.album_detail-body-comments-add_comment-text_area'
             ) as HTMLInputElement
             const content = commentTextArea.value
-            SongListStore.postComment(content)
-            commentTextArea.value = ''
+            
+            let timer = null
+            if (!timer) {
+               timer = setTimeout(() => {
+                SongListStore.postComment(content)
+                commentTextArea.value = ''
+              }, 500)
+            }
           }}
         >
           评论

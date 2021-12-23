@@ -1,11 +1,10 @@
 import _request from '../_request'
 import { Comments } from '../../models/Comments'
-// import { enCookie } from '../../constants/cookie'
 import { COOKIE } from '../../constants/localStorageKey'
 
 /**
  * 发布、删除评论
- * @returns void
+ * @returns 成功返回用户信息
  */
 
 export type PostCommentReqData = {

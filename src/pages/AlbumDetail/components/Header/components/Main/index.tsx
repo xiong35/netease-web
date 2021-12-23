@@ -3,8 +3,9 @@ import './index.scss'
 import { observer } from 'mobx-react-lite'
 
 import subscribe from '../../../../images/subscribe.svg'
-// import share from '../../../../images/share.svg'
+import subscribed from '../../../../images/subscribed.svg'
 import play from '../../../../images/play.svg'
+// import share from '../../../../images/share.svg'
 // import download from '../../../../images/download.svg'
 import add from '../../../../images/add.svg'
 import upTri from '../../../../images/upTri.svg'
@@ -15,7 +16,17 @@ import { PlayStore } from '../../../../../../mobx/play'
 import { dateFormat } from '../../../../../../utils/dateFormat'
 import { numFormat } from '../../../../../../utils/numFormat'
 
+// 或许要把useUserPlayLists变成公共hook？
+import { useUserPlayLists } from '../../../../../../components/TheAsideBar/hooks/useUserPlayLists'
+
 function _Main() {
+  const { createPlayLists, starPlayLists } = useUserPlayLists()
+  // 歌单是否由本人创建
+  const createdBySelf = createPlayLists.find(item => item.id === SongListStore.id) ? true : false
+  // 歌单是否已收藏
+  const isSubscribed = starPlayLists.find(item => item.id === SongListStore.id) ? true : false
+  console.log(createdBySelf, isSubscribed)
+
   return (
     <div className="album_detail-header-main">
       <div className="album_detail-header-main-title">
@@ -58,9 +69,15 @@ function _Main() {
           播放全部
           <img src={add} className="icon" />
         </button>
-        <button className="album_detail-header-main-operations-subscribe">
-          <img src={subscribe} className="icon" />
-          收藏({numFormat(SongListStore.subscribedCount)})
+        <button
+          className={'album_detail-header-main-operations-subscribe'}
+          onClick={() => {
+            // fix
+            SongListStore.subscribe(SongListStore.id)
+          }}
+        >
+          <img src={isSubscribed? subscribed : subscribe} className="icon" />
+          {isSubscribed? '已收藏' : '收藏'} ({numFormat(SongListStore.subscribedCount)})
         </button>
         {/* <button className="album_detail-header-main-operations-share">
           <img src={share} className="icon" />

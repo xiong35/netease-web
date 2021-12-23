@@ -1,6 +1,5 @@
 import _request from '../_request'
 import { UserPlayList } from '../../models/PlayList'
-import { enCookie } from "../../constants/cookie";
 
 /**
  * 获取用户的歌单
@@ -18,7 +17,7 @@ export async function getUserSongList(
 	const res = await _request<UserPlayList>({
 		url: '/user/playlist',
 		method: 'GET',
-    params: { ...params, cookie: enCookie },
+    params: { ...params },
 	})
 	if (!res) return null
 	return res

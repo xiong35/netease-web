@@ -4,6 +4,7 @@ import { showToast } from '../utils/showToast'
 import { getPlayListReq } from '../network/playList/getPlayList'
 import { getComments } from '../network/comments/getComments'
 import { postComment } from '../network/comments/postComment'
+import { subscribe } from '../network/subscribers/subscribe'
 import { getSubscribers } from '../network/subscribers/getSubscribers'
 
 import { UserProfile } from '../models/User'
@@ -180,7 +181,6 @@ class SongListState implements PlayListWithNoCreator {
 
   /**
    * 向歌单发送评论
-   * @param id 用户id
    * @param content 评论内容
    *
    * @returns void
@@ -193,6 +193,36 @@ class SongListState implements PlayListWithNoCreator {
       content,
     })
     await this.updateCommentPage(1)
+  }
+
+  /**
+   * 收藏歌单
+   * @param content 评论内容
+   *
+   * @returns void
+   */
+  async subscribe(id: number) {
+    await subscribe({
+      t: 1,
+      id
+    })
+    this.subscribedCount++
+    this.setSongList(this.id)
+  }
+
+  /**
+   * 取消收藏歌单
+   * @param content 评论内容
+   *
+   * @returns void
+   */
+  async unSubscribe(id: number) {
+    await subscribe({
+      t: 2,
+      id
+    })
+    this.subscribedCount--
+    this.setSongList(this.id)
   }
 
   /**
