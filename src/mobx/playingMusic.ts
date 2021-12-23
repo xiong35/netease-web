@@ -13,6 +13,26 @@ import { lyricStr2LyricItem } from "../utils/lyricStr2LyricItem";
 class PlayingMusicState {
   /** 当前播放进度(秒) */
   lyric: Lyric[] = [];
+  _audioRef: HTMLAudioElement | null = null;
+
+  get audioRef() {
+    return this._audioRef;
+  }
+
+  set audioRef(ref: HTMLAudioElement | null) {
+    if (this._audioRef || !ref) return;
+    this._audioRef = ref;
+  }
+
+  getCurrentTime() {
+    if (!this.audioRef) return 0;
+    return Math.round(this.audioRef.currentTime);
+  }
+  set currentTime(time: number) {
+    console.log("# playingMusic", "set");
+    if (!this.audioRef) return;
+    this.audioRef.currentTime = time;
+  }
 
   constructor() {
     makeAutoObservable(this);

@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 
-export function useMuted(
-  curAudioEl: React.MutableRefObject<HTMLAudioElement | null>
-) {
+export function useMuted(curAudioEl: HTMLAudioElement | null) {
   const [muted, setMuted] = useState(false);
 
   useEffect(() => {
-    if (!curAudioEl.current) return;
+    if (!curAudioEl) return;
 
-    curAudioEl.current.muted = muted;
-  }, [muted, curAudioEl.current]);
+    curAudioEl.muted = muted;
+  }, [muted, curAudioEl]);
 
   function toggleMuted() {
     setMuted((m) => !m);

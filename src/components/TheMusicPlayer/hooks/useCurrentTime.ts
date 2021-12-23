@@ -5,37 +5,38 @@ import { PlayingMusicStore } from "../../../mobx/playingMusic";
 import { PlayMode } from "../../../models/Music";
 
 export function useCurrentTime(
-  curAudioEl: React.MutableRefObject<HTMLAudioElement | null>,
+  curAudioEl: HTMLAudioElement | null,
   setIsPlaying: (play: boolean) => void,
   isPlaying: boolean,
   url?: string
 ) {
-  /** 当前播放进度(秒) */
-  const currentTime = PlayingMusicStore.currentTime;
-  function _setCurrentTime(time: number | ((old: number) => number)) {
-    if (typeof time === "number") PlayingMusicStore.currentTime = time;
-    else PlayingMusicStore.currentTime = time(PlayingMusicStore.currentTime);
+  const [_, _setForUpdate] = useState(false);
+  function forceUpdate() {
+    _setForUpdate((b) => !b);
   }
 
+  /** 当前播放进度(秒) */
+  const currentTime = PlayingMusicStore.getCurrentTime();
+  console.log("# useCurrentTime", { currentTime });
+
   function setCurrentTime(time: number) {
-    time = Math.floor(time);
-    _setCurrentTime(time);
-    if (curAudioEl.current) curAudioEl.current.currentTime = time;
+    PlayingMusicStore.currentTime = time;
   }
 
   // 切歌的时候重置时间
   useEffect(() => {
     setCurrentTime(0);
-  }, [curAudioEl.current && curAudioEl.current.currentSrc, url]);
+  }, [curAudioEl && curAudioEl.currentSrc, url]);
 
   // 设置 time 一直自增
   useEffect(() => {
     if (!isPlaying) return;
     const timer = setInterval(() => {
-      if (!curAudioEl.current) return;
-      const time = curAudioEl.current.currentTime;
+      forceUpdate();
+      if (!curAudioEl) return;
+      const time = curAudioEl.currentTime;
 
-      if (time >= curAudioEl.current.duration) {
+      if (time >= curAudioEl.duration) {
         if (PlayStore.playMode !== PlayMode.LOOP) {
           PlayStore.switchMusic("next").then(() => {
             setCurrentTime(0);
@@ -44,19 +45,17 @@ export function useCurrentTime(
           setIsPlaying(false);
         } else {
           // 单曲循环下需要重置播放器播放时间
-          curAudioEl.current.currentTime = 0;
-          curAudioEl.current.play();
           setCurrentTime(0);
+          curAudioEl.play();
         }
-      } else {
-        _setCurrentTime(time);
+        forceUpdate();
       }
     }, 1000);
 
     return () => clearInterval(timer);
   }, [isPlaying]);
 
-  const duration = (curAudioEl.current && curAudioEl.current.duration) || 0.1;
+  const duration = (curAudioEl && curAudioEl.duration) || 0.1;
 
   let percent = (currentTime * 100) / duration;
   if (percent > 100) percent = 100;
@@ -72,6 +71,7 @@ export function useCurrentTime(
     if (percent < 0) percent = 0;
 
     setCurrentTime(percent * duration);
+    forceUpdate();
   };
 
   return {

@@ -4,20 +4,13 @@ import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
 import { PlayStore } from "../../mobx/play";
+import { PlayingMusicStore } from "../../mobx/playingMusic";
 import { PlayMode } from "../../models/Music";
 import { timeFormat } from "../../utils/timeFormat";
 import AlbumBrief from "../AlbumBrief";
 import {
-  ImgLoop,
-  ImgNext,
-  ImgNormal,
-  ImgPaused,
-  ImgPlay,
-  ImgPlayList,
-  ImgPrev,
-  ImgRand,
-  ImgVolume,
-  ImgVolumeMute,
+    ImgLoop, ImgNext, ImgNormal, ImgPaused, ImgPlay, ImgPlayList, ImgPrev, ImgRand, ImgVolume,
+    ImgVolumeMute
 } from "./components/ImgComp";
 import { useColor } from "./hooks/useColor";
 import { useCurrentTime } from "./hooks/useCurrentTime";
@@ -33,8 +26,7 @@ import { useVolume } from "./hooks/useVolume";
 
 function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
   const { url } = PlayStore.curMusic;
-
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRef = PlayingMusicStore.audioRef;
 
   useEffect(() => {
     PlayStore.setPlayListNMusic(24381616);
@@ -55,7 +47,11 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
         className="the_music_player t_m_p"
         style={{ background: bgc, color }}
       >
-        <audio autoPlay={isPlaying} ref={audioRef} src={url}></audio>
+        <audio
+          autoPlay={isPlaying}
+          ref={(el) => (PlayingMusicStore.audioRef = el)}
+          src={url}
+        ></audio>
 
         <div className="t_m_p-album">
           <AlbumBrief imgRef={imgEl} music={PlayStore.curMusic}></AlbumBrief>

@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useVolume(
-  curAudioEl: React.MutableRefObject<HTMLAudioElement | null>
-) {
+export function useVolume(curAudioEl: HTMLAudioElement | null) {
   const [volume, setVolume] = useState(70);
 
   useEffect(() => {
-    if (!curAudioEl.current) return;
+    if (!curAudioEl) return;
 
-    curAudioEl.current.volume = volume / 100;
-  }, [volume, curAudioEl.current]);
+    curAudioEl.volume = volume / 100;
+  }, [volume, curAudioEl]);
 
   const volumeSlideRef = useRef<HTMLDivElement>(null);
   const handleVolumeMouseEvent = (e: { clientY: number }) => {
