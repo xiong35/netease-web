@@ -1,7 +1,8 @@
 import './index.scss'
 
-import Comment from './components/comment'
+import Comment from './components/Comment'
 import PageSelector from './components/PageSelector'
+import Adder from './components/Adder'
 
 import { observer } from 'mobx-react-lite'
 import { SongListStore } from '../../../../../../mobx/songlist'
@@ -9,30 +10,7 @@ import { SongListStore } from '../../../../../../mobx/songlist'
 function _Comments() {
   return (
     <div className="album_detail-body-comments">
-      <div className="album_detail-body-comments-add_comment">
-        <textarea
-          className="album_detail-body-comments-add_comment-text_area"
-        ></textarea>
-        <button
-          className="album_detail-body-comments-add_comment-btn"
-          onClick={() => {
-            const commentTextArea = document.querySelector(
-              '.album_detail-body-comments-add_comment-text_area'
-            ) as HTMLInputElement
-            const content = commentTextArea.value
-            
-            let timer = null
-            if (!timer) {
-               timer = setTimeout(() => {
-                SongListStore.postComment(content)
-                commentTextArea.value = ''
-              }, 500)
-            }
-          }}
-        >
-          评论
-        </button>
-      </div>
+      <Adder />
       {SongListStore.hotComments.length ? (
         <div className="album_detail-body-comments-hotest">
           <div className="album_detail-body-comments-hotest-header">
