@@ -29,7 +29,6 @@ class PlayingMusicState {
     return Math.round(this.audioRef.currentTime);
   }
   set currentTime(time: number) {
-    console.log("# playingMusic", "set");
     if (!this.audioRef) return;
     this.audioRef.currentTime = time;
   }

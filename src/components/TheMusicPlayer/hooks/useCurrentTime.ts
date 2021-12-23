@@ -49,7 +49,7 @@ export function useCurrentTime(
         }
         forceUpdate();
       }
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(timer);
   }, [isPlaying]);
