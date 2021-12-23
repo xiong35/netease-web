@@ -17,7 +17,6 @@ export function useCurrentTime(
 
   /** 当前播放进度(秒) */
   const currentTime = PlayingMusicStore.getCurrentTime();
-  console.log("# useCurrentTime", { currentTime });
 
   function setCurrentTime(time: number) {
     PlayingMusicStore.currentTime = time;
