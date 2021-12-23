@@ -1,8 +1,10 @@
 import "./index.scss";
 
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useWindowSize } from "react-use/lib";
 
+import { AsideShrinkWidth } from "../../constants/mediaQuery";
 import Img from "../Img";
 import PlayListItem from "./components/PlayListItem";
 import { myMusic } from "./data/myMusic";
@@ -18,11 +20,21 @@ function _TheAsideBar() {
   const [createListHidden, setCreateListHidden] = useState(true);
   const [starListHidden, setStarListHidden] = useState(true);
 
+  const { width } = useWindowSize();
+  const isSmall = width < AsideShrinkWidth;
+  useEffect(() => {
+    setAsideBarShrink(isSmall);
+  }, [isSmall]);
+
   return (
     <>
-      <div
-        className={"aside_bar-placeholder" + (asideBarShrink ? " shrink" : "")}
-      ></div>
+      {!isSmall && (
+        <div
+          className={
+            "aside_bar-placeholder" + (asideBarShrink ? " shrink" : "")
+          }
+        ></div>
+      )}
       <div className={"aside_bar" + (asideBarShrink ? " shrink" : "")}>
         <div
           className={"aside_bar-arrow" + (asideBarShrink ? " show" : "")}
