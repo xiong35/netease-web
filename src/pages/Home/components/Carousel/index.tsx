@@ -27,7 +27,7 @@ function Carousel(/* props: CarouselProps */) {
             className={"carousel-item " + b.position}
             key={b.banner.imageUrl}
           >
-            <Img
+            <img
               alt="轮播图"
               className="carousel-item-img"
               src={b.banner.imageUrl}

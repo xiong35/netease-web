@@ -7,9 +7,7 @@ export function timeFormat(time: number): string {
     .toString()
     .padStart(2, "0");
 
-  const minutes = Math.floor(time / 60)
-    .toString()
-    .padStart(2, "0");
+  const minutes = (Math.floor(time / 60) % 60).toString().padStart(2, "0");
 
   const hours = Math.floor(time / 3600)
     .toString()

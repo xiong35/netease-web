@@ -14,11 +14,6 @@ export const routes: RouteProps[] = [
     exact: true,
   },
   {
-    path: "/login-page",
-    component: loadable(() => import("../pages/LoginPage")),
-    exact: true,
-  },
-  {
     path: "/music-detail",
     component: loadable(() => import("../pages/MusicDetail")),
     exact: true,

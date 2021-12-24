@@ -62,6 +62,7 @@ class PlayState {
   ): Promise<boolean> {
     if (typeof curMusic === "number")
       curMusic = this.tracks.find((m) => m.id === curMusic) as MusicDetail;
+    if (!curMusic) return false;
 
     const url = await getMusicUrlReq({ id: curMusic.id });
 
@@ -117,7 +118,8 @@ class PlayState {
 
     if (success) return;
 
-    if (leap === 7) return showToast("获得歌曲链接失败qwq", "error");
+    // 最多重复 10 次
+    if (leap === 14) return showToast("获得歌曲链接失败qwq", "error");
     else return this.switchMusic(direction, leap + 1);
   }
 

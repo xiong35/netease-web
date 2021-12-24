@@ -18,7 +18,7 @@ $topbar_height: 60px;
 
 .input {
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid var(--bg-d);
   width: 180px;
   height: 25px;
   line-height: 25px;
@@ -51,7 +51,7 @@ $topbar_height: 60px;
   font: Arial, Helvetica, sans-serif;
   width: 100%;
   height: $topbar_height;
-  background-color: #ec4141;
+  background-color: var(--primary);
   justify-content: space-between;
   position: fixed;
   top: 0;

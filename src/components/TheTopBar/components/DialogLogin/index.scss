@@ -49,14 +49,15 @@
 
   &-input {
     width: 80%;
-    height: 3rem;
     outline: none;
     border: 1px solid var(--bg-d);
     margin: 0.5rem;
+    padding: 1rem 0.7rem;
+    background-color: var(--bg);
   }
 
   &-hint {
-    color: red;
+    color: var(--primary);
     font-size: 12px;
   }
 
