@@ -93,7 +93,7 @@ export default async function _request<T = {}>(
     /** 错误一律返回 null */
     return null;
   } finally {
-    /** 最后设置这个请求已经结束, 在一帧之后移除之 */
+    /** 最后设置这个请求已经结束, 移除之 */
     sendingRequest.delete(hashedReq);
   }
 }

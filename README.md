@@ -46,7 +46,6 @@ netease-web 是一款复刻网易云音乐的网站[TODO]
 
 - 听歌 🎧
 - 点赞收藏评论登录一应俱全 ♥
-- 不用 vip 也能畅享听歌的特效 🎉
 
 ## :rocket: Technologies
 
