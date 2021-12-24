@@ -18,7 +18,7 @@ export default function PlayListItem(props: PlayListItem) {
         alt=""
         loadingMask={false}
       />
-      <span className="ellipsis elipsis">{content}</span>
+      <span className="ellipsis">{content}</span>
     </div>
   );
 }

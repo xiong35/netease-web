@@ -1,0 +1,75 @@
+$success: rgb(82, 199, 98);
+$warning: rgb(245, 183, 67);
+$error: rgb(207, 89, 94);
+$info: rgb(69, 146, 218);
+
+.the_toasts {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  &-toast {
+    &.success {
+      --color: #{$success};
+    }
+    &.error {
+      --color: #{$error};
+    }
+    &.info {
+      --color: #{$info};
+    }
+    &.warning {
+      --color: #{$warning};
+    }
+
+    animation: fadeIn 2s forwards;
+
+    margin-bottom: 8px;
+    width: 20rem;
+    max-width: 90vw;
+    border: 1px solid;
+    box-sizing: border-box;
+    height: 60px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+
+    color: var(--color);
+    background-color: var(--bg);
+
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      color: inherit;
+      background-color: currentColor;
+      opacity: 0.1;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        margin-top: -68px;
+      }
+      20% {
+        opacity: 1;
+        margin-top: 0;
+      }
+      80% {
+        opacity: 1;
+        margin-top: 0;
+      }
+      100% {
+        opacity: 0;
+        margin-top: -68px;
+      }
+    }
+  }
+}

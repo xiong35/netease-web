@@ -35,7 +35,7 @@ type LoadingProps = {
 function Img(props: ImgProps) {
   const {
     src,
-    imgClassName,
+    imgClassName = "",
     alt,
     className = "",
     loadingMask = true,
