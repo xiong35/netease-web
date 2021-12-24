@@ -13,13 +13,6 @@ export type MusicBrief = {
 };
 
 /**
- * 歌手信息
- */
-export type MusicAr = {
-  name: string;
-};
-
-/**
  * 歌曲详细信息, 请求 `/song/detail` 得到
  */
 export type MusicDetail = {
@@ -33,8 +26,6 @@ export type MusicDetail = {
   dt: number;
   /** 歌曲出处(描述性文字) */
   alia: string[];
-  /** 作者 */
-  ar: MusicAr[];
   publishTime: number;
 } & MusicBrief;
 
