@@ -73,7 +73,6 @@ class PlayState {
     };
 
     this.curMusic = curMusicFull;
-    console.log("# play", this.curMusic);
     PlayingMusicStore.setLyric(curMusicFull.id);
 
     savePlayStateToLocal({ curMusicId: curMusicFull.id });
@@ -189,10 +188,11 @@ class PlayState {
   async setMusicsWithoutPlaylist(musics: MusicDetail[]) {
     if (musics.length === 0) return;
     this.tracks = musics;
-    this.playlistID = Date.now();
+    this.playlistID = 0;
     this.resetRandList();
 
     this.setCurMusic(this.tracks[0]);
+    savePlayStateToLocal({ curPlayListID: 0 });
   }
 
   /**

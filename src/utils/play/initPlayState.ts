@@ -25,7 +25,8 @@ function loadLocal() {
   } else {
     const playState = JSON.parse(localData as string) as LocalPlayState;
 
-    return playState;
+    if (playState.curMusicId && playState.curPlayListID) return playState;
+    else return defaultLocalPlayState;
   }
 }
 

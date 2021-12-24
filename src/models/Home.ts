@@ -20,6 +20,7 @@ export type Personalized = {
 export type NewSong = {
   id: number;
   song: {
+    id: number;
     /** aka, 别名, 灰色写在后面 */
     alias: string[];
     artists: {

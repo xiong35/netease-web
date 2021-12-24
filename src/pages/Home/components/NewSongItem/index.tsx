@@ -1,6 +1,7 @@
 import "./index.scss";
 
 import Img from "../../../../components/Img";
+import { PlayStore } from "../../../../mobx/play";
 import { NewSong } from "../../../../models/Home";
 
 type NewSongItemProps = {
@@ -11,7 +12,21 @@ function NewSongItem(props: NewSongItemProps) {
   const { song } = props.song;
 
   return (
-    <div className="new_song_item n_s_i">
+    <div
+      className="new_song_item n_s_i"
+      onClick={() =>
+        PlayStore.setMusicsWithoutPlaylist([
+          {
+            ...song,
+            al: { ...song.album, picUrl: song.album.blurPicUrl },
+            alia: song.alias,
+            ar: song.artists,
+            dt: Date.now(),
+            publishTime: Date.now(),
+          },
+        ])
+      }
+    >
       <Img
         src={song.album.blurPicUrl}
         alt={song.album.name}

@@ -2,6 +2,7 @@ $img-size: 2.4rem;
 .n_s_i {
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &-cover {
     width: $img-size;
