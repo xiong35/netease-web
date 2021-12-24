@@ -13,6 +13,8 @@ function Pager(props: PagerProps) {
 
   const pages = computePage(totalPage, page);
 
+  if (totalPage < 2) return null;
+
   return (
     <div className="c-pager">
       <div
