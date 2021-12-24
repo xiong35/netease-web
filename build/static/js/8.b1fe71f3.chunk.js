@@ -1,2 +1,0 @@
-(this["webpackJsonpnetease-web"]=this["webpackJsonpnetease-web"]||[]).push([[8],{300:function(e,s,a){},310:function(e,s,a){"use strict";a.r(s);a(300);var n=a(1);s.default=function(){return Object(n.jsx)("div",{className:"search_page",children:"SearchPage"})}}}]);
-//# sourceMappingURL=8.b1fe71f3.chunk.js.map
