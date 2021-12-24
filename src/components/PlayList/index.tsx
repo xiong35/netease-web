@@ -21,9 +21,9 @@ export default function PlayList(props: PlayListProps) {
       onClick={() => history.push(`/album-detail?id=${id}`)}
     >
       <Img src={coverImgUrl} alt="封面" className="play_list-cover" />
-      <div className="play_list-name elipsis">{name}</div>
-      <div className="play_list-count elipsis">{trackCount}首</div>
-      <div className="play_list-creator elipsis">
+      <div className="play_list-name ellipsis">{name}</div>
+      <div className="play_list-count ellipsis">{trackCount}首</div>
+      <div className="play_list-creator ellipsis">
         <span className="play_list-creator-by">by</span>
         {creator.nickname}
       </div>

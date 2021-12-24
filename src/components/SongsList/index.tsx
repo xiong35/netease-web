@@ -68,7 +68,7 @@ export default function SongsList(props: SongsListProps) {
             return (
               <div
                 key={index}
-                className="songs_list-item-column ellipsis elipsis"
+                className="songs_list-item-column ellipsis ellipsis"
               >
                 {item.linkTo ? <NavLink to="">{Content}</NavLink> : Content}
               </div>
