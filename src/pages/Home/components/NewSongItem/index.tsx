@@ -33,11 +33,11 @@ function NewSongItem(props: NewSongItemProps) {
         className="n_s_i-cover"
       ></Img>
       <div className="n_s_i-info">
-        <div className="n_s_i-info-name elipsis">
+        <div className="n_s_i-info-name ellipsis">
           {song.name}
           <span className="n_s_i-info-name-alias">{song.alias.join("/")}</span>
         </div>
-        <div className="n_s_i-info-artist_name elipsis">
+        <div className="n_s_i-info-artist_name ellipsis">
           {song.artists.map((artist) => artist.name).join("/")}
         </div>
       </div>
