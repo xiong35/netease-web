@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "react-use/lib";
 
 import { AsideShrinkWidth } from "../../constants/mediaQuery";
+import { notImplemented } from "../../utils/notImplemented";
 import Img from "../Img";
 import PlayListItem from "./components/PlayListItem";
 import { myMusic } from "./data/myMusic";
@@ -55,7 +56,10 @@ function _TheAsideBar() {
                 tabSelected === tab ? "selected" : ""
               }`}
               key={tab}
-              onClick={() => setTabSelected(tab)}
+              onClick={() => {
+                setTabSelected(tab);
+                notImplemented();
+              }}
             >
               {tab}
             </div>

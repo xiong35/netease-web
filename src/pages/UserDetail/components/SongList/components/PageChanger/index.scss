@@ -13,6 +13,6 @@
   &-item.selected {
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 3.5px solid red;
+    border-bottom: 3.5px solid var(--primary);
   }
 }
