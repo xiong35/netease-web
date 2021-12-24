@@ -10,7 +10,7 @@ type UseSearchUsersProps = {
   page: number;
 };
 
-const LIMIT = 100;
+const LIMIT = 20;
 
 export const useSearchUsers = (props: UseSearchUsersProps) => {
   const { tab, keywords, page } = props;

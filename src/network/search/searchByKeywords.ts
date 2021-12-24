@@ -38,7 +38,9 @@ export type SearchRes<T extends SearchType> = {
         playlistCount: number;
       }
     : {
-        userprofiles: UserProfile[];
+        userprofiles: (UserProfile & {
+          avatarDetail: { identityIconUrl: string };
+        })[];
         userprofileCount: number;
       };
 };
