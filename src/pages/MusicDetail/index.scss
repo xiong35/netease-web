@@ -52,6 +52,10 @@
             transform: rotate(360deg);
           }
         }
+        &.paused {
+          animation-play-state: paused;
+        }
+
         &-img {
           width: 70%;
           aspect-ratio: 1;
