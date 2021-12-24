@@ -24,10 +24,12 @@ export const useSearchPlayLists = (props: UseSearchPlayListsProps) => {
 
   const searchPlayLists = async () => {
     if (tab !== "歌单") return;
+    console.log({ keywords });
+
     const res = await searchByKeywordsReq({
       keywords,
       limit: LIMIT,
-      offset: LIMIT * page,
+      offset: LIMIT * (page - 1),
       type: SearchType[tab],
     });
     if (!res) return;

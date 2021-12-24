@@ -4,12 +4,14 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Pager from "../../components/Pager";
+import PlayList from "../../components/PlayList";
 import SongsList from "../../components/SongsList";
 import { KEYWORDS } from "../../constants/search";
 import { useQuery } from "../../hooks/useQuery";
 import { SearchType } from "../../network/search/searchByKeywords";
 import { songsInfoFormat } from "../../utils/songsInfoFormat";
 import { useSearchMusic } from "./hooks/useSearchMusic";
+import { useSearchPlayLists } from "./hooks/useSearchPlayLists";
 
 type Query = {
   [KEYWORDS]: string;
@@ -29,6 +31,9 @@ function SearchPage() {
   const searchProps = { tab, keywords, page };
 
   const { songCount, songs } = useSearchMusic(searchProps);
+  const { playlistCount, playlists } = useSearchPlayLists(searchProps);
+
+  console.log({ playlistCount, playlists });
 
   return (
     <div className="search_page">
@@ -36,6 +41,7 @@ function SearchPage() {
       <div className="search_page-tabs">
         {tabs.map((tabItem) => (
           <div
+            key={tabItem}
             className={
               "search_page-tabs-tab" + (tabItem === tab ? " selected" : "")
             }
@@ -49,12 +55,16 @@ function SearchPage() {
           </div>
         ))}
       </div>
-      <SongsList
-        tableHeads={["音乐标题", "歌手", "专辑", "时长"]}
-        highlightWord={keywords}
-        tableContents={songsInfoFormat(songs)}
-        indexed
-      />
+      {tab === "单曲" && (
+        <SongsList
+          tableHeads={["音乐标题", "歌手", "专辑", "时长"]}
+          highlightWord={keywords}
+          tableContents={songsInfoFormat(songs)}
+          indexed
+        />
+      )}
+      {tab === "歌单" &&
+        playlists.map((list) => <PlayList {...list} key={list.id} />)}
       <Pager
         page={page}
         setPage={setPage}

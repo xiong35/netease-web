@@ -27,7 +27,7 @@ export const useSearchMusic = (props: UseSearchMusicProps) => {
     const res = await searchByKeywordsReq({
       keywords,
       limit: LIMIT,
-      offset: LIMIT * page,
+      offset: LIMIT * (page - 1),
       type: SearchType[tab],
     });
     if (!res) return;
