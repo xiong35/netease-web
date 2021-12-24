@@ -108,22 +108,5 @@ $topbar_height: 60px;
         }
       }
     }
-
-    &-theme-btn {
-      height: $topbar_height;
-      line-height: $topbar_height;
-      @extend .flex;
-
-      img {
-        cursor: pointer;
-        filter: invert(100%);
-      }
-
-      span {
-        font-size: 12px;
-        color: #fff;
-        margin-left: 5px;
-      }
-    }
   }
 }

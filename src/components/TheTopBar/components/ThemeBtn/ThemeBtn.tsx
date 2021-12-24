@@ -1,28 +1,24 @@
-import theme from '../../images/theme.svg'
-import { TheTopbarStore } from '../../../../mobx/thetopbar'
-import { observer } from 'mobx-react-lite'
+import "./index.scss";
+
+import { observer } from "mobx-react-lite";
+
+import { TheTopbarStore } from "../../../../mobx/thetopbar";
 
 function _PageChanger() {
+  const theme = TheTopbarStore.theme;
+
   return (
-    <div className="c-the_top_bar-right-theme-btn">
-      <img
-        src={theme}
-        className="icon"
-        onClick={() => {
-          TheTopbarStore.toggleSetTheme()
-          const theme = localStorage.getItem('theme')
-          if (!theme || theme == 'light') {
-            localStorage.setItem('theme', 'dark')
-          } else {
-            localStorage.setItem('theme', 'light')
-          }
-        }}
-      />
-      <span>更换主题</span>
+    <div
+      className={`c-the_top_bar-right-theme-btn ${
+        theme === "dark" ? "open" : ""
+      }`}
+      onClick={() => TheTopbarStore.toggleSetTheme()}
+    >
+      <div className="c-the_top_bar-right-theme-btn-dot"></div>
     </div>
-  )
+  );
 }
 
-const PageChanger = observer(_PageChanger)
+const PageChanger = observer(_PageChanger);
 
-export default PageChanger
+export default PageChanger;

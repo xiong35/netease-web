@@ -1,20 +1,20 @@
 import "./App.scss";
-import { observer } from "mobx-react-lite";
 
+import { observer } from "mobx-react-lite";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import TheAsideBar from "./components/TheAsideBar";
 import TheMusicPlayer from "./components/TheMusicPlayer";
 import TheTopBar from "./components/TheTopBar";
 import { useSelf } from "./hooks/useSelf";
-import { routes } from "./routes";
 import { TheTopbarStore } from "./mobx/thetopbar";
+import { routes } from "./routes";
 
 function _App() {
   useSelf();
 
   return (
-    <div className={TheTopbarStore.isDark === 'dark' ? "main dark" : "main"}>
+    <div className={`${TheTopbarStore.theme} main`}>
       <div className="main-body">
         <TheTopBar />
         <div className="main-body-content">
@@ -34,6 +34,6 @@ function _App() {
   );
 }
 
-const App = observer(_App)
+const App = observer(_App);
 
-export default App
+export default App;

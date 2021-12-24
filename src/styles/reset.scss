@@ -20,6 +20,7 @@ code {
   scrollbar-width: thin;
   scrollbar-color: var(--primary) #fff;
   color: var(--on-bg);
+  transition: color 0.2s, background 0.2s;
 }
 
 *::-webkit-scrollbar {

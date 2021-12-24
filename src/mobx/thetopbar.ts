@@ -1,4 +1,7 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable } from "mobx";
+
+type Theme = "light" | "dark";
+const themeKey = "netease-f_theme";
 
 /**
  * 头部导航条相关全局状态
@@ -6,24 +9,24 @@ import { makeAutoObservable } from 'mobx'
 class TheTopbarState {
   /** SearchBar*/
   /** 显示搜索下拉框 */
-  searchDpShown = false
+  searchDpShown = false;
 
   /** Login */
   /** 显示登录框 */
-  loginDpShown = false
+  loginDpShown = false;
   /** 显示登录Toggle */
-  loginTgShown = false
+  loginTgShown = false;
   /** 是否同意条款 */
-  lgTermsAgreed = false
+  lgTermsAgreed = false;
 
   /** Login - DpToggle */
-  LDTClassName = 'c-the_top_bar-right-login-dropdown-toggle hidden'
+  LDTClassName = "c-the_top_bar-right-login-dropdown-toggle hidden";
 
   /** 是否切换为暗色主题 */
-  isDark = localStorage.getItem('theme')
+  theme: Theme = (localStorage.getItem(themeKey) || "light") as Theme;
 
   constructor() {
-    makeAutoObservable(this)
+    makeAutoObservable(this);
   }
 
   /**
@@ -33,7 +36,7 @@ class TheTopbarState {
    */
 
   toggleShowSearchDp() {
-    this.searchDpShown = !this.searchDpShown
+    this.searchDpShown = !this.searchDpShown;
   }
 
   /**
@@ -43,7 +46,7 @@ class TheTopbarState {
    */
 
   toggleShowLoginDp() {
-    this.loginDpShown = !this.loginDpShown
+    this.loginDpShown = !this.loginDpShown;
   }
 
   /**
@@ -53,7 +56,7 @@ class TheTopbarState {
    */
 
   toggleShowLoginTg() {
-    this.loginTgShown = !this.loginTgShown
+    this.loginTgShown = !this.loginTgShown;
   }
 
   /**
@@ -63,7 +66,7 @@ class TheTopbarState {
    */
 
   toggleSetAgreed() {
-    this.lgTermsAgreed = !this.lgTermsAgreed
+    this.lgTermsAgreed = !this.lgTermsAgreed;
   }
 
   /**
@@ -73,16 +76,13 @@ class TheTopbarState {
    */
 
   setLDTClassName(name: string) {
-    this.LDTClassName = name
+    this.LDTClassName = name;
   }
 
   toggleSetTheme() {
-    if (!this.isDark || this.isDark === 'light') {
-      this.isDark = 'dark'
-    } else {
-      this.isDark = 'light'
-    }
+    this.theme = this.theme === "dark" ? "light" : "dark";
+    localStorage.setItem(themeKey, this.theme);
   }
 }
 
-export const TheTopbarStore = new TheTopbarState()
+export const TheTopbarStore = new TheTopbarState();
