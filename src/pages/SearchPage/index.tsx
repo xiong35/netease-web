@@ -61,6 +61,7 @@ function SearchPage() {
         tableHeads={["音乐标题", "歌手", "专辑", "时长"]}
         highlightWord={keywords}
         tableContents={songsInfoFormat(songs)}
+        indexed
       />
       <Pager
         page={page}
