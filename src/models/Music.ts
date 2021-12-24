@@ -26,7 +26,6 @@ export type MusicDetail = {
   dt: number;
   /** 歌曲出处(描述性文字) */
   alia: string[];
-  /** 作者 */
   publishTime: number;
 } & MusicBrief;
 

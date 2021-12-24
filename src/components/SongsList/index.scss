@@ -12,8 +12,9 @@
     }
 
     &-column {
-      min-width: 20%;
+      min-width: 25%;
       flex: 1;
+      font-size: 0.9rem;
 
       &.header {
         opacity: 0.6;
