@@ -26,6 +26,7 @@
     width: 0.8 * 1200px;
     max-width: 95%;
     margin: auto;
+    align-items: center;
 
     &-disc {
       flex: 0.5 0.5 10%;
@@ -42,7 +43,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        animation: spin 21s linear;
+        animation: spin 21s linear infinite;
         @keyframes spin {
           from {
             transform: rotate(0deg);
@@ -56,10 +57,6 @@
           aspect-ratio: 1;
           overflow: hidden;
           border-radius: 999px;
-        }
-
-        &-decorate {
-          position: absolute;
         }
       }
     }

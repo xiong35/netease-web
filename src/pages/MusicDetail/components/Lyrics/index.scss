@@ -1,4 +1,4 @@
-$height: 250px;
+$height: 300px;
 
 .lyric {
   flex: 1 1 0;
@@ -10,7 +10,7 @@ $height: 250px;
   &-mask {
     position: absolute;
     content: "";
-    right: 0;
+    right: 6px;
     left: 0;
     height: 14%;
     z-index: 1;

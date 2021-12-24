@@ -31,9 +31,6 @@ function _MusicDetail(/* props: MusicDetailProps */) {
               className="music_detail-song-disc-cover-img"
               alt={music.al.name}
             ></Img>
-            <div className="music_detail-song-disc-cover-decorate">
-              decorate
-            </div>
           </div>
         </div>
 
