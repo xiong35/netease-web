@@ -1,4 +1,4 @@
-@import '../../../../../../styles/css-constants.scss';
+@import "../../../../../../styles/css-constants.scss";
 
 .album_detail-body-search_bar {
   position: absolute;
@@ -13,7 +13,7 @@
     border-radius: 12px;
     width: 150px;
     padding: 0 30px 0 10px;
-    background-color: $selected-grey-bgcolor;
+    background-color: var(--bg-2);
     font-size: 12px;
   }
 

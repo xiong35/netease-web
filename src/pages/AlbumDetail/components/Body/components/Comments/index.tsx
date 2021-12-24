@@ -1,13 +1,16 @@
 import "./index.scss";
 
 import { observer } from "mobx-react-lite";
+import { useState } from "react";
 
+import Pager from "../../../../../../components/Pager";
 import { SongListStore } from "../../../../../../mobx/songlist";
 import Adder from "./components/Adder";
 import Comment from "./components/Comment";
-import PageSelector from "./components/PageSelector";
 
 function _Comments() {
+  const [pageIndex, setPageIndex] = useState(1);
+
   return (
     <div className="album_detail-body-comments">
       <Adder />
@@ -47,9 +50,16 @@ function _Comments() {
       ) : (
         ""
       )}
-      {SongListStore.commentCount > SongListStore.commentLimit && (
-        <PageSelector />
-      )}
+      <Pager
+        page={pageIndex}
+        totalPage={Math.ceil(
+          SongListStore.commentCount / SongListStore.commentLimit
+        )}
+        setPage={(page) => {
+          setPageIndex(page);
+          SongListStore.updateCommentPage(page);
+        }}
+      ></Pager>
     </div>
   );
 }
