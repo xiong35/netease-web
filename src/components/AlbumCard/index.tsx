@@ -1,8 +1,11 @@
 import "./index.scss";
 
+import { useHistory } from "react-router-dom";
+
 import { RecommendedPlaylist } from "../../models/Music";
 import PlayIcon from "../../pages/Home/components/PlayIcon";
 import { numFormat } from "../../utils/numFormat";
+import Img from "../Img";
 
 type AlbumCardProps = {
   playlist: RecommendedPlaylist;
@@ -11,10 +14,15 @@ type AlbumCardProps = {
 function AlbumCard(props: AlbumCardProps) {
   const { playlist } = props;
 
+  const history = useHistory();
+
   return (
-    <div className="album_card">
+    <div
+      className="album_card"
+      onClick={() => history.push(`album-detail?id=${playlist.id}`)}
+    >
       <div className="album_card-cover">
-        <img
+        <Img
           src={playlist.picUrl}
           alt={playlist.name}
           className="album_card-cover-img"

@@ -20,7 +20,7 @@ function MusicComments(props: MusicCommentsProps) {
 
   return (
     <div className="music_comments">
-      {hotComments && (
+      {hotComments && hotComments.length && (
         <>
           <h3>热评</h3>
           {hotComments.map((comment) => (

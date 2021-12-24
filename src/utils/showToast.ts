@@ -8,10 +8,9 @@
  * - info: 信息, 蓝色 toast
  */
 
-export const showToast = (
-  value: string,
-  severity: "success" | "error" | "warning" | "info"
-) => {
-  alert(value);
-  severity;
+import { ToastsStore } from "../mobx/toasts";
+import { Toast } from "../models/Toast";
+
+export const showToast = (value: string, severity: Toast["severity"]) => {
+  ToastsStore.addToast(value, severity);
 };

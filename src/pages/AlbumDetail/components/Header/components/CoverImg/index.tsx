@@ -1,14 +1,20 @@
-import './index.scss'
+import "./index.scss";
 
-import { observer } from 'mobx-react-lite'
-import { SongListStore } from '../../../../../../mobx/songlist'
+import { observer } from "mobx-react-lite";
+
+import Img from "../../../../../../components/Img";
+import { SongListStore } from "../../../../../../mobx/songlist";
 
 function _CoverImg() {
-	return (
-		<img src={SongListStore.coverImgUrl} className="album_detail-header-img" />
-	)
+  return (
+    <Img
+      alt=""
+      src={SongListStore.coverImgUrl}
+      className="album_detail-header-img"
+    />
+  );
 }
 
-const CoverImg = observer(_CoverImg)
+const CoverImg = observer(_CoverImg);
 
-export default CoverImg
+export default CoverImg;

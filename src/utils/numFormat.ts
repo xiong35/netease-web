@@ -3,8 +3,9 @@
  * 如 123456 => 12万
  * @param num
  */
-export function numFormat(num: number): string {
-  if (typeof num !== "number") return "";
+export function numFormat(num: number | string): string {
+  if (typeof num === "string") num = parseInt(num);
+  if (isNaN(num)) return "";
   if (num < 1e4) {
     // 9999 以内直接返回
     return num.toString();

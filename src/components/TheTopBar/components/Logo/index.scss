@@ -1,6 +1,10 @@
 .c-the_top_bar-logo {
-  margin: 0 0 0 3%;
   cursor: pointer;
+  @media (max-width: 800px) {
+    &.c-the_top_bar-logo.c-the_top_bar-logo {
+      display: none;
+    }
+  }
 
   img {
     width: 30px;
@@ -9,9 +13,9 @@
   }
   h2 {
     font-size: 20px;
-    color: #fff;
     margin: 0;
     font-weight: 500;
     padding-left: 4px;
+    color: var(--on-primary);
   }
 }

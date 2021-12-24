@@ -15,7 +15,11 @@ export default function DialogLogin(props: DialogLoginProps) {
   const { login } = useLogin({ checkForm, form, formHint, close });
 
   return (
-    <div className="dialog_login" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="dialog_login"
+      onKeyDown={(e) => e.key === "Escape" && close()}
+      onClick={(e) => e.stopPropagation()}
+    >
       <div className="dialog_login-close" onClick={close}></div>
       <Img
         src={logoIcon}
@@ -46,6 +50,9 @@ export default function DialogLogin(props: DialogLoginProps) {
         onBlur={() => checkForm("password")}
         onFocus={() => clearHint("password")}
         maxLength={20}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") login();
+        }}
       />
       {formHint.password && (
         <div className="dialog_login-hint">{formHint.password}</div>

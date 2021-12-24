@@ -11,14 +11,14 @@
     height: 30px;
     line-height: 30px;
     border-radius: 15px;
-    background-color: #0000000a;
-    color: #fff;
+    background-color: #00000010;
+    color: var(--on-bg);
     padding: 0 10px 0 30px;
     font-size: 13px;
   }
 
   input::-webkit-input-placeholder {
-    color: #e55d5d;
+    color: var(--primary);
     font-size: 12px;
   }
 }

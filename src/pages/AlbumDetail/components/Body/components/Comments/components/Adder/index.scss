@@ -10,20 +10,20 @@
   &-text_area {
     width: 90%;
     outline: none;
-    border: 1px solid #ddd;
+    border: 1px solid var(--bg-d);
     padding: 5px 10px;
     height: 60px;
     line-height: 20px;
     resize: none;
     background-color: var(--bg);
-    border-radius: 5px;    
+    border-radius: 5px;
   }
 
   &-btn {
     position: absolute;
     right: 4%;
     outline: none;
-    border: 1px solid #ddd;
+    border: 1px solid var(--bg-d);
     bottom: 0;
     width: 50px;
     height: 25px;

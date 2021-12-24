@@ -1,0 +1,38 @@
+$dot-size: 1.3rem;
+.c-the_top_bar-right-theme-btn {
+  display: block;
+  width: $dot-size * 2;
+  padding: 2px;
+  border-radius: 999px;
+  transition: all 0.3s;
+  background-color: var(--bg-2);
+
+  cursor: pointer;
+
+  &-dot {
+    background-color: var(--bg);
+    &:hover {
+      background-color: var(--bg-d);
+    }
+    margin-left: 0;
+    height: $dot-size;
+    width: $dot-size;
+    border-radius: 999px;
+    transition: all 0.3s;
+    background-image: url("./img/sunNMoon.png");
+    background-position: -5%;
+    background-size: 180% 90%;
+    background-repeat: no-repeat;
+    filter: saturate(1.2);
+  }
+}
+
+.dark {
+  .c-the_top_bar-right-theme-btn {
+    &-dot {
+      filter: none;
+      margin-left: calc(100% - #{$dot-size});
+      background-position: 105%;
+    }
+  }
+}

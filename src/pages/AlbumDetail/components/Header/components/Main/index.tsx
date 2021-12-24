@@ -1,36 +1,42 @@
-import "./index.scss";
+import './index.scss'
 
-import { observer } from "mobx-react-lite";
+import { observer } from 'mobx-react-lite'
 
 // 或许要把useUserPlayLists变成公共hook？
-import { useUserPlayLists } from "../../../../../../components/TheAsideBar/hooks/useUserPlayLists";
-import { PlayStore } from "../../../../../../mobx/play";
-import { SongListStore } from "../../../../../../mobx/songlist";
-import { dateFormat } from "../../../../../../utils/dateFormat";
-import { numFormat } from "../../../../../../utils/numFormat";
+import { useUserPlayLists } from '../../../../../../components/TheAsideBar/hooks/useUserPlayLists'
+import { PlayStore } from '../../../../../../mobx/play'
+import { SongListStore } from '../../../../../../mobx/songlist'
+import { dateFormat } from '../../../../../../utils/dateFormat'
+import { numFormat } from '../../../../../../utils/numFormat'
+import { useEffect, useState } from 'react'
+
 // import share from '../../../../images/share.svg'
 // import download from '../../../../images/download.svg'
-import add from "../../../../images/add.svg";
-import downTri from "../../../../images/downTri.svg";
-import play from "../../../../images/play.svg";
-import subscribe from "../../../../images/subscribe.svg";
-import subscribed from "../../../../images/subscribed.svg";
-import upTri from "../../../../images/upTri.svg";
+import add from '../../../../images/add.svg'
+import downTri from '../../../../images/downTri.svg'
+import play from '../../../../images/play.svg'
+import subscribe from '../../../../images/subscribe.svg'
+import subscribed from '../../../../images/subscribed.svg'
+import upTri from '../../../../images/upTri.svg'
 
 function _Main() {
-  const { createPlayLists, starPlayLists } = useUserPlayLists();
+  const { createPlayLists, starPlayLists } = useUserPlayLists()
+
   // 歌单是否由本人创建
   const createdBySelf = createPlayLists.find(
-    (item) => item.id === SongListStore.id
+    item => item.id === SongListStore.id
   )
     ? true
-    : false;
+    : false
   // 歌单是否已收藏
-  const isSubscribed = starPlayLists.find(
-    (item) => item.id === SongListStore.id
-  )
+  const isSubscribed = starPlayLists.find(item => item.id === SongListStore.id)
     ? true
-    : false;
+    : false
+  const [toggleSubscribed, setToggleSubscribed] = useState(false)
+
+  useEffect(() => {
+    setToggleSubscribed(isSubscribed)
+  }, [isSubscribed])
 
   return (
     <div className="album_detail-header-main">
@@ -48,7 +54,7 @@ function _Main() {
         <a
           className="album_detail-header-main-creator-name"
           onClick={() => {
-            window.location.href = `/user-detail?uid=${SongListStore.creator?.userId}`;
+            window.location.href = `/user-detail?uid=${SongListStore.creator?.userId}`
           }}
         >
           {SongListStore.creator?.nickname}
@@ -56,7 +62,7 @@ function _Main() {
         <span
           className="album_detail-header-main-ar-create_time"
           onClick={() => {
-            window.location.href = `/user-detail?uid=${SongListStore.creator?.userId}`;
+            window.location.href = `/user-detail?uid=${SongListStore.creator?.userId}`
           }}
         >
           {dateFormat(SongListStore.createTime)} 创建
@@ -68,21 +74,33 @@ function _Main() {
             src={play}
             className="icon"
             onClick={() => {
-              PlayStore.setPlayListNMusic(SongListStore.id);
+              PlayStore.setPlayListNMusic(SongListStore.id)
             }}
           />
           播放全部
           <img src={add} className="icon" />
         </button>
         <button
-          className={"album_detail-header-main-operations-subscribe"}
+          className={
+            !createdBySelf
+              ? 'album_detail-header-main-operations-subscribe'
+              : 'album_detail-header-main-operations-subscribe disabled'
+          }
           onClick={() => {
-            // fix
-            SongListStore.subscribe(SongListStore.id);
+            if (!toggleSubscribed) {
+              SongListStore.subscribe(SongListStore.id)
+            } else {
+              SongListStore.unSubscribe(SongListStore.id)
+            }
+            setToggleSubscribed(!toggleSubscribed)
           }}
+          disabled={createdBySelf}
         >
-          <img src={isSubscribed ? subscribed : subscribe} className="icon" />
-          {isSubscribed ? "已收藏" : "收藏"} (
+          <img
+            src={toggleSubscribed && !createdBySelf ? subscribed : subscribe}
+            className="icon"
+          />
+          {toggleSubscribed && !createdBySelf ? '已收藏' : '收藏'} (
           {numFormat(SongListStore.subscribedCount)})
         </button>
         {/* <button className="album_detail-header-main-operations-share">
@@ -101,7 +119,7 @@ function _Main() {
               标签：
             </span>
             <div>
-              {SongListStore.tags.map((item) => (
+              {SongListStore.tags.map(item => (
                 <a href="#" className="album_detail-header-main-info-tags-item">
                   {item}&nbsp;
                 </a>
@@ -109,7 +127,7 @@ function _Main() {
             </div>
           </div>
         ) : (
-          ""
+          ''
         )}
         <div className="album_detail-header-main-info-count">
           <span className="album_detail-header-main-info-count-track_count">
@@ -123,29 +141,34 @@ function _Main() {
           <div
             className={
               SongListStore.showDes
-                ? "album_detail-header-main-info-description full"
-                : "album_detail-header-main-info-description"
+                ? 'album_detail-header-main-info-description full'
+                : 'album_detail-header-main-info-description'
             }
           >
-            <img
-              src={SongListStore.showDes ? upTri : downTri}
-              className="icon"
-              onClick={() => {
-                SongListStore.toggleShowDes();
-              }}
-            />
+            {SongListStore.description.split(/\r\n|\r|\n/).length > 1 ? (
+              <img
+                src={SongListStore.showDes ? upTri : downTri}
+                className="icon"
+                onClick={() => {
+                  SongListStore.toggleShowDes()
+                }}
+              />
+            ) : (
+              ''
+            )}
+
             <pre className="album_detail-header-main-info-description-content">
               简介：{SongListStore.description}
             </pre>
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>
-  );
+  )
 }
 
-const Main = observer(_Main);
+const Main = observer(_Main)
 
-export default Main;
+export default Main

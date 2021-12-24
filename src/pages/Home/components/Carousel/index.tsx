@@ -1,7 +1,8 @@
 import "./index.scss";
 
-import imgLeftArrow from "./img/left.svg";
+import Img from "../../../../components/Img";
 import { useBanners } from "./hooks/useBanners";
+import imgLeftArrow from "./img/left.svg";
 
 // type CarouselProps = {
 // };
@@ -26,7 +27,11 @@ function Carousel(/* props: CarouselProps */) {
             className={"carousel-item " + b.position}
             key={b.banner.imageUrl}
           >
-            <img className="carousel-item-img" src={b.banner.imageUrl} />
+            <img
+              alt="轮播图"
+              className="carousel-item-img"
+              src={b.banner.imageUrl}
+            />
             {b.banner.typeTitle && (
               <div className="carousel-item-badage">{b.banner.typeTitle}</div>
             )}

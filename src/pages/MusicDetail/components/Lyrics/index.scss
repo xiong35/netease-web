@@ -1,12 +1,33 @@
-$height: 250px;
+$height: 300px;
 
 .lyric {
   flex: 1 1 0;
   text-align: center;
 
   height: $height;
-  overflow-y: scroll;
-  padding: 10px;
+  position: relative;
+
+  &-mask {
+    position: absolute;
+    content: "";
+    right: 6px;
+    left: 0;
+    height: 14%;
+    z-index: 1;
+    &.top {
+      top: 0;
+      background: linear-gradient(0deg, transparent, var(--bg));
+    }
+    &.bottom {
+      bottom: 0;
+      background: linear-gradient(180deg, transparent, var(--bg));
+    }
+  }
+
+  &-scroll-wrap {
+    height: 100%;
+    overflow-y: scroll;
+  }
 
   &-warp {
     position: relative;

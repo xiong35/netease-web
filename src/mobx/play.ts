@@ -4,6 +4,7 @@ import { defaultMusic, MusicDetail, MusicID, MusicNUrl, PlayMode } from "../mode
 import { PlayList, PlayListID } from "../models/PlayList";
 import { getMusicUrlReq } from "../network/music/getMusicUrl";
 import { getPlayListReq } from "../network/playList/getPlayList";
+import { initPlayState, savePlayStateToLocal } from "../utils/play/initPlayState";
 import { Scheduler } from "../utils/scheduler";
 import { showToast } from "../utils/showToast";
 import { PlayingMusicStore } from "./playingMusic";
@@ -26,6 +27,10 @@ class PlayState {
 
   constructor() {
     makeAutoObservable(this);
+    const { curMusicId, curPlayListID, curPlayMode } = initPlayState();
+
+    this.playMode = curPlayMode;
+    this.setPlayListNMusic(curPlayListID, curMusicId, true);
   }
 
   /** 刷新随机列表 */
@@ -57,6 +62,7 @@ class PlayState {
   ): Promise<boolean> {
     if (typeof curMusic === "number")
       curMusic = this.tracks.find((m) => m.id === curMusic) as MusicDetail;
+    if (!curMusic) return false;
 
     const url = await getMusicUrlReq({ id: curMusic.id });
 
@@ -69,6 +75,8 @@ class PlayState {
 
     this.curMusic = curMusicFull;
     PlayingMusicStore.setLyric(curMusicFull.id);
+
+    savePlayStateToLocal({ curMusicId: curMusicFull.id });
 
     return true;
   }
@@ -110,7 +118,8 @@ class PlayState {
 
     if (success) return;
 
-    if (leap === 7) return showToast("获得歌曲链接失败qwq", "error");
+    // 最多重复 10 次
+    if (leap === 14) return showToast("获得歌曲链接失败qwq", "error");
     else return this.switchMusic(direction, leap + 1);
   }
 
@@ -155,7 +164,9 @@ class PlayState {
     }
 
     if (musicID) {
-      if (musicID !== this.curMusic.id && !force) {
+      if (musicID === this.curMusic.id && !force) {
+        /* 给了相同的 id 但没有强制设置则不设置 */
+      } else {
         this.setCurMusic(musicID);
       }
     } else {
@@ -166,6 +177,10 @@ class PlayState {
         this.setCurMusic(this.tracks[0]);
       }
     }
+
+    savePlayStateToLocal({
+      curPlayListID: typeof playlist === "number" ? playlist : playlist.id,
+    });
   }
 
   /**
@@ -175,21 +190,22 @@ class PlayState {
   async setMusicsWithoutPlaylist(musics: MusicDetail[]) {
     if (musics.length === 0) return;
     this.tracks = musics;
-    this.playlistID = Date.now();
+    this.playlistID = 0;
     this.resetRandList();
 
     this.setCurMusic(this.tracks[0]);
+    savePlayStateToLocal({ curPlayListID: 0 });
   }
 
   /**
    * 切换播放模式
    */
   switchPlayMode() {
-    if (this.playMode === PlayMode.NORMAL)
-      return (this.playMode = PlayMode.RAND);
-    if (this.playMode === PlayMode.RAND) return (this.playMode = PlayMode.LOOP);
-    if (this.playMode === PlayMode.LOOP)
-      return (this.playMode = PlayMode.NORMAL);
+    if (this.playMode === PlayMode.NORMAL) this.playMode = PlayMode.RAND;
+    else if (this.playMode === PlayMode.RAND) this.playMode = PlayMode.LOOP;
+    else if (this.playMode === PlayMode.LOOP) this.playMode = PlayMode.NORMAL;
+
+    savePlayStateToLocal({ curPlayMode: this.playMode });
   }
 }
 

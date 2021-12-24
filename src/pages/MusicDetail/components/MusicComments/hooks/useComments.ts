@@ -14,6 +14,8 @@ export function useComments(musicID: number) {
       if (!res) return;
 
       setComments(res.comments);
+      setTotal(res.total);
+      setHotComments(res.hotComments);
     });
   }, [page]);
 

@@ -1,128 +1,143 @@
-@import '../../../../../../styles/css-constants.scss';
+@import "../../../../../../styles/css-constants.scss";
 
 .header-btn {
-	height: 30px;
-	line-height: 30px;
-	border-radius: 15px;
-	outline: none;
-	border: 1px solid #ccc;
-	min-width: 95px;
-	background-color: #fff;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	margin-right: 8px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid var(--bg-d);
+  min-width: 95px;
+  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 8px;
 }
 
 .album_detail-header-main {
   width: 100%;
-	&-title {
-		display: flex;
-		align-items: center;
-		margin-bottom: 10px;
 
-		&-tag {
-			border: 1px solid red;
-			font-size: 12px;
-			color: red;
-			width: 30px;
-			height: 15px;
-			line-height: 15px;
-			text-align: center;
-			margin-right: 10px;
-		}
+  &-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 
-		&-content {
-			font-size: 19px;
-		}
-	}
+    &-tag {
+      border: 1px solid var(--primary);
+      font-size: 12px;
+      color: var(--primary);
+      width: 30px;
+      height: 15px;
+      line-height: 15px;
+      text-align: center;
+      margin-right: 10px;
+    }
 
-	&-creator {
-		display: flex;
-		height: 20px;
-		line-height: 20px;
-		font-size: 12px;
-		margin-bottom: 10px;
+    &-content {
+      font-size: 19px;
+    }
+  }
 
-		&-avatar {
-			width: 20px;
-			height: 20px;
-			border-radius: 50%;
-			border: 1px solid #ddd;
-			margin-right: 6px;
-		}
+  &-creator {
+    display: flex;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
 
-		&-name {
-			color: #507daf;
-			margin-right: 6px;
-		}
-	}
+    &-avatar {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid var(--bg-d);
+      margin-right: 6px;
+    }
 
-	&-operations {
-		display: flex;
-		margin-bottom: 10px;
+    &-name {
+      color: #507daf;
+      margin-right: 6px;
+    }
+  }
 
-		.icon {
-			width: 18px;
-			height: 18px;
-			margin: 0 3px 1px 0;
-		}
+  &-operations {
+    display: flex;
+    margin-bottom: 10px;
 
-		&-play_all,
-		&-subscribe,
-		&-share,
-		&-download {
-			@extend .header-btn;
-			color: #444;
-		}
+    .icon {
+      width: 18px;
+      height: 18px;
+      margin: 0 3px 1px 0;
+    }
 
-		&-play_all {
-			background-color: red;
-			color: #fff;
-			width: 120px;
+    &-play_all,
+    &-subscribe,
+    &-share,
+    &-download {
+      @extend .header-btn;
+      color: var(--on-bg);
+    }
+
+    &-subscribe.disabled {
+      background-color: var(--bg);
+      cursor: default;
+      opacity: 0.7;
+    }
+    &-subscribe {
+      padding: 0 0.5rem;
+    }
+
+    &-subscribe.disabled:hover {
+      background-color: var(--bg);
+    }
+
+    &-play_all {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      width: 120px;
       border: none;
 
-			.icon {
-				filter: invert(100%) contrast(200%);
-				width: 15px;
-				height: 15px;
-				margin: 0 5px 3px 5px;
-			}
-		}
+      .icon {
+        filter: invert(100%) contrast(200%);
+        width: 15px;
+        height: 15px;
+        margin: 0 5px 3px 5px;
+      }
+    }
 
-		&-play_all:hover {
-			background-color: #d73535;
-		}
+    &-play_all:hover {
+      background-color: var(--primary);
+    }
 
-		&-subscribe:hover,
-		&-share:hover,
-		&-download:hover {
-			background-color: $selected-grey-bgcolor;
-		}
-	}
+    &-subscribe:hover,
+    &-share:hover,
+    &-download:hover {
+      background-color: var(--bg);
+      // background-color: var(--bg-2);
+    }
+  }
 
-	&-info {
-		display: flex;
-		flex-direction: column;
-		font-size: 13px;
+  &-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
 
-		&-tags {
+    &-tags {
       display: flex;
       margin-bottom: 4px;
 
       &-item {
         color: #507daf;
       }
-		}
+    }
 
-		&-count {
+    &-count {
       margin-bottom: 4px;
 
-			&-track_count {
-				margin-right: 10px;
-			}
-		}
+      &-track_count {
+        margin-right: 10px;
+      }
+    }
 
     &-description {
       line-height: 25px;
@@ -138,10 +153,14 @@
         filter: invert(50%);
         cursor: pointer;
       }
+
+      &-content {
+        white-space: pre-wrap;
+      }
     }
 
     &-description.full {
       height: auto;
     }
-	}
+  }
 }
