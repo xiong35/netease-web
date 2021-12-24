@@ -10,9 +10,6 @@ import { showToast } from "../utils/showToast";
 
 const SERVER_BASE_URL = "http://api.xiong35.cn/netease";
 
-/** 根据哈希值判断有无重复发起的请求 */
-const sendingRequest = new Set<string>();
-
 /**
  * 失败会返回200以外的http状态码
  */
@@ -30,20 +27,6 @@ export default async function _request<T = {}>(
   config: AxiosRequestConfig,
   shouldShowHint = true
 ) {
-  /** 将请求哈希并存储, 以避免短时间内连续发出完全相同的请求 */
-  const hashedReq = JSON.stringify({
-    u: config.url,
-    d: config.data,
-    p: config.params,
-  });
-  /** 有一样的请求就返回 */
-  if (sendingRequest.has(hashedReq)) {
-    console.warn("a same request is on its way\nat: ", config);
-
-    return null;
-  }
-  sendingRequest.add(hashedReq);
-
   const instance = axios.create({
     baseURL: SERVER_BASE_URL,
     timeout: 60000,
@@ -92,8 +75,5 @@ export default async function _request<T = {}>(
 
     /** 错误一律返回 null */
     return null;
-  } finally {
-    /** 最后设置这个请求已经结束, 移除之 */
-    sendingRequest.delete(hashedReq);
   }
 }
