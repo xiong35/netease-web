@@ -31,10 +31,6 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
 
   const history = useHistory();
 
-  useEffect(() => {
-    PlayStore.setPlayListNMusic(24381616);
-  }, []);
-
   const { isPlaying, togglePlaying, setIsPlaying } = useIsPlaying(audioRef);
   const { currentTime, duration, percent, slideRef, handleMouseEvent } =
     useCurrentTime(audioRef, setIsPlaying, isPlaying, url);

@@ -66,24 +66,23 @@ export const defaultMusic: MusicNUrl = {
   // type: "",
   // url: "",
 
-  id: 33894312,
-  url: "http://m7.music.126.net/20211204155137/9fd6bc1c9b7ba8b400150c5e8c41f9e8/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3",
-  name: "情非得已 (童声版)",
+  id: 0,
+  url: "",
+  name: "",
   ar: [
     {
-      id: 122455,
-      name: "群星",
+      id: 0,
+      name: "",
     },
   ],
-  dt: 1000 * 60 * 3,
+  dt: 0,
   al: {
-    id: 3263929,
-    name: "热门华语275",
-    picUrl:
-      "https://p1.music.126.net/cpoUinrExafBHL5Nv5iDHQ==/109951166361218466.jpg",
+    id: 0,
+    name: "",
+    picUrl: "",
   },
 
-  publishTime: 1388505600004,
+  publishTime: Date.now(),
   alia: [],
 };
 
