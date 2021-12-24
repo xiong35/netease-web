@@ -75,7 +75,18 @@
 		&-download {
 			@extend .header-btn;
 			color: #444;
+      // background-color: var(--bg);
 		}
+
+    &-subscribe.disabled {
+      background-color: $selected-grey-bgcolor;
+      cursor: default;
+      opacity: 0.7;
+    }
+
+    &-subscribe.disabled:hover {
+      background-color: $selected-grey-bgcolor;
+    }
 
 		&-play_all {
 			background-color: red;
@@ -99,6 +110,7 @@
 		&-share:hover,
 		&-download:hover {
 			background-color: $selected-grey-bgcolor;
+      // background-color: var(--bg-2);
 		}
 	}
 
