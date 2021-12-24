@@ -17,67 +17,7 @@
 
 .album_detail-header-main {
   width: 100%;
-<<<<<<< HEAD
 
-	&-title {
-		display: flex;
-		align-items: center;
-		margin-bottom: 10px;
-
-		&-tag {
-			border: 1px solid red;
-			font-size: 12px;
-			color: red;
-			width: 30px;
-			height: 15px;
-			line-height: 15px;
-			text-align: center;
-			margin-right: 10px;
-		}
-
-		&-content {
-			font-size: 19px;
-		}
-	}
-
-	&-creator {
-		display: flex;
-		height: 20px;
-		line-height: 20px;
-		font-size: 12px;
-		margin-bottom: 10px;
-
-		&-avatar {
-			width: 20px;
-			height: 20px;
-			border-radius: 50%;
-			border: 1px solid #ddd;
-			margin-right: 6px;
-		}
-
-		&-name {
-			color: #507daf;
-			margin-right: 6px;
-		}
-	}
-
-	&-operations {
-		display: flex;
-		margin-bottom: 10px;
-
-		.icon {
-			width: 18px;
-			height: 18px;
-			margin: 0 3px 1px 0;
-		}
-
-		&-play_all,
-		&-subscribe,
-		&-share,
-		&-download {
-			@extend .header-btn;
-			color: #444;
-=======
   &-title {
     display: flex;
     align-items: center;
@@ -136,8 +76,6 @@
     &-download {
       @extend .header-btn;
       color: var(--on-bg);
->>>>>>> c511650c4abbdb323b26257e43785ff071a09632
-      // background-color: var(--bg);
     }
 
     &-subscribe.disabled {
