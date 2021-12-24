@@ -21,13 +21,6 @@ import upTri from '../../../../images/upTri.svg'
 
 function _Main() {
   const { createPlayLists, starPlayLists } = useUserPlayLists()
-  // const desContentPre = document.querySelector(
-  //   '.album_detail-header-main-info-description-content'
-  // )
-  // console.log(desContentPre)
-  // if (desContentPre) {
-  //   console.log(getComputedStyle(desContentPre).height)
-  // }
 
   // 歌单是否由本人创建
   const createdBySelf = createPlayLists.find(

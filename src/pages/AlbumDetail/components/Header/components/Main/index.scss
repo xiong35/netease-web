@@ -17,6 +17,7 @@
 
 .album_detail-header-main {
   width: 100%;
+
 	&-title {
 		display: flex;
 		align-items: center;
@@ -149,6 +150,10 @@
         top: 6px;
         filter: invert(50%);
         cursor: pointer;
+      }
+
+      &-content {
+        white-space: pre-wrap;
       }
     }
 
