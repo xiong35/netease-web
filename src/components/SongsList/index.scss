@@ -25,6 +25,10 @@
       flex: 1;
       font-size: 0.9rem;
 
+      &:last-child {
+        min-width: unset;
+      }
+
       &.header {
         opacity: 0.6;
       }
