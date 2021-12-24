@@ -1,20 +1,22 @@
-import './index.scss'
+import "./index.scss";
 
-import { SingleComment } from '../../../../../../../../models/Comments'
-import { dateFormat } from '../../../../../../../../utils/dateFormat'
+import Img from "../../../../../../../../components/Img";
+import { SingleComment } from "../../../../../../../../models/Comments";
+import { dateFormat } from "../../../../../../../../utils/dateFormat";
 
 type commentProps = {
-  data: SingleComment
-}
+  data: SingleComment;
+};
 
 function Comment(props: commentProps) {
   return (
     <div className="album_detail-body-comments-item">
-      <img
+      <Img
         src={props.data.user.avatarUrl}
+        alt={props.data.user.nickname}
         className="album_detail-body-comments-item-avatar"
         onClick={() => {
-          window.location.href = `/user-detail?uid=${props.data.user.userId}`
+          window.location.href = `/user-detail?uid=${props.data.user.userId}`;
         }}
       />
       <div className="album_detail-body-comments-item-body">
@@ -22,10 +24,10 @@ function Comment(props: commentProps) {
           <span
             className="album_detail-body-comments-item-body-upper-nick_name"
             onClick={() => {
-              window.location.href = `/user-detail?uid=${props.data.user.userId}`
+              window.location.href = `/user-detail?uid=${props.data.user.userId}`;
             }}
           >
-            {props.data.user.nickname + ':'}
+            {props.data.user.nickname + ":"}
           </span>
           <span className="album_detail-body-comments-item-body-upper-content">
             {props.data.content}
@@ -36,7 +38,7 @@ function Comment(props: commentProps) {
             <span
               className="album_detail-body-comments-item-body-replied-name"
               onClick={() => {
-                window.location.href = `/user-detail?uid=${props.data.beReplied[0].user.userId}`
+                window.location.href = `/user-detail?uid=${props.data.beReplied[0].user.userId}`;
               }}
             >
               @{props.data.beReplied[0].user.nickname}：
@@ -46,14 +48,14 @@ function Comment(props: commentProps) {
             </span>
           </div>
         ) : (
-          ''
+          ""
         )}
         <div className="album_detail-body-comments-item-body-date">
           {dateFormat(props.data.time)}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Comment
+export default Comment;

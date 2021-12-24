@@ -1,5 +1,6 @@
 import "./index.scss";
 
+import Img from "../../../../components/Img";
 import { Personalized } from "../../../../models/Home";
 import PlayIcon from "../PlayIcon";
 
@@ -13,7 +14,7 @@ function PersonalizedCard(props: PersonalizedCardProps) {
   return (
     <div className="personalized_card">
       <div className="personalized_card-cover">
-        <img
+        <Img
           src={item.picUrl}
           alt={item.name}
           className="personalized_card-cover-img"
