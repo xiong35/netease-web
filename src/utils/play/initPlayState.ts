@@ -11,7 +11,7 @@ type LocalPlayState = {
 };
 
 const defaultLocalPlayState: LocalPlayState = {
-  curMusicId: 20200843,
+  curMusicId: 1338149101,
   curPlayListID: 2839545331,
   curPlayMode: PlayMode.NORMAL,
 };
