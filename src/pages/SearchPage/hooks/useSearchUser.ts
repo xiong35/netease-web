@@ -4,7 +4,7 @@ import {
     searchByKeywordsReq, SearchRes, SearchType
 } from "../../../network/search/searchByKeywords";
 
-type UseSearchMusicProps = {
+type UseSearchUsersProps = {
   tab: keyof typeof SearchType;
   keywords: string;
   page: number;
@@ -12,18 +12,18 @@ type UseSearchMusicProps = {
 
 const LIMIT = 100;
 
-export const useSearchMusic = (props: UseSearchMusicProps) => {
+export const useSearchUsers = (props: UseSearchUsersProps) => {
   const { tab, keywords, page } = props;
 
   const [searchRes, setSearchRes] = useState<
-    SearchRes<SearchType.单曲>["result"]
+    SearchRes<SearchType.用户>["result"]
   >({
-    songCount: 0,
-    songs: [],
+    userprofileCount: 0,
+    userprofiles: [],
   });
 
-  const searchMusic = async () => {
-    if (tab !== "单曲") return;
+  const searchUsers = async () => {
+    if (tab !== "用户") return;
     const res = await searchByKeywordsReq({
       keywords,
       limit: LIMIT,
@@ -35,8 +35,8 @@ export const useSearchMusic = (props: UseSearchMusicProps) => {
   };
 
   useEffect(() => {
-    searchMusic();
+    searchUsers();
   }, [tab, keywords, page]);
 
-  return { songs: searchRes.songs, songCount: searchRes.songCount };
+  return { ...searchRes };
 };

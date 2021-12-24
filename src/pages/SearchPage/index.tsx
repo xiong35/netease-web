@@ -16,8 +16,6 @@ type Query = {
   tab: keyof typeof SearchType;
 };
 
-const LIMIT = 100;
-
 const tabs = ["单曲", "歌单", "用户"];
 
 function SearchPage() {
@@ -28,15 +26,9 @@ function SearchPage() {
 
   const history = useHistory();
 
-  const { songCount, songs } = useSearchMusic({
-    tab,
-    params: {
-      keywords,
-      limit: LIMIT,
-      offset: (page - 1) * LIMIT,
-      type: SearchType[tab],
-    },
-  });
+  const searchProps = { tab, keywords, page };
+
+  const { songCount, songs } = useSearchMusic(searchProps);
 
   return (
     <div className="search_page">
