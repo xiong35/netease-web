@@ -4,8 +4,8 @@
 // Electron参考文档 https://www.electronjs.org/docs
 const { app, BrowserWindow, nativeImage } = require("electron");
 
-// const url = require('url');
-// const path = require('path');
+// const url = require("url");
+// const path = require("path");
 
 function createWindow() {
   let mainWindow = new BrowserWindow({
@@ -23,14 +23,17 @@ function createWindow() {
   });
 
   // 加载应用 --打包react应用后，__dirname为当前文件路径
-  // mainWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, './build/index.html'),
-  //   protocol: 'file:',
-  //   slashes: true
-  // }));
+  // mainWindow.loadURL(
+  //   url.format({
+  //     pathname: path.join(__dirname, "./build/index.html"),
+  //     protocol: "file:",
+  //     slashes: true,
+  //   })
+  // );
 
   // 加载应用 --开发阶段  需要运行 npm run start
-  mainWindow.loadURL("http://localhost:3000/");
+  // mainWindow.loadURL("http://localhost:3000/");
+  mainWindow.loadURL("http://netease.xiong35.cn/");
 
   // 解决应用启动白屏问题
   mainWindow.on("ready-to-show", () => {

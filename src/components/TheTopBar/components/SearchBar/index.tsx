@@ -14,6 +14,7 @@ function SearchBar() {
 
   function search() {
     history.push(`/search-page?keywords=${keyword}`);
+    setShowDropDown(false);
   }
 
   return (

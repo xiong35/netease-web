@@ -1,6 +1,6 @@
 {
   "name": "netease-web",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "private": false,
   "build": {
     "extends": null,
@@ -13,7 +13,8 @@
       "target": [
         "nsis",
         "zip"
-      ]
+      ],
+      "icon": "./public/logo.ico"
     },
     "nsis": {
       "shortcutName": "netease-fake",
