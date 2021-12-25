@@ -12,13 +12,13 @@
     line-height: 30px;
     border-radius: 15px;
     background-color: #00000010;
-    color: var(--on-bg);
+    color: var(--on-primary);
     padding: 0 10px 0 30px;
     font-size: 13px;
   }
 
   input::-webkit-input-placeholder {
-    color: var(--primary);
-    font-size: 12px;
+    color: var(--on-primary);
+    opacity: 0.4;
   }
 }

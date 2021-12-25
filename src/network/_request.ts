@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
+import { COOKIE } from "../constants/localStorageKey";
 import { showToast } from "../utils/showToast";
 
 // import { nanoid } from "@reduxjs/toolkit";
@@ -32,6 +33,10 @@ export default async function _request<T = {}>(
     timeout: 60000,
     // withCredentials: true,
   });
+
+  const cookie = localStorage.getItem(COOKIE);
+  if (cookie)
+    config.params = config.params ? { ...config.params, cookie } : { cookie };
 
   try {
     /** 执行请求 */

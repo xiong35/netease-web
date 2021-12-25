@@ -1,8 +1,8 @@
-import { tableContent } from "../components/SongsList";
+import { TableContent } from "../components/SongsList";
 import { MusicDetail } from "../models/Music";
 import { timeFormat } from "./timeFormat";
 
-type FormatSongs = tableContent[];
+type FormatSongs = TableContent[];
 
 export const songsInfoFormat = (songsInfo: MusicDetail[]): FormatSongs => {
   const songsInfoFormat: FormatSongs = [];
@@ -14,7 +14,7 @@ export const songsInfoFormat = (songsInfo: MusicDetail[]): FormatSongs => {
       .slice(1);
 
     // 似乎好像什么都不能点击，linkTo好像没啥用（
-    const songFormat: tableContent = {
+    const songFormat: TableContent = {
       id: song.id,
       专辑: {
         content: song.al.name,

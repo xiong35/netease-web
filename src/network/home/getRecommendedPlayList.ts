@@ -1,4 +1,3 @@
-import { enCookie } from "../../constants/cookie";
 import { RecommendedPlaylist } from "../../models/Music";
 import _request from "../_request";
 
@@ -9,7 +8,6 @@ export async function getRecommendedPlayListReq() {
   const res = await _request<{ recommend: RecommendedPlaylist[] }>({
     url: "/recommend/resource",
     method: "GET",
-    params: { cookie: enCookie },
   });
 
   if (!res || !res.recommend) return null;

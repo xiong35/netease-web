@@ -2,17 +2,19 @@ import "./index.scss";
 
 import { NavLink } from "react-router-dom";
 
-type tableHead = "音乐标题" | "歌手" | "专辑" | "时长";
-export type tableContent = {
-  [K in tableHead]?: {
+import { setCurSong } from "./util/setCurSong";
+
+type TableHead = "音乐标题" | "歌手" | "专辑" | "时长";
+export type TableContent = {
+  [K in TableHead]?: {
     content: string;
     linkTo?: () => void;
   };
 } & { id: number };
 
 type SongsListProps = {
-  tableHeads: tableHead[];
-  tableContents: tableContent[];
+  tableHeads: TableHead[];
+  tableContents: TableContent[];
   highlightWord?: string;
   indexed?: boolean;
   // setLike?: boolean;
@@ -23,7 +25,7 @@ export default function SongsList(props: SongsListProps) {
 
   // /.^/ 为不匹配任何东西的正则，不过最好还是匹配时候多判断一下不要匹配
   const highlightReg = highlightWord
-    ? new RegExp(`([^${highlightWord}]*)(${highlightWord})(.*)`)
+    ? new RegExp(`([^${highlightWord}]*)(${highlightWord})(.*)`, "i")
     : /.^/;
 
   return (
@@ -33,13 +35,17 @@ export default function SongsList(props: SongsListProps) {
           {indexed && <div className="songs_list-item-opts-index"></div>}
         </div>
         {tableHeads.map((head, index) => (
-          <div key={index} className="songs_list-item-column header">
+          <div key={index} className="songs_list-item-column header ellipsis">
             {head}
           </div>
         ))}
       </div>
       {tableContents.map((content, index) => (
-        <div className="songs_list-item" key={index}>
+        <div
+          className="songs_list-item"
+          key={index}
+          onClick={() => setCurSong(content.id)}
+        >
           <div className="songs_list-item-opts">
             {indexed && (
               <div className="songs_list-item-opts-index">{index + 1}</div>
@@ -66,10 +72,7 @@ export default function SongsList(props: SongsListProps) {
             );
 
             return (
-              <div
-                key={index}
-                className="songs_list-item-column ellipsis elipsis"
-              >
+              <div key={index} className="songs_list-item-column ellipsis">
                 {item.linkTo ? <NavLink to="">{Content}</NavLink> : Content}
               </div>
             );

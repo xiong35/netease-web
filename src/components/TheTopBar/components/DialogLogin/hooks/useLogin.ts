@@ -24,7 +24,7 @@ export const useLogin = (props: UseLogin) => {
 
     SelfStore.self = userInfo.profile;
 
-    window.localStorage.setItem(COOKIE, userInfo.cookie);
+    window.localStorage.setItem(COOKIE, encodeURIComponent(userInfo.cookie));
     showToast("登录成功", "success");
     close();
   };

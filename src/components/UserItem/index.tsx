@@ -57,7 +57,7 @@ export default function UserItem(props: UserItemProps) {
         </div>
       )}
       <div className="spacer"></div>
-      <div className="user_item-signature elipsis">
+      <div className="user_item-signature ellipsis">
         {avatarDetail ? description || "网易音乐人" : signature}
       </div>
     </div>
