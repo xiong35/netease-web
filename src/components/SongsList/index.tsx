@@ -36,7 +36,7 @@ export default function SongsList(props: SongsListProps) {
           {indexed && <div className="songs_list-item-opts-index"></div>}
         </div>
         {tableHeads.map((head, index) => (
-          <div key={index} className="songs_list-item-column header">
+          <div key={index} className="songs_list-item-column header ellipsis">
             {head}
           </div>
         ))}
@@ -73,10 +73,7 @@ export default function SongsList(props: SongsListProps) {
             );
 
             return (
-              <div
-                key={index}
-                className="songs_list-item-column ellipsis ellipsis"
-              >
+              <div key={index} className="songs_list-item-column ellipsis">
                 {item.linkTo ? <NavLink to="">{Content}</NavLink> : Content}
               </div>
             );
