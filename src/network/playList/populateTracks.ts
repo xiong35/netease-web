@@ -1,12 +1,12 @@
-import _request from "../_request";
 import { MusicDetail } from "../../models/Music";
+import _request from "../_request";
 
 export type PopulateTracksReqData = {
   ids: number[];
 };
 
 /** 避免 url 过长要将 id 分片, 此为每片长度 */
-const BATCH_SIZE = 777;
+const BATCH_SIZE = 200;
 
 /**
  * 根据给定 id 数组获得这批音乐的详情(不包含 url)
