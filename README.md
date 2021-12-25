@@ -18,12 +18,6 @@
   <img alt="Github stars" src="https://img.shields.io/github/stars/xiong35/netease-web?color=64EDAC" />
 </p>
 
-<!-- Status -->
-
-<h4 align="center">
- 🚧  netease-web 🚀 Under construction...  🚧
-</h4>
-
 <hr>
 
 <p align="center">
@@ -46,6 +40,7 @@ netease-web 是一款复刻网易云音乐的网站[TODO]
 
 - 听歌 🎧
 - 点赞收藏评论登录一应俱全 ♥
+- 支持[桌面应用](https://github.com/xiong35/netease-web/releases)
 
 ## :rocket: Technologies
 
