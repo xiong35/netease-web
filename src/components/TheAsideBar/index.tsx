@@ -2,6 +2,7 @@ import "./index.scss";
 
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useWindowSize } from "react-use/lib";
 
 import { AsideShrinkWidth } from "../../constants/mediaQuery";
@@ -20,6 +21,7 @@ function _TheAsideBar() {
   const { createPlayLists, starPlayLists } = useUserPlayLists();
   const [createListHidden, setCreateListHidden] = useState(true);
   const [starListHidden, setStarListHidden] = useState(true);
+  const history = useHistory();
 
   const { width } = useWindowSize();
   const isSmall = width < AsideShrinkWidth;
@@ -88,6 +90,7 @@ function _TheAsideBar() {
           {createListHidden ||
             createPlayLists.map((list) => (
               <PlayListItem
+                onClick={() => history.push(`/album-detail?id=${list.id}`)}
                 content={list.name}
                 icon={playListIcon}
                 key={list.id}
@@ -109,6 +112,7 @@ function _TheAsideBar() {
           {starListHidden ||
             starPlayLists.map((list) => (
               <PlayListItem
+                onClick={() => history.push(`/album-detail?id=${list.id}`)}
                 content={list.name}
                 icon={playListIcon}
                 key={list.id}
