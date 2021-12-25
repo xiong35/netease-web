@@ -2,6 +2,33 @@
   "name": "netease-web",
   "version": "0.1.0",
   "private": false,
+  "build": {
+    "extends": null,
+    "productName": "netease-fake",
+    "appId": "7",
+    "directories": {
+      "output": "exe"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "nsis": {
+      "shortcutName": "netease-fake",
+      "oneClick": false,
+      "perMachine": true,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "files": [
+      "build/**/*",
+      "main.ts"
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "dev": "react-scripts start",
@@ -11,8 +38,13 @@
     "postinstall": "husky install && git switch dev",
     "lint": "eslint src --max-warnings 0",
     "commit": "cz",
-    "cz": "cz"
+    "cz": "cz",
+    "electron:dev": "electron . dev",
+    "electron": "electron .",
+    "electron:build": "electron-builder"
   },
+  "main": "main.ts",
+  "homepage": ".",
   "dependencies": {
     "@loadable/component": "^5.15.0",
     "axios": "^0.24.0",
@@ -42,6 +74,8 @@
     "commitlint-config-cz": "^0.13.2",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.3.0",
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.5",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "typescript": "^4.3.2"
