@@ -2,20 +2,19 @@ import "./index.scss";
 
 import { NavLink } from "react-router-dom";
 
-import { PlayStore } from "../../mobx/play";
 import { setCurSong } from "./util/setCurSong";
 
-type tableHead = "音乐标题" | "歌手" | "专辑" | "时长";
-export type tableContent = {
-  [K in tableHead]?: {
+type TableHead = "音乐标题" | "歌手" | "专辑" | "时长";
+export type TableContent = {
+  [K in TableHead]?: {
     content: string;
     linkTo?: () => void;
   };
 } & { id: number };
 
 type SongsListProps = {
-  tableHeads: tableHead[];
-  tableContents: tableContent[];
+  tableHeads: TableHead[];
+  tableContents: TableContent[];
   highlightWord?: string;
   indexed?: boolean;
   // setLike?: boolean;
@@ -26,7 +25,7 @@ export default function SongsList(props: SongsListProps) {
 
   // /.^/ 为不匹配任何东西的正则，不过最好还是匹配时候多判断一下不要匹配
   const highlightReg = highlightWord
-    ? new RegExp(`([^${highlightWord}]*)(${highlightWord})(.*)`)
+    ? new RegExp(`([^${highlightWord}]*)(${highlightWord})(.*)`, "i")
     : /.^/;
 
   return (
