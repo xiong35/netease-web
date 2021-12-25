@@ -11,9 +11,11 @@ $width: 350px;
   overflow-y: scroll;
 
   transition: right 0.3s;
+  background-color: var(--bg);
+  border-left: 1px solid var(--bg-d);
 
   &.hide {
-    right: -$width;
+    right: -$width - 2px;
   }
 
   .songs_list-item:first-child {
