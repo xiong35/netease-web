@@ -1,10 +1,6 @@
 import { UserProfile } from "../../models/User";
 import _request from "../_request";
 
-export type GetUserByCookieReqData = {
-  cookie: string;
-};
-
 type GetUserByCookieResData = {
   profile: UserProfile;
 };
@@ -13,12 +9,14 @@ type GetUserByCookieResData = {
  * 通过cookie获取用户信息
  * @returns
  */
-export async function getUserByCookieReq(data: GetUserByCookieReqData) {
-  const cookie = encodeURIComponent(data.cookie);
-  const res = await _request<GetUserByCookieResData>({
-    url: `/user/account?cookie=${cookie}`,
-    method: "GET",
-  });
+export async function getUserByCookieReq() {
+  const res = await _request<GetUserByCookieResData>(
+    {
+      url: `/user/account`,
+      method: "GET",
+    },
+    false
+  );
 
   return res;
 }

@@ -1,7 +1,7 @@
 import "./index.scss";
 
 import { observer } from "mobx-react-lite";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { PlayStore } from "../../mobx/play";
@@ -9,6 +9,7 @@ import { PlayingMusicStore } from "../../mobx/playingMusic";
 import { PlayMode } from "../../models/Music";
 import { timeFormat } from "../../utils/timeFormat";
 import AlbumBrief from "../AlbumBrief";
+import AsidePlaylist from "./components/AsidePlaylist";
 import {
     ImgLoop, ImgNext, ImgNormal, ImgPaused, ImgPlay, ImgPlayList, ImgPrev, ImgRand, ImgVolume,
     ImgVolumeMute
@@ -37,6 +38,8 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
   const { muted, toggleMuted } = useMuted(audioRef);
   const { volume, handleVolumeMouseEvent, volumeSlideRef } =
     useVolume(audioRef);
+
+  const [showAsidePlaylist, setShowAsidePlaylist] = useState(false);
 
   const { bgc, color, imgEl } = useColor(url);
 
@@ -192,12 +195,17 @@ function _TheMusicPlayer(/* props: TheMusicPlayerProps */) {
               </div>
             </div>
           </div>
-          <div className="t_m_p-actions-play_list t_m_p-icon">
+          <div
+            className="t_m_p-actions-play_list t_m_p-icon"
+            onClick={() => setShowAsidePlaylist((s) => !s)}
+          >
             <ImgPlayList className="t_m_p-icon-svg" color={color}></ImgPlayList>
           </div>
         </div>
       </div>
       <div className="t_m_p-placeholder"></div>
+
+      <AsidePlaylist show={showAsidePlaylist}></AsidePlaylist>
     </>
   );
 }

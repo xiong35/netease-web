@@ -17,7 +17,8 @@ export type UserProfile = {
   description: string;
   vipType: number;
   birthday: number;
-  gender: 1 | 0;
+  /** 0:保密 1:男性 2:女性 */
+  gender: 1 | 0 | 2;
   nickname: string;
   createTime: number;
   backgroundUrl: string;
@@ -31,6 +32,6 @@ export type UserProfile = {
 
 /** 用户信息，请求后得到该类型的数据 */
 export type User = {
-  profile: UserProfile
-  level: number
-}
+  profile: UserProfile;
+  level: number;
+};

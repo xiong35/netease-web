@@ -15,3 +15,5 @@ dist
 build
 
 scripts
+
+main.ts

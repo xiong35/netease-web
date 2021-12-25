@@ -3,6 +3,11 @@ $img-size: 2.4rem;
   display: flex;
   align-items: center;
   cursor: pointer;
+  width: 30%;
+  margin: 0.2rem 0;
+  @media screen and (max-width: 800px) {
+    width: 50%;
+  }
 
   &-cover {
     width: $img-size;
@@ -17,6 +22,7 @@ $img-size: 2.4rem;
     padding: 0.3rem 0;
     font-size: 0.8rem;
     max-width: calc(100% - #{$img-size} - 1rem);
+
     &-name {
       &-alias {
         opacity: 0.6;

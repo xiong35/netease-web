@@ -21,6 +21,7 @@ import upTri from '../../../../images/upTri.svg'
 
 function _Main() {
   const { createPlayLists, starPlayLists } = useUserPlayLists()
+
   // 歌单是否由本人创建
   const createdBySelf = createPlayLists.find(
     item => item.id === SongListStore.id
@@ -144,13 +145,18 @@ function _Main() {
                 : 'album_detail-header-main-info-description'
             }
           >
-            <img
-              src={SongListStore.showDes ? upTri : downTri}
-              className="icon"
-              onClick={() => {
-                SongListStore.toggleShowDes()
-              }}
-            />
+            {SongListStore.description.split(/\r\n|\r|\n/).length > 1 ? (
+              <img
+                src={SongListStore.showDes ? upTri : downTri}
+                className="icon"
+                onClick={() => {
+                  SongListStore.toggleShowDes()
+                }}
+              />
+            ) : (
+              ''
+            )}
+
             <pre className="album_detail-header-main-info-description-content">
               简介：{SongListStore.description}
             </pre>

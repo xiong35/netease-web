@@ -1,0 +1,28 @@
+$width: 350px;
+
+.aside_playlist {
+  position: fixed;
+  top: 60px;
+  bottom: 80px;
+  right: 0;
+  width: $width;
+  z-index: 1;
+
+  overflow-y: scroll;
+
+  transition: right 0.3s;
+  background-color: var(--bg);
+  border-left: 1px solid var(--bg-d);
+
+  &.hide {
+    right: -$width - 2px;
+  }
+
+  .songs_list-item:first-child {
+    position: sticky;
+    top: 0;
+  }
+  .songs_list-item-column:last-child {
+    flex: 0.5;
+  }
+}
