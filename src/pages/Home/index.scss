@@ -1,9 +1,8 @@
 .home {
-  width: 1000px;
-  max-width: calc(95% - 13rem);
-  margin: auto;
+  margin: 0 1rem;
   padding-bottom: 3rem;
   position: relative;
+  flex: 1;
 
   .carousel {
     margin-top: 2rem;
@@ -14,7 +13,7 @@
     justify-items: center;
     grid-template-columns: repeat(4, 1fr);
 
-    @media (max-width: 800px) {
+    @media screen and (max-width: 800px) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -22,15 +21,11 @@
   &-personalized {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   &-new_songs {
-    display: grid;
-    row-gap: 0.5rem;
-    align-items: center;
-    grid-template-columns: repeat(3, 33.3%);
-    @media (max-width: 800px) {
-      grid-template-columns: repeat(2, 50%);
-    }
+    display: flex;
+    flex-wrap: wrap;
   }
 }
