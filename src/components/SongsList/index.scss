@@ -3,6 +3,10 @@
     display: flex;
     padding: 0.5rem 0 0.5rem 2rem;
 
+    &:not(:first-child) {
+      cursor: pointer;
+    }
+
     &:nth-child(odd) {
       background-color: var(--bg);
     }

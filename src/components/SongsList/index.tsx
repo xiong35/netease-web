@@ -2,6 +2,9 @@ import "./index.scss";
 
 import { NavLink } from "react-router-dom";
 
+import { PlayStore } from "../../mobx/play";
+import { setCurSong } from "./util/setCurSong";
+
 type tableHead = "音乐标题" | "歌手" | "专辑" | "时长";
 export type tableContent = {
   [K in tableHead]?: {
@@ -39,7 +42,11 @@ export default function SongsList(props: SongsListProps) {
         ))}
       </div>
       {tableContents.map((content, index) => (
-        <div className="songs_list-item" key={index}>
+        <div
+          className="songs_list-item"
+          key={index}
+          onClick={() => setCurSong(content.id)}
+        >
           <div className="songs_list-item-opts">
             {indexed && (
               <div className="songs_list-item-opts-index">{index + 1}</div>
