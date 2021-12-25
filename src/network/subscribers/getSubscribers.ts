@@ -1,7 +1,5 @@
-import _request from '../_request'
-import { Subscribers } from '../../models/Subscribers'
-
-import { enCookie } from "../../constants/cookie";
+import { Subscribers } from "../../models/Subscribers";
+import _request from "../_request";
 
 /**
  * 获取热门列表
@@ -9,22 +7,22 @@ import { enCookie } from "../../constants/cookie";
  */
 
 export type GetSubscribersReqData = {
-	/** 要获取收藏者的歌单的 id */
-	id: number
+  /** 要获取收藏者的歌单的 id */
+  id: number;
   /** 获取收藏者的数量 */
-  limit? : number
+  limit?: number;
   /** 偏移量，用于分页 */
-  offset? : number
-}
+  offset?: number;
+};
 
 export async function getSubscribers(
-	params: GetSubscribersReqData
+  params: GetSubscribersReqData
 ): Promise<Subscribers | null> {
-	const res = await _request<Subscribers>({
-		url: '/playlist/subscribers',
-		method: 'GET',
-    params: { ...params, cookie: enCookie },
-	})
-	if (!res) return null
-	return res
+  const res = await _request<Subscribers>({
+    url: "/playlist/subscribers",
+    method: "GET",
+    params,
+  });
+  if (!res) return null;
+  return res;
 }

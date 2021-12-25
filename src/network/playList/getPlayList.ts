@@ -1,7 +1,6 @@
-import { populateTracksReq } from "./populateTracks";
-import _request from "../_request";
 import { PlayList } from "../../models/PlayList";
-import { enCookie } from "../../constants/cookie";
+import _request from "../_request";
+import { populateTracksReq } from "./populateTracks";
 
 export type GetPlayListReqData = {
   /** 要获取的歌单的 id */
@@ -18,7 +17,7 @@ export async function getPlayListReq(
   const res = await _request<{ playlist: PlayList }>({
     url: "/playlist/detail",
     method: "GET",
-    params: { ...params, cookie: enCookie },
+    params,
   });
 
   if (!res || !res.playlist) return null;
