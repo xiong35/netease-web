@@ -1,7 +1,10 @@
 .songs_list {
+  max-width: 100vw;
+
   &-item {
     display: flex;
     padding: 0.5rem 0 0.5rem 2rem;
+    flex-wrap: wrap;
 
     &:not(:first-child) {
       cursor: pointer;
