@@ -2,6 +2,7 @@ import "./index.scss";
 
 import { NavLink } from "react-router-dom";
 
+import { PlayListID } from "../../models/PlayList";
 import { setCurSong } from "./util/setCurSong";
 
 type TableHead = "音乐标题" | "歌手" | "专辑" | "时长";
@@ -18,10 +19,12 @@ type SongsListProps = {
   highlightWord?: string;
   indexed?: boolean;
   // setLike?: boolean;
+  playlistID?: PlayListID;
 };
 
 export default function SongsList(props: SongsListProps) {
-  const { highlightWord, tableContents, tableHeads, indexed } = props;
+  const { highlightWord, tableContents, tableHeads, indexed, playlistID } =
+    props;
 
   // /.^/ 为不匹配任何东西的正则，不过最好还是匹配时候多判断一下不要匹配
   const highlightReg = highlightWord
@@ -44,7 +47,7 @@ export default function SongsList(props: SongsListProps) {
         <div
           className="songs_list-item"
           key={index}
-          onClick={() => setCurSong(content.id)}
+          onClick={() => setCurSong(content.id, playlistID)}
         >
           <div className="songs_list-item-opts">
             {indexed && (

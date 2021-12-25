@@ -23,7 +23,7 @@ class PlayState {
   playMode = PlayMode.NORMAL;
   /** 随机洗过的音乐**id**的表 */
   private randTrack: number[] = [];
-  private playlistID?: PlayListID;
+  playlistID?: PlayListID;
 
   constructor() {
     makeAutoObservable(this);
