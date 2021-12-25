@@ -3,6 +3,8 @@ node_modules
 *.local
 .vscode/settings.json
 
+build/
+
 *.log
 t.*
 exe

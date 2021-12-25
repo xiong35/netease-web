@@ -3,6 +3,7 @@ import "./index.scss";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import { showToast } from "../../../../utils/showToast";
 import { useShowDropDown } from "../../hooks/useShowDropDown";
 import searchImg from "../../images/search.svg";
 import Dropdown from "../Dropdown";
@@ -13,6 +14,7 @@ function SearchBar() {
   const history = useHistory();
 
   function search() {
+    if (!keyword) return showToast("关键词为空", "warning");
     history.push(`/search-page?keywords=${keyword}`);
     setShowDropDown(false);
   }
