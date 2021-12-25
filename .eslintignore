@@ -17,3 +17,4 @@ build
 scripts
 
 main.ts
+electron.js
