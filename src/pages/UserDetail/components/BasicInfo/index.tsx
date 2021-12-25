@@ -9,7 +9,7 @@ function _BasicInfo() {
   return (
     <div className="user_detail-basic_info">
       <img
-        src={userStore.userProfile?.avatarUrl}
+        src={userStore.userProfile ? userStore.userProfile.avatarUrl : ''}
         className="user_detail-basic_info-avatar"
       />
       <Main />

@@ -51,10 +51,10 @@ class userState {
     this.songList = userSongListData.playlist;
 
     this.createdSongList = this.songList.filter(
-      (item) => item.creator.userId === this.userProfile?.userId
+      (item) => item.creator.userId === (this.userProfile && this.userProfile.userId)
     );
     this.subscribedSongList = this.songList.filter(
-      (item) => item.creator.userId !== this.userProfile?.userId
+      (item) => item.creator.userId !== (this.userProfile && this.userProfile.userId)
     );
   }
 
