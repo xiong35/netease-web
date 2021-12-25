@@ -16,11 +16,14 @@ export async function getMusicUrlReq(
     data: {
       url: string;
     }[];
-  }>({
-    url: "/song/url",
-    method: "GET",
-    params,
-  });
+  }>(
+    {
+      url: "/song/url",
+      method: "GET",
+      params,
+    },
+    false
+  );
 
   if (!res || !res.data || !res.data.length) return null;
 
