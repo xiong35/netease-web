@@ -48,21 +48,21 @@ function _Main() {
       </div>
       <div className="album_detail-header-main-creator">
         <img
-          src={SongListStore.creator?.avatarUrl}
+          src={SongListStore.creator ? SongListStore.creator.avatarUrl : ''}
           className="album_detail-header-main-creator-avatar"
         />
         <a
           className="album_detail-header-main-creator-name"
           onClick={() => {
-            window.location.href = `/user-detail?uid=${SongListStore.creator?.userId}`
+            window.location.href = `/user-detail?uid=${SongListStore.creator && SongListStore.creator.userId}`
           }}
         >
-          {SongListStore.creator?.nickname}
+          {SongListStore.creator && SongListStore.creator.nickname}
         </a>
         <span
           className="album_detail-header-main-ar-create_time"
           onClick={() => {
-            window.location.href = `/user-detail?uid=${SongListStore.creator?.userId}`
+            window.location.href = `/user-detail?uid=${SongListStore.creator && SongListStore.creator.userId}`
           }}
         >
           {dateFormat(SongListStore.createTime)} 创建

@@ -30,7 +30,7 @@ function _TheTopBar() {
             onClick={() => {
               if (!self) setShowDialogLogin(true);
               else {
-                window.location.href = `/user-detail?uid=${SelfStore.self?.userId}`
+                window.location.href = `/user-detail?uid=${SelfStore.self && SelfStore.self.userId}`
               }
             }}
           >

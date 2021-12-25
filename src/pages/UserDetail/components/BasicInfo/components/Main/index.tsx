@@ -8,7 +8,7 @@ function _Main() {
     <div className="user_detail-basic_info-main">
       <div className="user_detail-basic_info-main-upper">
         <h2 className="user_detail-basic_info-main-upper-nickname">
-          {userStore.userProfile?.nickname}
+          {userStore.userProfile && userStore.userProfile.nickname}
         </h2>
         <span className="user_detail-basic_info-main-upper-level">
           Lv{userStore.level}
@@ -17,19 +17,19 @@ function _Main() {
       <div className="user_detail-basic_info-main-bottom">
         <div className="user_detail-basic_info-main-bottom-count">
           <div className="user_detail-basic_info-main-bottom-count-item">
-            {userStore.userProfile?.eventCount}
+            {userStore.userProfile && userStore.userProfile.eventCount}
             <span className="user_detail-basic_info-main-bottom-count-item-text">
               动态
             </span>
           </div>
           <div className="user_detail-basic_info-main-bottom-count-item">
-            {userStore.userProfile?.follows}
+            {userStore.userProfile && userStore.userProfile.follows}
             <span className="user_detail-basic_info-main-bottom-count-item-text">
               关注
             </span>
           </div>
           <div className="user_detail-basic_info-main-bottom-count-item">
-            {userStore.userProfile?.followeds}
+            {userStore.userProfile && userStore.userProfile.followeds}
             <span className="user_detail-basic_info-main-bottom-count-item-text">
               粉丝
             </span>
@@ -40,7 +40,7 @@ function _Main() {
             <span className="user_detail-basic_info-main-bottom-other_info-item-text">
               个人介绍：
             </span>
-            {userStore.userProfile?.signature}
+            {userStore.userProfile && userStore.userProfile.signature}
           </div>
         </div>
       </div>
