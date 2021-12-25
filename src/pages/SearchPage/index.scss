@@ -1,4 +1,42 @@
-
 .search_page {
+  flex: 1;
+  padding: 1rem;
 
+  &-count {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding-top: calc(60px + 1rem);
+    margin-top: calc(-60px - 1rem);
+  }
+
+  &-tabs {
+    display: flex;
+    align-items: baseline;
+
+    &-tab {
+      padding: 0.5rem 0;
+      margin-right: 1rem;
+      font-weight: lighter;
+      cursor: pointer;
+
+      &.selected {
+        font-weight: bold;
+        font-size: 1.3rem;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 3px;
+          right: 3px;
+          bottom: 3px;
+          margin: auto;
+          height: 4px;
+          border-radius: 999px;
+          background-color: var(--primary);
+        }
+      }
+    }
+  }
 }

@@ -17,6 +17,7 @@
 
 .album_detail-header-main {
   width: 100%;
+
   &-title {
     display: flex;
     align-items: center;
@@ -75,7 +76,6 @@
     &-download {
       @extend .header-btn;
       color: var(--on-bg);
-      // background-color: var(--bg);
     }
 
     &-subscribe.disabled {
@@ -152,6 +152,10 @@
         top: 6px;
         filter: invert(50%);
         cursor: pointer;
+      }
+
+      &-content {
+        white-space: pre-wrap;
       }
     }
 

@@ -1,0 +1,41 @@
+.songs_list {
+  &-item {
+    display: flex;
+    padding: 0.5rem 0 0.5rem 2rem;
+
+    &:nth-child(odd) {
+      background-color: var(--bg);
+    }
+
+    &:nth-child(even) {
+      background-color: var(--bg-2);
+    }
+
+    &-opts {
+      &-index {
+        min-width: 2rem;
+        padding-right: 2rem;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+    }
+
+    &-column {
+      min-width: 25%;
+      flex: 1;
+      font-size: 0.9rem;
+
+      &:last-child {
+        min-width: unset;
+      }
+
+      &.header {
+        opacity: 0.6;
+      }
+
+      &-highlight {
+        color: var(--secondary);
+      }
+    }
+  }
+}
